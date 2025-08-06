@@ -1,0 +1,35 @@
+{# smart_electric_service/templates/services/service_list.html #}
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}আমাদের সার্ভিসেস{% endblock %}
+
+{% block content %}
+    <section class="page-banner">
+        <div class="container">
+            <h2>আমাদের সকল সার্ভিসেস</h2>
+            <p>আপনার সকল ইলেকট্রিক ও প্লাম্বিং সমস্যার জন্য নির্ভরযোগ্য সমাধান</p>
+        </div>
+    </section>
+
+    <section class="service-categories">
+        <div class="container">
+            <h2 class="section-title">আমাদের পূর্ণাঙ্গ সার্ভিস তালিকা</h2>
+
+            {% for service in services %}
+                <div class="category-item">
+                    <h3>{{ forloop.counter }}️⃣ {{ service.name }} <i class="{{ service.icon_class }}"></i></h3>
+                    <p>{{ service.short_description }}</p>
+                    <ul>
+                        {% for feature in service.features.all %}
+                            <li><i class="fas fa-check-circle"></i> {{ feature.feature_text }}</li>
+                        {% endfor %}
+                    </ul>
+                    <a href="{% url 'services:service_detail' id=service.id slug=service.slug %}" class="btn">বিস্তারিত জানুন</a>
+                </div>
+            {% empty %}
+                <p>কোনো সার্ভিস পাওয়া যায়নি।</p>
+            {% endfor %}
+        </div>
+    </section>
+{% endblock %}

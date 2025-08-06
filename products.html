@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Electric Service - প্রোডাক্টস</title>
+    <!-- Google Fonts: Orbitron (English), Hind Siliguri (Bangla) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="static/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <img src="static/images/logo.png" alt="Smart Electric Service Logo">
+                <div>
+                    <h1>Smart Electric Service</h1>
+                    <p>আপনার বিশ্বস্ত বৈদ্যুতিক সেবা প্রদানকারী</p>
+                </div>
+            </div>
+            <nav class="navbar">
+                <ul>
+                    <li><a href="index.html">হোম</a></li>
+                    <li><a href="services.html">সার্ভিসেস</a></li>
+                    <li><a href="products.html" class="active">প্রোডাক্টস</a></li>
+                    <li><a href="login.html">লগইন</a></li>
+                    <li><a href="signup.html">সাইনআপ</a></li>
+                    <li><a href="contact.html">যোগাযোগ</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="page-banner">
+        <div class="container">
+            <h2>আমাদের প্রোডাক্টস</h2>
+            <p>উচ্চ মানের ইলেকট্রিক ও প্লাম্বিং সরঞ্জাম</p>
+        </div>
+    </section>
+
+    <section class="products-section">
+        <div class="container">
+            <h2 class="section-title">আমাদের প্রোডাক্টস</h2>
+            
+            <!-- Product Categories -->
+            <div class="product-categories">
+                <button class="category-btn active" data-category="all">সব প্রোডাক্ট</button>
+                <button class="category-btn" data-category="electrical">ইলেকট্রিক</button>
+                <button class="category-btn" data-category="solar">সোলার</button>
+                <button class="category-btn" data-category="security">নিরাপত্তা</button>
+                <button class="category-btn" data-category="cooling">কুলিং</button>
+                <button class="category-btn" data-category="plumbing">প্লাম্বিং</button>
+            </div>
+            
+            <!-- Product Grid -->
+            <div class="product-grid">
+                <!-- Electrical Products -->
+                <div class="product-item" data-category="electrical">
+                    <div class="product-image">
+                        <img src="img/product-placeholder.jpg" alt="Circuit Breaker">
+                        <div class="product-overlay">
+                            <button class="quick-view-btn">দ্রুত দেখুন</button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3>সার্কিট ব্রেকার</h3>
+                        <p>উচ্চ মানের সার্কিট ব্রেকার, নিরাপত্তা নিশ্চিত করে</p>
+                        <div class="product-price">
+                            <span class="price">৳৫০০</span>
+                            <span class="original-price">৳৬০০</span>
+                        </div>
+                        <button class="add-to-cart-btn">কার্টে যোগ করুন</button>
+                    </div>
+                </div>
+
+                <div class="product-item" data-category="electrical">
+                    <div class="product-image">
+                        <img src="img/product-placeholder.jpg" alt="Switch Board">
+                        <div class="product-overlay">
+                            <button class="quick-view-btn">দ্রুত দেখুন</button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3>সুইচ বোর্ড</h3>
+                        <p>আধুনিক ডিজাইনের সুইচ বোর্ড</p>
+                        <div class="product-price">
+                            <span class="price">৳৮০০</span>
+                            <span class="original-price">৳১০০০</span>
+                        </div>
+                        <button class="add-to-cart-btn">কার্টে যোগ করুন</button>
+                    </div>
+                </div>
+
+                <div class="product-item" data-category="electrical">
+                    <div class="product-image">
+                        <img src="img/product-placeholder.jpg" alt="Wire">
+                        <div class="product-overlay">
+                            <button class="quick-view-btn">দ্রুত দেখুন</button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3>ইলেকট্রিক ওয়্যার</h3>
+                        <p>উচ্চ মানের কপার ওয়্যার</p>
+                        <div class="product-price">
+                            <span class="price">৳৩০০</span>
+                            <span class="original-price">৳৪০০</span>
+                        </div>
+                        <button class="add-to-cart-btn">কার্টে যোগ করুন</button>
+                    </div>
+                </div>
+
+                <!-- Solar Products -->
+                <div class="product-item" data-category="solar">
+                    <div class="product-image">
+                        <img src="img/product-placeholder.jpg" alt="Solar Panel">
+                        <div class="product-overlay">
+                            <button class="quick-view-btn">দ্রুত দেখুন</button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3>সোলার প্যানেল</h3>
+                        <p>উচ্চ দক্ষতার সোলার প্যানেল</p>
+                        <div class="product-price">
+                            <span class="price">৳১৫,০০০</span>
+                            <span class="original-price">৳১৮,০০০</span>
+                        </div>
+                        <button class="add-to-cart-btn">কার্টে যোগ করুন</button>
+                    </div>
+                </div>
+
+                <div class="product-item" data-category="solar">
+                    <div class="product-image">
+                        <img src="img/product-placeholder.jpg" alt="Solar Inverter">
+                        <div class="product-overlay">
+                            <button class="quick-view-btn">দ্রুত দেখুন</button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3>সোলার ইনভার্টার</h3>
+                        <p>স্মার্ট সোলার ইনভার্টার</p>
+                        <div class="product-price">
+                            <span class="price">৳১২,০০০</span>
+                            <span class="original-price">৳১৫,০০০</span>
+                        </div>
+                        <button class="add-to-cart-btn">কার্টে যোগ করুন</button>
+                    </div>
+                </div>
+
+                <div class="product-item" data-category="solar">
+                    <div class="product-image">
+                        <img src="img/product-placeholder.jpg" alt="Solar Battery">
+                        <div class="product-overlay">
+                            <button class="quick-view-btn">দ্রুত দেখুন</button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3>সোলার ব্যাটারি</h3>
+                        <p>দীর্ঘস্থায়ী সোলার ব্যাটারি</p>
+                        <div class="product-price">
+                            <span class="price">৳৮,০০০</span>
+                            <span class="original-price">৳১০,০০০</span>
+                        </div>
+                        <button class="add-to-cart-btn">কার্টে যোগ করুন</button>
+                    </div>
+                </div>
+
+                <!-- Security Products -->
+                <div class="product-item" data-category="security">
+                    <div class="product-image">
+                        <img src="img/product-placeholder.jpg" alt="CCTV Camera">
+                        <div class="product-overlay">
+                            <button class="quick-view-btn">দ্রুত দেখুন</button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3>সিসিটিভি ক্যামেরা</h3>
+                        <p>হাই রেজোলিউশন সিসিটিভি ক্যামেরা</p>
+                        <div class="product-price">
+                            <span class="price">৳২,৫০০</span>
+                            <span class="original-price">৳৩,০০০</span>
+                        </div>
+                        <button class="add-to-cart-btn">কার্টে যোগ করুন</button>
+                    </div>
+                </div>
+
+                <div class="product-item" data-category="security">
+                    <div class="product-image">
+                        <img src="img/product-placeholder.jpg" alt="Door Lock">
+                        <div class="product-overlay">
+                            <button class="quick-view-btn">দ্রুত দেখুন</button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3>ডিজিটাল ডোর লক</h3>
+                        <p>স্মার্ট ডিজিটাল ডোর লক</p>
+                        <div class="product-price">
+                            <span class="price">৳১,৫০০</span>
+                            <span class="original-price">৳২,০০০</span>
+                        </div>
+                        <button class="add-to-cart-btn">কার্টে যোগ করুন</button>
+                    </div>
+                </div>
+
+                <!-- Cooling Products -->
+                <div class="product-item" data-category="cooling">
+                    <div class="product-image">
+                        <img src="img/product-placeholder.jpg" alt="AC Unit">
+                        <div class="product-overlay">
+                            <button class="quick-view-btn">দ্রুত দেখুন</button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3>এসি ইউনিট</h3>
+                        <p>ইনারভার্টার এসি ইউনিট</p>
+                        <div class="product-price">
+                            <span class="price">৳৪৫,০০০</span>
+                            <span class="original-price">৳৫০,০০০</span>
+                        </div>
+                        <button class="add-to-cart-btn">কার্টে যোগ করুন</button>
+                    </div>
+                </div>
+
+                <div class="product-item" data-category="cooling">
+                    <div class="product-image">
+                        <img src="img/product-placeholder.jpg" alt="Refrigerator">
+                        <div class="product-overlay">
+                            <button class="quick-view-btn">দ্রুত দেখুন</button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3>রেফ্রিজারেটর</h3>
+                        <p>ডাবল ডোর রেফ্রিজারেটর</p>
+                        <div class="product-price">
+                            <span class="price">৳৩৫,০০০</span>
+                            <span class="original-price">৳৪০,০০০</span>
+                        </div>
+                        <button class="add-to-cart-btn">কার্টে যোগ করুন</button>
+                    </div>
+                </div>
+
+                <!-- Plumbing Products -->
+                <div class="product-item" data-category="plumbing">
+                    <div class="product-image">
+                        <img src="img/product-placeholder.jpg" alt="Water Tap">
+                        <div class="product-overlay">
+                            <button class="quick-view-btn">দ্রুত দেখুন</button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3>ওয়াটার ট্যাপ</h3>
+                        <p>স্টেইনলেস স্টিল ট্যাপ</p>
+                        <div class="product-price">
+                            <span class="price">৳১,২০০</span>
+                            <span class="original-price">৳১,৫০০</span>
+                        </div>
+                        <button class="add-to-cart-btn">কার্টে যোগ করুন</button>
+                    </div>
+                </div>
+
+                <div class="product-item" data-category="plumbing">
+                    <div class="product-image">
+                        <img src="img/product-placeholder.jpg" alt="Pipe">
+                        <div class="product-overlay">
+                            <button class="quick-view-btn">দ্রুত দেখুন</button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3>পিভিসি পাইপ</h3>
+                        <p>উচ্চ মানের পিভিসি পাইপ</p>
+                        <div class="product-price">
+                            <span class="price">৳৫০০</span>
+                            <span class="original-price">৳৬০০</span>
+                        </div>
+                        <button class="add-to-cart-btn">কার্টে যোগ করুন</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <h3>যোগাযোগ</h3>
+                    <p><i class="fas fa-phone-alt"></i> 01888186759</p>
+                    <p><i class="fas fa-phone-alt"></i> 01890674547</p>
+                    <p><i class="fas fa-envelope"></i> smartelectricservice4547@gmail.com</p>
+                    <p><i class="fas fa-map-marker-alt"></i> ব্রাহ্মণপাড়া, কুমিল্লা</p>
+                    <p><i class="fab fa-whatsapp"></i> WhatsApp: Always Active</p>
+                </div>
+                <div class="footer-col">
+                    <h3>আমাদের সার্ভিস</h3>
+                    <ul>
+                        <li>ইলেকট্রিক কাজ</li>
+                        <li>সোলার প্যানেল ইনস্টলেশন</li>
+                        <li>সিসিটিভি ক্যামেরা</li>
+                        <li>এসি সার্ভিস</li>
+                        <li>ফ্রিজ সার্ভিসিং</li>
+                        <li>আইপিএস সার্ভিস</li>
+                        <li>প্লাম্বিং ও ফিটিংস কাজ</li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>দ্রুত লিঙ্ক</h3>
+                    <ul>
+                        <li><a href="index.html">হোম</a></li>
+                        <li><a href="services.html">সার্ভিসেস</a></li>
+                        <li><a href="products.html">প্রোডাক্টস</a></li>
+                        <li><a href="contact.html">যোগাযোগ</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Smart Electric Service. সর্বস্বত্ব সংরক্ষিত।</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+    <script>
+        // Product Category Filter
+        document.addEventListener('DOMContentLoaded', function() {
+            const categoryBtns = document.querySelectorAll('.category-btn');
+            const productItems = document.querySelectorAll('.product-item');
+
+            categoryBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const category = this.getAttribute('data-category');
+                    
+                    // Remove active class from all buttons
+                    categoryBtns.forEach(b => b.classList.remove('active'));
+                    // Add active class to clicked button
+                    this.classList.add('active');
+                    
+                    // Filter products
+                    productItems.forEach(item => {
+                        if (category === 'all' || item.getAttribute('data-category') === category) {
+                            item.style.display = 'block';
+                        } else {
+                            item.style.display = 'none';
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html> 

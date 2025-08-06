@@ -1,0 +1,30 @@
+{# smart_electric_service/templates/services/service_detail.html #}
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ service.name }}{% endblock %}
+
+{% block content %}
+    <section class="page-banner">
+        <div class="container">
+            <h2>{{ service.name }}</h2>
+            <p>{{ service.short_description }}</p>
+        </div>
+    </section>
+
+    <section class="service-detail-section">
+        <div class="container">
+            <h2 class="section-title">{{ service.name }} এর বিস্তারিত</h2>
+            <div class="service-content">
+                <p>{{ service.long_description|linebreaksbr }}</p>
+                <h3>প্রধান ফিচারসমূহ:</h3>
+                <ul>
+                    {% for feature in service.features.all %}
+                        <li><i class="fas fa-check-circle"></i> {{ feature.feature_text }}</li>
+                    {% endfor %}
+                </ul>
+                <a href="{% url 'contact' %}" class="btn primary-btn">এই সার্ভিসটি নিতে যোগাযোগ করুন</a>
+            </div>
+        </div>
+    </section>
+{% endblock %}

@@ -1,0 +1,112 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Electric Service - সাইনআপ</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <img src="{% static 'images/logo.png' %}" alt="Smart Electric Service Logo">
+                <h1>Smart Electric Service</h1>
+                <p>আপনার বিশ্বস্ত ইলেকট্রিক সমাধান</p>
+            </div>
+            <nav class="navbar">
+                <ul>
+                    <li><a href="{% url 'home' %}">হোম</a></li>
+                    <li><a href="{% url 'services:service_list' %}">সার্ভিসেস</a></li>
+                    <li><a href="{% url 'products:product_list' %}">প্রোডাক্টস</a></li>
+                    <li><a href="{% url 'login' %}">লগইন</a></li>
+                    <li><a href="{% url 'signup' %}" class="active">সাইনআপ</a></li>
+                    <li><a href="{% url 'contact' %}">যোগাযোগ</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="auth-form-section">
+        <div class="container">
+            <h2 class="section-title">সাইনআপ করুন</h2>
+            <div class="auth-form">
+                <form id="signupForm">
+                    <div class="form-group">
+                        <label for="name">আপনার নাম:</label>
+                        <input type="text" id="name" name="name" placeholder="আপনার পুরো নাম দিন" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">ইমেইল:</label>
+                        <input type="email" id="email" name="email" placeholder="আপনার ইমেইল দিন" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">মোবাইল নম্বর:</label>
+                        <input type="tel" id="phone" name="phone" placeholder="মোবাইল নম্বর দিন (যেমন: 01xxxxxxxxx)" required pattern="[0-9]{11}">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">পাসওয়ার্ড:</label>
+                        <input type="password" id="password" name="password" placeholder="একটি পাসওয়ার্ড দিন" required minlength="6">
+                    </div>
+                    <div class="form-group">
+                        <label for="confirm-password">পাসওয়ার্ড নিশ্চিত করুন:</label>
+                        <input type="password" id="confirm-password" name="confirm-password" placeholder="পাসওয়ার্ড পুনরায় দিন" required>
+                    </div>
+                    <div class="form-group radio-group">
+                        <label>আপনি কে?</label>
+                        <input type="radio" id="userTypeCustomer" name="userType" value="customer" checked>
+                        <label for="userTypeCustomer">কাস্টমার</label>
+                        <input type="radio" id="userTypeTechnician" name="userType" value="technician">
+                        <label for="userTypeTechnician">টেকনিশিয়ান</label>
+                    </div>
+                    <button type="submit" class="btn">সাইনআপ করুন</button>
+                    <p class="form-switch-link">ইতিমধ্যে অ্যাকাউন্ট আছে? <a href="{% url 'login' %}">লগইন করুন</a></p>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <h3>যোগাযোগ</h3>
+                    <p><i class="fas fa-phone-alt"></i> 01888186759</p>
+                    <p><i class="fas fa-phone-alt"></i> 01890674547</p>
+                    <p><i class="fas fa-envelope"></i> smartelectricservice4547@gmail.com</p>
+                    <p><i class="fas fa-map-marker-alt"></i> ব্রাহ্মণপাড়া, কুমিল্লা</p>
+                    <p><i class="fab fa-whatsapp"></i> WhatsApp: Always Active</p>
+                </div>
+                <div class="footer-col">
+                    <h3>আমাদের সার্ভিস</h3>
+                    <ul>
+                        <li>ইলেকট্রিক কাজ</li>
+                        <li>সোলার প্যানেল ইনস্টলেশন</li>
+                        <li>সিসিটিভি ক্যামেরা</li>
+                        <li>এসি সার্ভিস</li>
+                        <li>ফ্রিজ সার্ভিসিং</li>
+                        <li>আইপিএস সার্ভিস</li>
+                        <li>প্লাসিং কাজ</li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>দ্রুত লিঙ্ক</h3>
+                    <ul>
+                        <li><a href="{% url 'home' %}">হোম</a></li>
+                        <li><a href="{% url 'services:service_list' %}">সার্ভিসেস</a></li>
+                        <li><a href="{% url 'products:product_list' %}">প্রোডাক্টস</a></li>
+                        <li><a href="{% url 'contact' %}">যোগাযোগ</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Smart Electric Service. সর্বস্বত্ব সংরক্ষিত।</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="{% static 'js/script.js' %}"></script>
+</body>
+</html>

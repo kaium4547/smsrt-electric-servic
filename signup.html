@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>সাইনআপ - Smart Electric Service</title>
+    <link rel="stylesheet" href="static/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <img src="static/images/logo.png" alt="Smart Electric Service Logo">
+                <div>
+                    <h1>Smart Electric Service</h1>
+                    <p>আপনার বিশ্বস্ত বৈদ্যুতিক সেবা প্রদানকারী</p>
+                </div>
+            </div>
+            <nav class="navbar">
+                <ul>
+                    <li><a href="index.html">হোম</a></li>
+                    <li><a href="services.html">সেবাসমূহ</a></li>
+                    <li><a href="products.html">পণ্যসমূহ</a></li>
+                    <li><a href="contact.html">যোগাযোগ</a></li>
+                    <li><a href="login.html">লগইন</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Signup Form Section -->
+    <section class="auth-form-section">
+        <div class="container">
+            <div class="auth-form">
+                <h2><i class="fas fa-user-plus"></i> সাইনআপ করুন</h2>
+                <form id="signupForm">
+                    <div class="form-group">
+                        <label for="name"><i class="fas fa-user"></i> পূর্ণ নাম</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email"><i class="fas fa-envelope"></i> ইমেইল</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone"><i class="fas fa-phone"></i> ফোন নম্বর</label>
+                        <input type="tel" id="phone" name="phone" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password"><i class="fas fa-lock"></i> পাসওয়ার্ড</label>
+                        <input type="password" id="password" name="password" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="confirm-password"><i class="fas fa-lock"></i> পাসওয়ার্ড নিশ্চিত করুন</label>
+                        <input type="password" id="confirm-password" name="confirm-password" required>
+                    </div>
+                    <div class="form-group">
+                        <label>ব্যবহারকারীর ধরন:</label>
+                        <div class="radio-group">
+                            <label class="radio-label">
+                                <input type="radio" name="userType" value="customer" checked>
+                                <span class="radio-checkmark"></span>
+                                গ্রাহক
+                            </label>
+                            <label class="radio-label">
+                                <input type="radio" name="userType" value="technician">
+                                <span class="radio-checkmark"></span>
+                                টেকনিশিয়ান
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="terms" required>
+                            <span class="checkmark"></span>
+                            আমি <a href="#">শর্তাবলী</a> এবং <a href="#">গোপনীয়তা নীতি</a> মেনে চলতে সম্মত
+                        </label>
+                    </div>
+                    <button type="submit" class="btn">সাইনআপ করুন</button>
+                </form>
+                <div class="form-switch-link">
+                    <p>ইতিমধ্যে অ্যাকাউন্ট আছে? <a href="login.html">লগইন করুন</a></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <h3>Smart Electric Service</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> ঢাকা, বাংলাদেশ</p>
+                    <p><i class="fas fa-phone"></i> +880 1234-567890</p>
+                    <p><i class="fas fa-envelope"></i> info@smartelectric.com</p>
+                </div>
+                <div class="footer-col">
+                    <h3>দ্রুত লিংক</h3>
+                    <p><a href="index.html">হোম</a></p>
+                    <p><a href="services.html">সেবাসমূহ</a></p>
+                    <p><a href="products.html">পণ্যসমূহ</a></p>
+                    <p><a href="contact.html">যোগাযোগ</a></p>
+                </div>
+                <div class="footer-col">
+                    <h3>সেবাসমূহ</h3>
+                    <p><a href="#">বৈদ্যুতিক ইনস্টলেশন</a></p>
+                    <p><a href="#">মেরামত ও রক্ষণাবেক্ষণ</a></p>
+                    <p><a href="#">ইলেকট্রিক্যাল কনসালটেশন</a></p>
+                    <p><a href="#">ইমারজেন্সি সার্ভিস</a></p>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <p>&copy; 2024 Smart Electric Service. সর্বস্বত্ব সংরক্ষিত।</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html> 

@@ -1,0 +1,996 @@
+/* Google Fonts: Orbitron (English), Hind Siliguri (Bangla) */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Hind+Siliguri:wght@400;500;600;700&display=swap');
+
+/* Smart Electric Service - Visiting Card Style */
+
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #18191a; /* Dark gray/black background like visiting card */
+    color: #ffffff;
+    font-family: 'Hind Siliguri', 'Noto Sans Bengali', Arial, sans-serif;
+    line-height: 1.6;
+}
+
+/* Container */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Header Styles - Visiting Card Style */
+.header {
+    background: #18191a;
+    color: #ff9000; /* Orange like visiting card */
+    padding: 20px 0;
+    border-bottom: 3px solid #ff9000;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+}
+
+.header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.logo img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: 3px solid #ff9000;
+}
+
+.logo h1 {
+    font-size: 2rem;
+    font-weight: 900;
+    font-family: 'Orbitron', Arial, sans-serif;
+    color: #ff9000;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.5);
+    margin-bottom: 5px;
+}
+
+.logo p {
+    font-size: 1rem;
+    font-family: 'Hind Siliguri', 'Noto Sans Bengali', Arial, sans-serif;
+    color: #ffe600; /* Yellow for subtitle like visiting card */
+    font-weight: 600;
+}
+
+/* Navigation - Visiting Card Style */
+.navbar ul {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.navbar a {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 700;
+    font-family: 'Orbitron', Arial, sans-serif;
+    padding: 12px 20px;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border: 2px solid transparent;
+}
+
+.navbar a:hover,
+.navbar a.active {
+    color: #ff9000;
+    background: rgba(255, 144, 0, 0.1);
+    border-color: #ff9000;
+    box-shadow: 0 4px 15px rgba(255, 144, 0, 0.3);
+}
+
+/* Hero Section - Visiting Card Style */
+.hero-slider {
+    position: relative;
+    width: 100%;
+    height: 500px;
+    overflow: hidden;
+    background: linear-gradient(135deg, #18191a 0%, #2a2b2c 100%);
+}
+
+.hero-slider .slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.hero-slider .slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(40%) contrast(120%);
+}
+
+.hero-slider .hero-content {
+    position: absolute;
+    color: #ffffff;
+    z-index: 1;
+    max-width: 800px;
+    padding: 40px;
+    background: rgba(24, 25, 26, 0.8);
+    border: 3px solid #ff9000;
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+}
+
+.hero-slider .hero-content h2 {
+    font-size: 3.5em;
+    font-family: 'Orbitron', Arial, sans-serif;
+    font-weight: 900;
+    color: #ff9000;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 0 4px 15px rgba(0,0,0,0.8);
+}
+
+.hero-slider .hero-content p {
+    font-size: 1.4em;
+    font-family: 'Hind Siliguri', 'Noto Sans Bengali', Arial, sans-serif;
+    color: #ffffff;
+    margin-bottom: 30px;
+    font-weight: 500;
+}
+
+/* Button Styles - Visiting Card Style */
+.btn {
+    display: inline-block;
+    background: #ff9000;
+    color: #18191a;
+    padding: 15px 35px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-family: 'Orbitron', Arial, sans-serif;
+    font-weight: 900;
+    font-size: 1.1em;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    border: 3px solid #ff9000;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(255, 144, 0, 0.3);
+}
+
+.btn:hover {
+    background: #0099ff; /* Blue on hover like visiting card */
+    color: #ffffff;
+    border-color: #0099ff;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0, 153, 255, 0.4);
+}
+
+.primary-btn {
+    background: #18191a;
+    color: #ff9000;
+    border-color: #ff9000;
+}
+
+.primary-btn:hover {
+    background: #ff9000;
+    color: #18191a;
+}
+
+/* Section Titles - Visiting Card Style */
+.section-title {
+    text-align: center;
+    font-size: 2.8em;
+    font-family: 'Orbitron', Arial, sans-serif;
+    font-weight: 900;
+    color: #ff9000;
+    margin-bottom: 50px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    text-shadow: 0 4px 15px rgba(0,0,0,0.8);
+    position: relative;
+    padding-top: 20px;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: -15px;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 4px;
+    background: linear-gradient(90deg, #ff9000, #0099ff);
+    border-radius: 2px;
+}
+
+/* Service Grid - Visiting Card Style */
+.features-services {
+    padding: 80px 0;
+    background: #18191a;
+}
+
+.service-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 40px;
+}
+
+.service-item {
+    background: #2a2b2c;
+    padding: 40px 30px;
+    border-radius: 20px;
+    text-align: center;
+    border: 3px solid #ff9000;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.service-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 144, 0, 0.1), transparent);
+    transition: left 0.5s ease;
+}
+
+.service-item:hover::before {
+    left: 100%;
+}
+
+.service-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(255, 144, 0, 0.2);
+    border-color: #0099ff;
+}
+
+.service-item i {
+    font-size: 3.5em;
+    color: #ff9000;
+    margin-bottom: 20px;
+    display: block;
+    text-shadow: 0 4px 15px rgba(255, 144, 0, 0.5);
+}
+
+.service-item h3 {
+    font-size: 1.5em;
+    font-family: 'Orbitron', Arial, sans-serif;
+    font-weight: 900;
+    color: #0099ff; /* Blue for service titles like visiting card */
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+}
+
+.service-item p {
+    font-size: 1.1em;
+    font-family: 'Hind Siliguri', 'Noto Sans Bengali', Arial, sans-serif;
+    color: #ffffff;
+    line-height: 1.6;
+    font-weight: 500;
+}
+
+/* About Section - Visiting Card Style */
+.about-us {
+    padding: 80px 0;
+    background: #2a2b2c;
+}
+
+.about-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    align-items: center;
+}
+
+.about-image img {
+    width: 100%;
+    border-radius: 20px;
+    border: 3px solid #ff9000;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+}
+
+.about-text h3 {
+    font-size: 2.2em;
+    font-family: 'Orbitron', Arial, sans-serif;
+    font-weight: 900;
+    color: #ff9000;
+    margin-bottom: 25px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 0 4px 15px rgba(0,0,0,0.8);
+}
+
+.about-text p {
+    font-size: 1.2em;
+    font-family: 'Hind Siliguri', 'Noto Sans Bengali', Arial, sans-serif;
+    color: #ffffff;
+    margin-bottom: 20px;
+    line-height: 1.8;
+    font-weight: 500;
+}
+
+/* Call to Action - Visiting Card Style */
+.call-to-action {
+    padding: 80px 0;
+    background: linear-gradient(135deg, #18191a 0%, #2a2b2c 100%);
+    text-align: center;
+    border-top: 3px solid #ff9000;
+    border-bottom: 3px solid #ff9000;
+}
+
+.call-to-action h2 {
+    font-size: 2.5em;
+    font-family: 'Orbitron', Arial, sans-serif;
+    font-weight: 900;
+    color: #ff9000;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 0 4px 15px rgba(0,0,0,0.8);
+}
+
+.call-to-action p {
+    font-size: 1.3em;
+    font-family: 'Hind Siliguri', 'Noto Sans Bengali', Arial, sans-serif;
+    color: #ffffff;
+    margin-bottom: 30px;
+    font-weight: 500;
+}
+
+/* Footer - Visiting Card Style */
+.footer {
+    background: #18191a;
+    color: #ffffff;
+    padding: 60px 0 20px;
+    border-top: 3px solid #ff9000;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
+    margin-bottom: 40px;
+}
+
+.footer-col h3 {
+    font-size: 1.5em;
+    font-family: 'Orbitron', Arial, sans-serif;
+    font-weight: 900;
+    color: #ff9000;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.5);
+}
+
+.footer-col p,
+.footer-col li {
+    font-family: 'Hind Siliguri', 'Noto Sans Bengali', Arial, sans-serif;
+    color: #ffffff;
+    margin-bottom: 10px;
+    font-weight: 500;
+}
+
+.footer-col p i,
+.footer-col li i {
+    color: #ffe600; /* Yellow for icons like visiting card */
+    margin-right: 10px;
+    width: 20px;
+}
+
+.footer-col a {
+    color: #0099ff; /* Blue for links like visiting card */
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.footer-col a:hover {
+    color: #ff9000;
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 20px;
+    border-top: 2px solid #2a2b2c;
+    font-family: 'Hind Siliguri', 'Noto Sans Bengali', Arial, sans-serif;
+    color: #ffffff;
+    font-weight: 500;
+}
+
+/* Contact Card Style - Like Visiting Card */
+.contact-card {
+    background: #18191a;
+    border: 3px solid #ff9000;
+    border-radius: 20px;
+    padding: 40px;
+    margin: 40px auto;
+    max-width: 600px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+}
+
+.contact-card .row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.contact-card .icon-circle {
+    background: #ff9000;
+    color: #18191a;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+    margin-right: 20px;
+    box-shadow: 0 4px 15px rgba(255, 144, 0, 0.3);
+}
+
+.contact-card .info-text {
+    font-size: 1.4rem;
+    font-family: 'Hind Siliguri', 'Noto Sans Bengali', Arial, sans-serif;
+    color: #ffffff;
+    font-weight: 600;
+}
+
+.contact-card .info-title {
+    font-size: 1.2rem;
+    color: #ff9000;
+    font-family: 'Orbitron', Arial, sans-serif;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Utility Classes */
+.highlight-yellow {
+    color: #ffe600;
+    font-weight: bold;
+}
+
+.highlight-blue {
+    color: #0099ff;
+    font-weight: bold;
+}
+
+.card-bg {
+    background: #18191a;
+    border: 3px solid #ff9000;
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .header .container {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .navbar ul {
+        justify-content: center;
+        gap: 15px;
+    }
+    
+    .hero-content h2 {
+        font-size: 2.5em;
+    }
+    
+    .hero-content p {
+        font-size: 1.2em;
+    }
+    
+    .about-content {
+        grid-template-columns: 1fr;
+    }
+    
+    .service-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .section-title {
+        font-size: 2.2em;
+    }
+    
+    .call-to-action h2 {
+        font-size: 2em;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 0 15px;
+    }
+    
+    .hero-content h2 {
+        font-size: 2em;
+    }
+    
+    .btn {
+        padding: 12px 25px;
+        font-size: 1em;
+    }
+    
+    .section-title {
+        font-size: 1.8em;
+    }
+    
+    .call-to-action h2 {
+        font-size: 1.6em;
+    }
+    
+    .footer-content {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Animation Effects */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in-up {
+    animation: fadeInUp 0.8s ease-out;
+}
+
+/* Loading Animation */
+.loading {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 3px solid rgba(255, 144, 0, 0.3);
+    border-radius: 50%;
+    border-top-color: #ff9000;
+    animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* Card/Grid/Responsive Styles for All Pages */
+
+/* Card Box */
+.card-box {
+    background: #222;
+    border: 2.5px solid #ff9000;
+    border-radius: 18px;
+    box-shadow: 0 4px 24px #0007;
+    padding: 32px 28px;
+    margin-bottom: 32px;
+    transition: box-shadow 0.3s, border 0.3s;
+}
+.card-box:hover {
+    border-color: #0099ff;
+    box-shadow: 0 8px 32px #0099ff44;
+}
+
+/* Service Card Grid */
+.service-card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 32px;
+}
+.service-card {
+    background: #18191a;
+    border: 2.5px solid #ff9000;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px #000a;
+    padding: 28px 22px;
+    transition: box-shadow 0.3s, border 0.3s;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+.service-card:hover {
+    border-color: #0099ff;
+    box-shadow: 0 8px 32px #0099ff44;
+}
+.service-card .service-title {
+    font-size: 1.5em;
+    color: #ff9000;
+    font-family: 'Orbitron', Arial, sans-serif;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+}
+.service-card .service-desc {
+    color: #fff;
+    font-size: 1.1em;
+    margin-bottom: 10px;
+}
+.service-card ul {
+    margin-left: 0;
+    padding-left: 0;
+    list-style: none;
+}
+.service-card ul li {
+    color: #ffe600;
+    font-size: 1em;
+    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.service-card ul li i {
+    color: #ff9000;
+    font-size: 1.1em;
+}
+
+/* Product Grid */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 32px;
+    margin-top: 32px;
+}
+.product-item {
+    background: #18191a;
+    border: 2.5px solid #ff9000;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px #000a;
+    padding: 24px 18px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: box-shadow 0.3s, border 0.3s;
+    position: relative;
+}
+.product-item:hover {
+    border-color: #0099ff;
+    box-shadow: 0 8px 32px #0099ff44;
+}
+.product-item img {
+    width: 100%;
+    height: 200px;
+    object-fit: contain;
+    margin-bottom: 16px;
+    background: #222;
+    border-radius: 10px;
+}
+.product-item h3 {
+    color: #ff9000;
+    font-family: 'Orbitron', Arial, sans-serif;
+    font-size: 1.2em;
+    margin-bottom: 8px;
+    text-align: center;
+}
+.product-item p {
+    color: #fff;
+    font-size: 1em;
+    margin-bottom: 10px;
+    text-align: center;
+}
+.product-price {
+    color: #ffe600;
+    font-size: 1.1em;
+    margin-bottom: 10px;
+    text-align: center;
+}
+.add-to-cart-btn {
+    background: #ff9000;
+    color: #18191a;
+    border: none;
+    border-radius: 20px;
+    padding: 10px 24px;
+    font-family: 'Orbitron', Arial, sans-serif;
+    font-weight: 900;
+    letter-spacing: 1px;
+    cursor: pointer;
+    margin-top: 8px;
+    transition: background 0.2s, color 0.2s;
+}
+.add-to-cart-btn:hover {
+    background: #0099ff;
+    color: #fff;
+}
+
+/* Product Categories */
+.product-categories {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+}
+
+.category-btn {
+    background: #18191a;
+    color: #ff9000;
+    border: 2px solid #ff9000;
+    padding: 12px 24px;
+    border-radius: 25px;
+    font-family: 'Orbitron', Arial, sans-serif;
+    font-weight: 700;
+    font-size: 0.9em;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.category-btn:hover,
+.category-btn.active {
+    background: #ff9000;
+    color: #18191a;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(255, 144, 0, 0.3);
+}
+
+/* Product Overlay */
+.product-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(24, 25, 26, 0.9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.product-item:hover .product-overlay {
+    opacity: 1;
+}
+
+.quick-view-btn {
+    background: #ff9000;
+    color: #18191a;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-family: 'Orbitron', Arial, sans-serif;
+    font-weight: 700;
+    font-size: 0.8em;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.quick-view-btn:hover {
+    background: #0099ff;
+    color: #fff;
+    transform: translateY(-2px);
+}
+
+/* Auth Form Card */
+.auth-form-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh;
+    background: #18191a;
+}
+.auth-form {
+    background: #18191a;
+    border: 2.5px solid #ff9000;
+    border-radius: 18px;
+    box-shadow: 0 4px 24px #0007;
+    padding: 40px 32px;
+    width: 100%;
+    max-width: 420px;
+    margin: 0 auto;
+}
+.auth-form h2 {
+    color: #ff9000;
+    font-family: 'Orbitron', Arial, sans-serif;
+    font-size: 2em;
+    text-align: center;
+    margin-bottom: 28px;
+    text-transform: uppercase;
+}
+.auth-form label {
+    color: #ffe600;
+    font-weight: 700;
+    margin-bottom: 6px;
+    display: block;
+}
+.auth-form input,
+.auth-form textarea,
+.auth-form select {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1.5px solid #ff9000;
+    border-radius: 8px;
+    margin-bottom: 18px;
+    font-size: 1em;
+    font-family: 'Hind Siliguri', 'Noto Sans Bengali', Arial, sans-serif;
+    background: #222;
+    color: #fff;
+}
+.auth-form input:focus,
+.auth-form textarea:focus,
+.auth-form select:focus {
+    border-color: #0099ff;
+    outline: none;
+}
+.auth-form .btn {
+    width: 100%;
+    margin-top: 10px;
+}
+.auth-form .form-switch-link {
+    text-align: center;
+    margin-top: 18px;
+}
+.auth-form .form-switch-link a {
+    color: #ff9000;
+    font-weight: bold;
+    text-decoration: underline;
+}
+.auth-form .form-switch-link a:hover {
+    color: #0099ff;
+}
+
+/* Form Group Styles */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+}
+
+.form-group label i {
+    color: #ff9000;
+    font-size: 1.1em;
+}
+
+/* Checkbox and Radio Styles */
+.checkbox-label, .radio-label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    font-size: 0.95em;
+}
+
+.checkbox-label input[type="checkbox"],
+.radio-label input[type="radio"] {
+    width: auto;
+    margin: 0;
+    cursor: pointer;
+}
+
+.radio-group {
+    display: flex;
+    gap: 20px;
+    margin-top: 8px;
+}
+
+/* Contact Info Card Grid */
+.contact-info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 28px;
+    margin-bottom: 32px;
+}
+.contact-info-card {
+    background: #18191a;
+    border: 2.5px solid #ff9000;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px #000a;
+    padding: 24px 18px;
+    text-align: center;
+}
+.contact-info-card i {
+    font-size: 2.2em;
+    color: #ff9000;
+    margin-bottom: 10px;
+}
+.contact-info-card h3 {
+    color: #ff9000;
+    font-family: 'Orbitron', Arial, sans-serif;
+    font-size: 1.1em;
+    margin-bottom: 6px;
+}
+.contact-info-card p {
+    color: #fff;
+    font-size: 1em;
+    margin-bottom: 0;
+}
+
+/* Contact Form Card */
+.contact-form-card {
+    background: #18191a;
+    border: 2.5px solid #ff9000;
+    border-radius: 18px;
+    box-shadow: 0 4px 24px #0007;
+    padding: 36px 28px;
+    max-width: 600px;
+    margin: 0 auto 32px;
+}
+.contact-form-card h2 {
+    color: #ff9000;
+    font-family: 'Orbitron', Arial, sans-serif;
+    font-size: 1.5em;
+    text-align: center;
+    margin-bottom: 24px;
+}
+.contact-form-card label {
+    color: #ffe600;
+    font-weight: 700;
+    margin-bottom: 6px;
+    display: block;
+}
+.contact-form-card input,
+.contact-form-card textarea,
+.contact-form-card select {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1.5px solid #ff9000;
+    border-radius: 8px;
+    margin-bottom: 18px;
+    font-size: 1em;
+    font-family: 'Hind Siliguri', 'Noto Sans Bengali', Arial, sans-serif;
+    background: #222;
+    color: #fff;
+}
+.contact-form-card input:focus,
+.contact-form-card textarea:focus,
+.contact-form-card select:focus {
+    border-color: #0099ff;
+    outline: none;
+}
+.contact-form-card .btn {
+    width: 100%;
+    margin-top: 10px;
+}
+
+/* Responsive Tweaks */
+@media (max-width: 900px) {
+    .service-card-grid, .product-grid, .contact-info-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+@media (max-width: 600px) {
+    .service-card-grid, .product-grid, .contact-info-grid {
+        grid-template-columns: 1fr;
+    }
+    .card-box, .service-card, .product-item, .auth-form, .contact-info-card, .contact-form-card {
+        padding: 18px 8px;
+    }
+}

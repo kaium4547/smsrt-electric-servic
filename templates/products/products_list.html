@@ -1,0 +1,38 @@
+{# smart_electric_service/templates/products/product_list.html #}
+{% extends 'base.html' %} {# আপনার base.html ফাইলকে এক্সটেন্ড করুন #}
+{% load static %}
+
+{% block title %}আমাদের প্রোডাক্টস{% endblock %}
+
+{% block content %}
+    <section class="page-banner">
+        <div class="container">
+            <h2>আমাদের প্রোডাক্টস</h2>
+            <p>আপনার প্রয়োজনীয় সকল ইলেকট্রিক ও প্লাম্বিং প্রোডাক্ট এখানে পাবেন।</p>
+        </div>
+    </section>
+
+    <section class="products-list">
+        <div class="container">
+            <h2 class="section-title">সকল প্রোডাক্ট</h2>
+            <div class="product-grid">
+                {% for product in products %}
+                    <div class="product-item">
+                        {% if product.image %}
+                            <img src="{{ product.image.url }}" alt="{{ product.name }}">
+                        {% else %}
+                            <img src="{% static 'images/placeholder.png' %}" alt="No Image"> {# একটি প্লেসহোল্ডার ইমেজ যোগ করুন #}
+                        {% endif %}
+                        <h3>{{ product.name }}</h3>
+                        <p>{{ product.description|truncatechars:100 }}</p>
+                        <p><strong>৳ {{ product.price }}</strong></p>
+                        <a href="{% url 'products:product_detail' id=product.id slug=product.slug %}" class="btn">বিস্তারিত দেখুন</a>
+                        {# এখানে অ্যাড টু কার্ট বাটন যুক্ত হবে #}
+                    </div>
+                {% empty %}
+                    <p>কোনো প্রোডাক্ট পাওয়া যায়নি।</p>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+{% endblock %}

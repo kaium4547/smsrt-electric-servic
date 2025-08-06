@@ -1,0 +1,171 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Electric Service - আমাদের সার্ভিসেস</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <img src="{% static 'images/logo.png' %}" alt="Smart Electric Service Logo">
+                <h1>Smart Electric Service</h1>
+                <p>আপনার বিশ্বস্ত ইলেকট্রিক সমাধান</p>
+            </div>
+            <nav class="navbar">
+                <ul>
+                    <li><a href="{% url 'home' %}">হোম</a></li>
+                    <li><a href="{% url 'services:service_list' %}" class="active">সার্ভিসেস</a></li>
+                    <li><a href="{% url 'products:product_list' %}">প্রোডাক্টস</a></li>
+                    <li><a href="{% url 'login' %}">লগইন</a></li>
+                    <li><a href="{% url 'signup' %}">সাইনআপ</a></li>
+                    <li><a href="{% url 'contact' %}">যোগাযোগ</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="page-banner">
+        <div class="container">
+            <h2>আমাদের সকল সার্ভিসেস</h2>
+            <p>আপনার সকল ইলেকট্রিক সমস্যার জন্য নির্ভরযোগ্য সমাধান</p>
+        </div>
+    </section>
+
+    <section class="service-categories">
+        <div class="container">
+            <h2 class="section-title">আমাদের পূর্ণাঙ্গ সার্ভিস তালিকা</h2>
+
+            <div class="category-item">
+                <h3>1️⃣ Electrical Work (ইলেকট্রিক কাজ)</h3>
+                <p>বাড়ি, দোকান বা প্রতিষ্ঠানে সম্পূর্ণ ইলেকট্রিক ওয়্যারিং ও সেটআপের কাজ।</p>
+                <ul>
+                    <li><i class="fas fa-check-circle"></i> হাউজ ওয়্যারিং</li>
+                    <li><i class="fas fa-check-circle"></i> প্লাস্টারিং ওয়্যারিং</li>
+                    <li><i class="fas fa-check-circle"></i> সুইচ, লাইট, ফ্যান ইনস্টল</li>
+                    <li><i class="fas fa-check-circle"></i> মেইন লাইন ও সাব-মেইন লাইন বসানো</li>
+                    <li><i class="fas fa-check-circle"></i> ব্রেকার, DB বোর্ড সেটআপ</li>
+                    <li><i class="fas fa-check-circle"></i> সার্কিট ডিজাইন ও লোড ক্যালকুলেশন</li>
+                </ul>
+            </div>
+
+            <div class="category-item">
+                <h3>2️⃣ Solar Panel Installation (সোলার প্যানেল ইনস্টলেশন)</h3>
+                <p>বিদ্যুৎ না থাকলেও নিরবচ্ছিন্ন পাওয়ার সাপ্লাই নিশ্চিত করার জন্য আধুনিক সৌর বিদ্যুৎ সিস্টেম।</p>
+                <ul>
+                    <li><i class="fas fa-check-circle"></i> 1KW, 3KW, 5KW সিস্টেম ডিজাইন</li>
+                    <li><i class="fas fa-check-circle"></i> প্যানেল বসানো ও কানেকশন</li>
+                    <li><i class="fas fa-check-circle"></i> ইনভার্টার ও চার্জ কন্ট্রোলার বসানো</li>
+                    <li><i class="fas fa-check-circle"></i> ব্যাটারি কনফিগারেশন</li>
+                    <li><i class="fas fa-check-circle"></i> সোলার হাউজিং প্রজেক্ট</li>
+                </ul>
+            </div>
+
+            <div class="category-item">
+                <h3>3️⃣ CCTV Camera Installation (সিসিটিভি ক্যামেরা)</h3>
+                <p>ব্যক্তিগত, দোকান বা অফিসের নিরাপত্তার জন্য সম্পূর্ণ সিসিটিভি সলিউশন।</p>
+                <ul>
+                    <li><i class="fas fa-check-circle"></i> Analog / HD / IP ক্যামেরা বসানো</li>
+                    <li><i class="fas fa-check-circle"></i> DVR/NVR সেটআপ</li>
+                    <li><i class="fas fa-check-circle"></i> মোবাইল অ্যাপের মাধ্যমে লাইভ দেখা</li>
+                    <li><i class="fas fa-check-circle"></i> ক্যামেরা সার্ভিসিং ও আপগ্রেড</li>
+                    <li><i class="fas fa-check-circle"></i> ইনডোর ও আউটডোর কভারেজ পরিকল্পনা</li>
+                </ul>
+            </div>
+
+            <div class="category-item">
+                <h3>4️⃣ AC Installation & Servicing (এসি সার্ভিস)</h3>
+                <p>AC ইনস্টলেশন ও রক্ষণাবেক্ষণের জন্য দক্ষ টেকনিশিয়ানদের মাধ্যমে কাজ।</p>
+                <ul>
+                    <li><i class="fas fa-check-circle"></i> নতুন এসি ইনস্টল</li>
+                    <li><i class="fas fa-check-circle"></i> গ্যাস রিচার্জ ও সার্ভিসিং</li>
+                    <li><i class="fas fa-check-circle"></i> কম্প্রেসার চেক ও রিপ্লেস</li>
+                    <li><i class="fas fa-check-circle"></i> ওয়াটার ড্রেইন সেটআপ</li>
+                    <li><i class="fas fa-check-circle"></i> রিমোট কনফিগারেশন</li>
+                </ul>
+            </div>
+
+            <div class="category-item">
+                <h3>5️⃣ Fridge Servicing (ফ্রিজ সার্ভিসিং)</h3>
+                <p>রেফ্রিজারেটর বা ডিপ ফ্রিজ এর সমস্যা সমাধান ও পার্টস পরিবর্তন।</p>
+                <ul>
+                    <li><i class="fas fa-check-circle"></i> কুলিং সমস্যা সমাধান</li>
+                    <li><i class="fas fa-check-circle"></i> কম্প্রেসার চেঞ্জ</li>
+                    <li><i class="fas fa-check-circle"></i> গ্যাস ফিলিং</li>
+                    <li><i class="fas fa-check-circle"></i> অটো ডিফ্রস্ট ঠিক করা</li>
+                    <li><i class="fas fa-check-circle"></i> থার্মোস্ট্যাট রিপেয়ার</li>
+                </ul>
+            </div>
+
+            <div class="category-item">
+                <h3>6️⃣ IPS Setup & Repairing (আইপিএস সার্ভিস)</h3>
+                <p>লোডশেডিং এর সময় পাওয়ার ব্যাকআপ নিশ্চিত করার জন্য IPS বসানো ও রক্ষণাবেক্ষণ।</p>
+                <ul>
+                    <li><i class="fas fa-check-circle"></i> IPS ইনস্টলেশন</li>
+                    <li><i class="fas fa-check-circle"></i> ব্যাটারি কানেকশন ও ব্যালান্স</li>
+                    <li><i class="fas fa-check-circle"></i> লোড ক্যালকুলেশন</li>
+                    <li><i class="fas fa-check-circle"></i> পুরাতন IPS রিপেয়ার</li>
+                    <li><i class="fas fa-check-circle"></i> অটো চার্জিং সিস্টেম চেক</li>
+                </ul>
+            </div>
+
+            <div class="category-item">
+                <h3>7️⃣ 🚿 Plumbing & Fittings (প্লাম্বিং ও ফিটিংস কাজ)</h3>
+                <p> নতুন ও পুরাতন বিল্ডিংয়ের সকল ধরনের আধুনিক প্লাম্বিং ও ফিটিং কাজ করি দক্ষতার সাথে।</p>
+                <ul>
+                    <li><i class="fas fa-check-circle"></i> নতুন বিল্ডিং-এর প্লাম্বিং</li>
+                    <li><i class="fas fa-check-circle"></i> পাইপ বসানো (Pipe Laying)</li>
+                    <li><i class="fas fa-check-circle"></i> ট্যাপ, শাওয়ার ও কমোড ফিটিং</li>
+                    <li><i class="fas fa-check-circle"></i> ড্রেনেজ ও সেপটিক লাইন সংযোগ</li>
+                </ul>
+            </div>
+
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <h3>যোগাযোগ</h3>
+                    <p><i class="fas fa-phone-alt"></i> 01888186759</p>
+                    <p><i class="fas fa-phone-alt"></i> 01890674547</p>
+                    <p><i class="fas fa-envelope"></i> smartelectricservice4547@gmail.com</p>
+                    <p><i class="fas fa-map-marker-alt"></i> ব্রাহ্মণপাড়া, কুমিল্লা</p>
+                    <p><i class="fab fa-whatsapp"></i> WhatsApp: Always Active</p>
+                </div>
+                <div class="footer-col">
+                    <h3>আমাদের সার্ভিস</h3>
+                    <ul>
+                        <li>ইলেকট্রিক কাজ</li>
+                        <li>সোলার প্যানেল ইনস্টলেশন</li>
+                        <li>সিসিটিভি ক্যামেরা</li>
+                        <li>এসি সার্ভিস</li>
+                        <li>ফ্রিজ সার্ভিসিং</li>
+                        <li>আইপিএস সার্ভিস</li>
+                        <li>প্লাসিং কাজ</li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>দ্রুত লিঙ্ক</h3>
+                    <ul>
+                        <li><a href="{% url 'home' %}">হোম</a></li>
+                        <li><a href="{% url 'services:service_list' %}">সার্ভিসেস</a></li>
+                        <li><a href="{% url 'products:product_list' %}">প্রোডাক্টস</a></li>
+                        <li><a href="{% url 'contact' %}">যোগাযোগ</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Smart Electric Service. সর্বস্বত্ব সংরক্ষিত।</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="{% static 'js/script.js' %}"></script>
+</body>
+</html>
