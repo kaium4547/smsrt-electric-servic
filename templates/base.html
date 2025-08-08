@@ -10,23 +10,24 @@
   <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg ses-navbar">
   <div class="container">
     <a class="navbar-brand d-flex align-items-center" href="{% url 'home' %}">
-      <img src="{% static 'images/logo.png' %}" alt="logo" width="36" height="36" class="me-2"/>
-      Smart Electric Service
+      <img src="{% static 'images/logo.png' %}" alt="logo" width="34" height="34" class="me-2"/>
+      <span class="brand-text">SMART ELECTRIC SERVICE</span>
     </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav" aria-controls="nav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="nav">
-      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-        <li class="nav-item"><a class="nav-link" href="{% url 'services:service_list' %}">সার্ভিসেস</a></li>
-        <li class="nav-item"><a class="nav-link" href="{% url 'products:product_list' %}">প্রোডাক্টস</a></li>
-        <li class="nav-item"><a class="nav-link" href="{% url 'users:login' %}">লগইন</a></li>
-        <li class="nav-item"><a class="nav-link" href="{% url 'users:signup' %}">সাইনআপ</a></li>
-        <li class="nav-item"><a class="nav-link" href="{% url 'contact' %}">যোগাযোগ</a></li>
-        <li class="nav-item"><a class="nav-link" href="{% url 'users:technicians_map' %}">টেকনিশিয়ান ম্যাপ</a></li>
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center">
+        <li class="nav-item"><a class="nav-link {% if request.path == '/' %}active{% endif %}" href="{% url 'home' %}">হোম</a></li>
+        <li class="nav-item"><a class="nav-link {% if request.path|slice:':10' == '/services/' %}active{% endif %}" href="{% url 'services:service_list' %}">সার্ভিসেস</a></li>
+        <li class="nav-item"><a class="nav-link {% if request.path|slice:':9' == '/products' %}active{% endif %}" href="{% url 'products:product_list' %}">প্রোডাক্টস</a></li>
+        <li class="nav-item"><a class="nav-link {% if request.path|slice:':6' == '/login' %}active{% endif %}" href="{% url 'users:login' %}">লগইন</a></li>
+        <li class="nav-item"><a class="nav-link {% if request.path|slice:':7' == '/signup' %}active{% endif %}" href="{% url 'users:signup' %}">সাইনআপ</a></li>
+        <li class="nav-item"><a class="nav-link {% if request.path|slice:':8' == '/contact' %}active{% endif %}" href="{% url 'contact' %}">যোগাযোগ</a></li>
+        <li class="nav-item"><a class="nav-link {% if request.path|slice:':20' == '/users/technicians/map' %}active{% endif %}" href="{% url 'users:technicians_map' %}">টেকনিশিয়ান ম্যাপ</a></li>
       </ul>
     </div>
   </div>

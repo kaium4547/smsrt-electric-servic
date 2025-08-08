@@ -1040,3 +1040,35 @@ body {
   .hero-banner { padding-top: 2rem; padding-bottom: 2rem; }
   .hero-illustration { max-width: 100%; }
 }
+
+/* --- Brand Navbar --- */
+.ses-navbar {
+  --bg: #18191a;
+  --fg: #fff;
+  --accent: #ff9000;
+  background: var(--bg);
+  border-bottom: 3px solid var(--accent);
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+.ses-navbar .navbar-brand .brand-text {
+  color: var(--accent);
+  font-family: 'Orbitron', Arial, sans-serif;
+  font-size: 0.95rem;
+  letter-spacing: 1.5px;
+}
+.ses-navbar .nav-link {
+  color: var(--fg);
+  padding: 6px 10px;
+  font-weight: 700;
+  font-size: 0.92rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.ses-navbar .nav-link:hover { color: var(--accent); }
+.ses-navbar .nav-link.active { color: var(--accent); border-bottom: 2px solid var(--accent); }
+
+@media (max-width: 768px) {
+  .ses-navbar .nav-link { padding: 8px 6px; font-size: 0.95rem; }
+  .ses-navbar .navbar-brand .brand-text { font-size: 0.9rem; }
+}
