@@ -1,23 +1,23 @@
 {% extends 'base.html' %}
 {% block content %}
-<div class="container" style="max-width: 520px; margin-top: 2rem;">
-  <div class="card hoverable">
-    <div class="card-body">
-      <h4 class="mb-3 section-heading" style="font-size:1.4rem;">লগইন</h4>
+<section class="auth-form-section">
+  <div class="container">
+    <div class="auth-form">
+      <h2 class="text-center" style="margin-bottom:18px;">লগইন করুন</h2>
       <form method="post" action="{% url 'login' %}{% if request.GET.next %}?next={{ request.GET.next|urlencode }}{% endif %}">
         {% csrf_token %}
-        <div class="mb-3">
-          <label class="form-label">ইমেইল/ইউজারনেম</label>
-          <input type="text" class="form-control" name="username" required>
+        <div class="form-group">
+          <label>ইমেইল/ইউজারনেম</label>
+          <input type="text" name="username" placeholder="আপনার ইমেইল/ইউজারনেম" required>
         </div>
-        <div class="mb-3">
-          <label class="form-label">পাসওয়ার্ড</label>
-          <input type="password" class="form-control" name="password" required>
+        <div class="form-group">
+          <label>পাসওয়ার্ড</label>
+          <input type="password" name="password" placeholder="পাসওয়ার্ড" required>
         </div>
-        <button type="submit" class="btn btn-brand w-100">লগইন</button>
-        <div class="text-center small mt-2">অ্যাকাউন্ট নেই? <a href="{% url 'users:signup' %}">সাইনআপ করুন</a></div>
+        <button type="submit" class="btn">লগইন করুন</button>
+        <p class="form-switch-link">অ্যাকাউন্ট নেই? <a href="{% url 'users:signup' %}">সাইনআপ করুন</a></p>
       </form>
     </div>
   </div>
-</div>
+</section>
 {% endblock %}
