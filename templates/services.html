@@ -13,140 +13,161 @@
   <div class="alert alert-warning">অর্ডার করতে হলে আগে লগইন/অ্যাকাউন্ট তৈরি করুন।</div>
   {% endif %}
 
-  <div class="row g-3">
-    <!-- Electric Works -->
-    <div class="col-md-4 col-12">
-      <div class="card hoverable h-100">
-        <img src="https://placehold.co/600x360" class="card-img-top" alt="Electric Works">
-        <div class="card-body d-flex flex-column">
-          <h5 class="card-title">Electric Works</h5>
-          <p class="card-text text-muted">ওয়্যারিং, DB, ব্রেকার, লোড ক্যালকুলেশন সহ সম্পূর্ণ ইলেকট্রিক কাজ।</p>
-          <div class="mt-auto d-flex gap-2">
-            {% if request.user.is_authenticated %}
-              <a href="{% url 'orders:order_create' %}" class="btn btn-brand">Book Now</a>
-            {% else %}
-              <a href="{% url 'users:login' %}?next={% url 'orders:order_create' %}" class="btn btn-brand">Book Now</a>
-            {% endif %}
-            <button class="btn btn-outline-brand" data-bs-toggle="modal" data-bs-target="#modal-electric">Details</button>
-          </div>
-        </div>
-      </div>
-    </div>
-    
-    <!-- Solar Installation -->
-    <div class="col-md-4 col-12">
-      <div class="card hoverable h-100">
-        <img src="https://placehold.co/600x360" class="card-img-top" alt="Solar Installation">
-        <div class="card-body d-flex flex-column">
-          <h5 class="card-title">Solar Installation</h5>
-          <p class="card-text text-muted">সোলার সিস্টেম ডিজাইন, ইনস্টল ও মেইনটেন্যান্স।</p>
-          <div class="mt-auto d-flex gap-2">
-            {% if request.user.is_authenticated %}
-              <a href="{% url 'orders:order_create' %}" class="btn btn-brand">Book Now</a>
-            {% else %}
-              <a href="{% url 'users:login' %}?next={% url 'orders:order_create' %}" class="btn btn-brand">Book Now</a>
-            {% endif %}
-            <button class="btn btn-outline-brand" data-bs-toggle="modal" data-bs-target="#modal-solar">Details</button>
-          </div>
-        </div>
+  <div class="service-card-grid">
+    <!-- 1. Electrical Works -->
+    <div class="service-card">
+      <div class="service-title">ইলেকট্রিক্যাল কাজ (Electrical Works)</div>
+      <div class="service-desc">সম্পূর্ণ ইলেকট্রিক সলিউশন—ওয়্যারিং, ইনস্টলেশন ও রক্ষণাবেক্ষণ।</div>
+      <ul>
+        <li><i class="fas fa-check"></i> হাউজ ওয়্যারিং</li>
+        <li><i class="fas fa-check"></i> অফিস ওয়্যারিং</li>
+        <li><i class="fas fa-check"></i> সুইচ ও সকেট ইনস্টলেশন</li>
+        <li><i class="fas fa-check"></i> সিলিং ফ্যান ও লাইট ইনস্টলেশন</li>
+        <li><i class="fas fa-check"></i> বৈদ্যুতিক মেরামত ও রক্ষণাবেক্ষণ</li>
+      </ul>
+      <div class="d-flex gap-2 mt-2">
+        {% if request.user.is_authenticated %}
+          <a href="{% url 'orders:order_create' %}" class="btn btn-brand">Book Now</a>
+        {% else %}
+          <a href="{% url 'users:login' %}?next={% url 'orders:order_create' %}" class="btn btn-brand">Book Now</a>
+        {% endif %}
       </div>
     </div>
 
-    <!-- CCTV Installation -->
-    <div class="col-md-4 col-12">
-      <div class="card hoverable h-100">
-        <img src="https://placehold.co/600x360" class="card-img-top" alt="CCTV Installation">
-        <div class="card-body d-flex flex-column">
-          <h5 class="card-title">CCTV Installation</h5>
-          <p class="card-text text-muted">ক্যামেরা বসানো, DVR/NVR সেটআপ, মোবাইল অ্যাপ ভিউ।</p>
-          <div class="mt-auto d-flex gap-2">
-            {% if request.user.is_authenticated %}
-              <a href="{% url 'orders:order_create' %}" class="btn btn-brand">Book Now</a>
-            {% else %}
-              <a href="{% url 'users:login' %}?next={% url 'orders:order_create' %}" class="btn btn-brand">Book Now</a>
-            {% endif %}
-            <button class="btn btn-outline-brand" data-bs-toggle="modal" data-bs-target="#modal-cctv">Details</button>
-          </div>
-        </div>
+    <!-- 2. Solar Power Solutions -->
+    <div class="service-card">
+      <div class="service-title">সোলার প্যানেল সলিউশন (Solar Power Solutions)</div>
+      <div class="service-desc">অফ-গ্রিড/অন-গ্রিড সোলার সিস্টেম ডিজাইন ও ইনস্টল।</div>
+      <ul>
+        <li><i class="fas fa-check"></i> সোলার প্যানেল ইনস্টলেশন</li>
+        <li><i class="fas fa-check"></i> সোলার ব্যাটারি সেটআপ</li>
+        <li><i class="fas fa-check"></i> সোলার ইনভার্টার ইনস্টলেশন</li>
+        <li><i class="fas fa-check"></i> সোলার সিস্টেম রক্ষণাবেক্ষণ</li>
+        <li><i class="fas fa-check"></i> অফ-গ্রিড ও অন-গ্রিড সিস্টেম</li>
+      </ul>
+      <div class="d-flex gap-2 mt-2">
+        {% if request.user.is_authenticated %}
+          <a href="{% url 'orders:order_create' %}" class="btn btn-brand">Book Now</a>
+        {% else %}
+          <a href="{% url 'users:login' %}?next={% url 'orders:order_create' %}" class="btn btn-brand">Book Now</a>
+        {% endif %}
       </div>
     </div>
 
-    <!-- AC Servicing -->
-    <div class="col-md-4 col-12">
-      <div class="card hoverable h-100">
-        <img src="https://placehold.co/600x360" class="card-img-top" alt="AC Servicing">
-        <div class="card-body d-flex flex-column">
-          <h5 class="card-title">AC Servicing</h5>
-          <p class="card-text text-muted">ইনস্টলেশন, গ্যাস রিচার্জ, কম্প্রেসর/ড্রেন সার্ভিস।</p>
-          <div class="mt-auto d-flex gap-2">
-            {% if request.user.is_authenticated %}
-              <a href="{% url 'orders:order_create' %}" class="btn btn-brand">Book Now</a>
-            {% else %}
-              <a href="{% url 'users:login' %}?next={% url 'orders:order_create' %}" class="btn btn-brand">Book Now</a>
-            {% endif %}
-            <button class="btn btn-outline-brand" data-bs-toggle="modal" data-bs-target="#modal-ac">Details</button>
-          </div>
-        </div>
+    <!-- 3. CCTV & Security Systems -->
+    <div class="service-card">
+      <div class="service-title">সিসিটিভি ও সিকিউরিটি সিস্টেম (CCTV & Security Systems)</div>
+      <div class="service-desc">বাড়ি/অফিসের জন্য পূর্ণাঙ্গ সিকিউরিটি সেটআপ।</div>
+      <ul>
+        <li><i class="fas fa-check"></i> সিসিটিভি ক্যামেরা ইনস্টলেশন</li>
+        <li><i class="fas fa-check"></i> ডিভিআর/এনভিআর সেটআপ</li>
+        <li><i class="fas fa-check"></i> আইপি ক্যামেরা ইনস্টলেশন</li>
+        <li><i class="fas fa-check"></i> সিকিউরিটি সিস্টেম রক্ষণাবেক্ষণ</li>
+        <li><i class="fas fa-check"></i> রিমোট মনিটরিং সেটআপ</li>
+      </ul>
+      <div class="d-flex gap-2 mt-2">
+        {% if request.user.is_authenticated %}
+          <a href="{% url 'orders:order_create' %}" class="btn btn-brand">Book Now</a>
+        {% else %}
+          <a href="{% url 'users:login' %}?next={% url 'orders:order_create' %}" class="btn btn-brand">Book Now</a>
+        {% endif %}
       </div>
     </div>
 
-    <!-- IPS Installation -->
-    <div class="col-md-4 col-12">
-      <div class="card hoverable h-100">
-        <img src="https://placehold.co/600x360" class="card-img-top" alt="IPS Installation">
-        <div class="card-body d-flex flex-column">
-          <h5 class="card-title">IPS Installation</h5>
-          <p class="card-text text-muted">IPS সেটআপ, ব্যাটারি কানেকশন, লোড ক্যালকুলেশন।</p>
-          <div class="mt-auto d-flex gap-2">
-            {% if request.user.is_authenticated %}
-              <a href="{% url 'orders:order_create' %}" class="btn btn-brand">Book Now</a>
-            {% else %}
-              <a href="{% url 'users:login' %}?next={% url 'orders:order_create' %}" class="btn btn-brand">Book Now</a>
-            {% endif %}
-            <button class="btn btn-outline-brand" data-bs-toggle="modal" data-bs-target="#modal-ips">Details</button>
-          </div>
-        </div>
+    <!-- 4. Air Conditioner Services -->
+    <div class="service-card">
+      <div class="service-title">এসি সার্ভিসিং (Air Conditioner Services)</div>
+      <div class="service-desc">ইনস্টলেশন, সার্ভিসিং, গ্যাস রিফিল ও মেরামত।</div>
+      <ul>
+        <li><i class="fas fa-check"></i> এসি ইনস্টলেশন</li>
+        <li><i class="fas fa-check"></i> এসি পরিষ্কার ও সার্ভিসিং</li>
+        <li><i class="fas fa-check"></i> এসি গ্যাস রিফিল</li>
+        <li><i class="fas fa-check"></i> এসি মেরামত ও রক্ষণাবেক্ষণ</li>
+      </ul>
+      <div class="d-flex gap-2 mt-2">
+        {% if request.user.is_authenticated %}
+          <a href="{% url 'orders:order_create' %}" class="btn btn-brand">Book Now</a>
+        {% else %}
+          <a href="{% url 'users:login' %}?next={% url 'orders:order_create' %}" class="btn btn-brand">Book Now</a>
+        {% endif %}
       </div>
     </div>
 
-    <!-- House Wiring -->
-    <div class="col-md-4 col-12">
-      <div class="card hoverable h-100">
-        <img src="https://placehold.co/600x360" class="card-img-top" alt="House Wiring">
-        <div class="card-body d-flex flex-column">
-          <h5 class="card-title">House Wiring</h5>
-          <p class="card-text text-muted">নতুন/পুরাতন হাউজ ওয়্যারিং, সেফটি ও কনসাল্টিং।</p>
-          <div class="mt-auto d-flex gap-2">
-            {% if request.user.is_authenticated %}
-              <a href="{% url 'orders:order_create' %}" class="btn btn-brand">Book Now</a>
-            {% else %}
-              <a href="{% url 'users:login' %}?next={% url 'orders:order_create' %}" class="btn btn-brand">Book Now</a>
-            {% endif %}
-            <button class="btn btn-outline-brand" data-bs-toggle="modal" data-bs-target="#modal-wiring">Details</button>
-          </div>
-        </div>
+    <!-- 5. IPS & Power Backup -->
+    <div class="service-card">
+      <div class="service-title">আইপিএস ও পাওয়ার ব্যাকআপ (IPS & Power Backup)</div>
+      <div class="service-desc">নিরবচ্ছিন্ন বিদ্যুৎ সরবরাহের সলিউশন।</div>
+      <ul>
+        <li><i class="fas fa-check"></i> আইপিএস ইনস্টলেশন</li>
+        <li><i class="fas fa-check"></i> ব্যাটারি পরিবর্তন</li>
+        <li><i class="fas fa-check"></i> ইনভার্টার সেটআপ</li>
+        <li><i class="fas fa-check"></i> পাওয়ার ব্যাকআপ রক্ষণাবেক্ষণ</li>
+      </ul>
+      <div class="d-flex gap-2 mt-2">
+        {% if request.user.is_authenticated %}
+          <a href="{% url 'orders:order_create' %}" class="btn btn-brand">Book Now</a>
+        {% else %}
+          <a href="{% url 'users:login' %}?next={% url 'orders:order_create' %}" class="btn btn-brand">Book Now</a>
+        {% endif %}
       </div>
     </div>
+
+    <!-- 6. Refrigerator & Appliance Services -->
+    <div class="service-card">
+      <div class="service-title">রেফ্রিজারেটর ও যন্ত্রাংশ সার্ভিস</div>
+      <div class="service-desc">রেফ্রিজারেটর ও সাধারণ অ্যাপ্লায়েন্সের সার্ভিসিং।</div>
+      <ul>
+        <li><i class="fas fa-check"></i> রেফ্রিজারেটর মেরামত</li>
+        <li><i class="fas fa-check"></i> ফ্রিজ গ্যাস রিফিল</li>
+        <li><i class="fas fa-check"></i> কম্প্রেসর পরিবর্তন</li>
+        <li><i class="fas fa-check"></i> সাধারণ সার্ভিসিং</li>
+      </ul>
+      <div class="d-flex gap-2 mt-2">
+        {% if request.user.is_authenticated %}
+          <a href="{% url 'orders:order_create' %}" class="btn btn-brand">Book Now</a>
+        {% else %}
+          <a href="{% url 'users:login' %}?next={% url 'orders:order_create' %}" class="btn btn-brand">Book Now</a>
+        {% endif %}
+      </div>
+    </div>
+
+    <!-- 7. Plumbing & Piping -->
+    <div class="service-card">
+      <div class="service-title">প্লাম্বিং ও পাইপিং (Plumbing & Piping)</div>
+      <div class="service-desc">পানি লাইন, পাইপিং ও ফিটিংস কাজ।</div>
+      <ul>
+        <li><i class="fas fa-check"></i> ইউপিভিসি পাইপ ইনস্টলেশন</li>
+        <li><i class="fas fa-check"></i> থ্রেড পাইপ ফিটিং</li>
+        <li><i class="fas fa-check"></i> পানি লাইন মেরামত</li>
+        <li><i class="fas fa-check"></i> বাথরুম ফিটিংস</li>
+      </ul>
+      <div class="d-flex gap-2 mt-2">
+        {% if request.user.is_authenticated %}
+          <a href="{% url 'orders:order_create' %}" class="btn btn-brand">Book Now</a>
+        {% else %}
+          <a href="{% url 'users:login' %}?next={% url 'orders:order_create' %}" class="btn btn-brand">Book Now</a>
+        {% endif %}
+      </div>
+    </div>
+
+    <!-- 8. Miscellaneous / Others -->
+    <div class="service-card">
+      <div class="service-title">অন্যান্য সেবা (Miscellaneous / Others)</div>
+      <div class="service-desc">বিশেষ প্রয়োজনের জন্য কাস্টম সলিউশন।</div>
+      <ul>
+        <li><i class="fas fa-check"></i> বৈদ্যুতিক পরামর্শ</li>
+        <li><i class="fas fa-check"></i> কাস্টম ইলেকট্রিক্যাল প্রজেক্ট</li>
+        <li><i class="fas fa-check"></i> জরুরি মেরামত সেবা</li>
+      </ul>
+      <div class="d-flex gap-2 mt-2">
+        {% if request.user.is_authenticated %}
+          <a href="{% url 'orders:order_create' %}" class="btn btn-brand">Book Now</a>
+        {% else %}
+          <a href="{% url 'users:login' %}?next={% url 'orders:order_create' %}" class="btn btn-brand">Book Now</a>
+        {% endif %}
+      </div>
+    </div>
+
   </div>
-</div>
-
-<!-- Modals (pricing) -->
-<div class="modal fade" id="modal-electric" tabindex="-1" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered modal-lg"><div class="modal-content"><div class="modal-header"><h5 class="modal-title">Electric Works — বিস্তারিত</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="price-table"><table class="table table-sm"><thead class="table-light"><tr><th>সেবা</th><th class="text-end">মূল্য (শুরু)</th></tr></thead><tbody><tr><td>সাধারণ রিপেয়ার</td><td class="text-end">৳ 300</td></tr><tr><td>DB/ব্রেকার সেটআপ</td><td class="text-end">৳ 1500</td></tr><tr><td>লোড ক্যালকুলেশন</td><td class="text-end">৳ 800</td></tr></tbody></table></div></div><div class="modal-footer">{% if request.user.is_authenticated %}<a href="{% url 'orders:order_create' %}" class="btn btn-brand">Book Now</a>{% else %}<a href="{% url 'users:login' %}?next={% url 'orders:order_create' %}" class="btn btn-brand">Book Now</a>{% endif %}</div></div></div>
-</div>
-<div class="modal fade" id="modal-solar" tabindex="-1" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered modal-lg"><div class="modal-content"><div class="modal-header"><h5 class="modal-title">Solar Installation — বিস্তারিত</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="price-table"><table class="table table-sm"><thead class="table-light"><tr><th>সেবা</th><th class="text-end">মূল্য (শুরু)</th></tr></thead><tbody><tr><td>1KW সিস্টেম</td><td class="text-end">৳ 25,000</td></tr><tr><td>3KW সিস্টেম</td><td class="text-end">৳ 65,000</td></tr></tbody></table></div></div><div class="modal-footer">{% if request.user.is_authenticated %}<a href="{% url 'orders:order_create' %}" class="btn btn-brand">Book Now</a>{% else %}<a href="{% url 'users:login' %}?next={% url 'orders:order_create' %}" class="btn btn-brand">Book Now</a>{% endif %}</div></div></div>
-</div>
-<div class="modal fade" id="modal-cctv" tabindex="-1" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered modal-lg"><div class="modal-content"><div class="modal-header"><h5 class="modal-title">CCTV Installation — বিস্তারিত</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="price-table"><table class="table table-sm"><thead class="table-light"><tr><th>সেবা</th><th class="text-end">মূল্য (শুরু)</th></tr></thead><tbody><tr><td>2 ক্যামেরা সেট</td><td class="text-end">৳ 8,000</td></tr><tr><td>4 ক্যামেরা সেট</td><td class="text-end">৳ 15,000</td></tr></tbody></table></div></div><div class="modal-footer">{% if request.user.is_authenticated %}<a href="{% url 'orders:order_create' %}" class="btn btn-brand">Book Now</a>{% else %}<a href="{% url 'users:login' %}?next={% url 'orders:order_create' %}" class="btn btn-brand">Book Now</a>{% endif %}</div></div></div>
-</div>
-<div class="modal fade" id="modal-ac" tabindex="-1" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered modal-lg"><div class="modal-content"><div class="modal-header"><h5 class="modal-title">AC Servicing — বিস্তারিত</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="price-table"><table class="table table-sm"><thead class="table-light"><tr><th>সেবা</th><th class="text-end">মূল্য (শুরু)</th></tr></thead><tbody><tr><td>গ্যাস রিচার্জ</td><td class="text-end">৳ 1,200</td></tr><tr><td>ইনস্টলেশন</td><td class="text-end">৳ 2,500</td></tr></tbody></table></div></div><div class="modal-footer">{% if request.user.is_authenticated %}<a href="{% url 'orders:order_create' %}" class="btn btn-brand">Book Now</a>{% else %}<a href="{% url 'users:login' %}?next={% url 'orders:order_create' %}" class="btn btn-brand">Book Now</a>{% endif %}</div></div></div>
-</div>
-<div class="modal fade" id="modal-ips" tabindex="-1" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered modal-lg"><div class="modal-content"><div class="modal-header"><h5 class="modal-title">IPS Installation — বিস্তারিত</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="price-table"><table class="table table-sm"><thead class="table-light"><tr><th>সেবা</th><th class="text-end">মূল্য (শুরু)</th></tr></thead><tbody><tr><td>IPS সেটআপ</td><td class="text-end">৳ 1,200</td></tr><tr><td>ব্যাটারি কানেকশন</td><td class="text-end">৳ 600</td></tr></tbody></table></div></div><div class="modal-footer">{% if request.user.is_authenticated %}<a href="{% url 'orders:order_create' %}" class="btn btn-brand">Book Now</a>{% else %}<a href="{% url 'users:login' %}?next={% url 'orders:order_create' %}" class="btn btn-brand">Book Now</a>{% endif %}</div></div></div>
-</div>
-<div class="modal fade" id="modal-wiring" tabindex="-1" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered modal-lg"><div class="modal-content"><div class="modal-header"><h5 class="modal-title">House Wiring — বিস্তারিত</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="price-table"><table class="table table-sm"><thead class="table-light"><tr><th>সেবা</th><th class="text-end">মূল্য (শুরু)</th></tr></thead><tbody><tr><td>রুম ওয়্যারিং (স্টার্টিং)</td><td class="text-end">৳ 1,000</td></tr><tr><td>সম্পূর্ণ ফ্ল্যাট</td><td class="text-end">৳ 15,000</td></tr></tbody></table></div></div><div class="modal-footer">{% if request.user.is_authenticated %}<a href="{% url 'orders:order_create' %}" class="btn btn-brand">Book Now</a>{% else %}<a href="{% url 'users:login' %}?next={% url 'orders:order_create' %}" class="btn btn-brand">Book Now</a>{% endif %}</div></div></div>
 </div>
 {% endblock %}
