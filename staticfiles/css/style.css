@@ -10,12 +10,22 @@
     box-sizing: border-box;
 }
 
-body {
-    background: #18191a; /* Dark gray/black background like visiting card */
-    color: #ffffff;
-    font-family: 'Hind Siliguri', 'Noto Sans Bengali', Arial, sans-serif;
-    line-height: 1.6;
+/* Theme: Dark Blue primary, Golden Yellow secondary, Light Gray bg + Poppins */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap');
+:root{
+  --primary:#0b2e4e; /* dark blue */
+  --secondary:#ffc107; /* golden yellow */
+  --bg:#f3f4f6; /* light gray */
+  --text:#0f172a;
 }
+body{background:var(--bg); color:var(--text); font-family:'Poppins', 'Hind Siliguri','Noto Sans Bengali',Arial,sans-serif;}
+/* Adjust footer to dark on light bg */
+footer.bg-light{background:#eaecef !important;}
+/* Override brand navbar to primary */
+.ses-navbar{ --bg: var(--primary); --fg:#fff; --accent: var(--secondary); }
+/* Buttons rounded + hover */
+.btn, .btn-brand, .btn-outline-brand{ border-radius:999px; transition:transform .15s ease, box-shadow .2s ease; }
+.btn:hover, .btn-brand:hover, .btn-outline-brand:hover{ transform:translateY(-1px); box-shadow:0 8px 22px #0000001f; }
 
 /* Container */
 .container {
@@ -993,4 +1003,82 @@ body {
     .card-box, .service-card, .product-item, .auth-form, .contact-info-card, .contact-form-card {
         padding: 18px 8px;
     }
+}
+
+/* --- Hero Banner (brand) --- */
+.hero-banner {
+  background: radial-gradient(1200px 600px at 10% 20%, #202124, #161718 60%);
+  border-bottom: 2px solid #2a2b2c;
+}
+.hero-title {
+  color: #ffffff;
+  font-family: 'Orbitron', Arial, sans-serif;
+  font-weight: 900;
+  letter-spacing: 1px;
+  line-height: 1.2;
+  font-size: clamp(1.6rem, 2.6vw + 1rem, 3rem);
+}
+.hero-subtitle {
+  color: #e6e6e6;
+  font-size: clamp(0.95rem, 0.6vw + 0.8rem, 1.2rem);
+}
+.btn-brand {
+  background: #ff9000;
+  color: #161718;
+  border: 2px solid #ff9000;
+  font-weight: 800;
+}
+.btn-brand:hover {
+  background: #ff9f1a;
+  border-color: #ff9f1a;
+  color: #111;
+}
+.btn-outline-brand {
+  background: transparent;
+  color: #ff9000;
+  border: 2px solid #ff9000;
+  font-weight: 800;
+}
+.btn-outline-brand:hover {
+  background: #ff900011;
+  color: #ffd8a6;
+  border-color: #ffad33;
+}
+.hero-illustration { max-width: 520px; }
+
+@media (max-width: 768px) {
+  .hero-banner { padding-top: 2rem; padding-bottom: 2rem; }
+  .hero-illustration { max-width: 100%; }
+}
+
+/* --- Brand Navbar --- */
+.ses-navbar {
+  --bg: #18191a;
+  --fg: #fff;
+  --accent: #ff9000;
+  background: var(--bg);
+  border-bottom: 3px solid var(--accent);
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+.ses-navbar .navbar-brand .brand-text {
+  color: var(--accent);
+  font-family: 'Orbitron', Arial, sans-serif;
+  font-size: 0.95rem;
+  letter-spacing: 1.5px;
+}
+.ses-navbar .nav-link {
+  color: var(--fg);
+  padding: 6px 10px;
+  font-weight: 700;
+  font-size: 0.92rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.ses-navbar .nav-link:hover { color: var(--accent); }
+.ses-navbar .nav-link.active { color: var(--accent); border-bottom: 2px solid var(--accent); }
+
+@media (max-width: 768px) {
+  .ses-navbar .nav-link { padding: 8px 6px; font-size: 0.95rem; }
+  .ses-navbar .navbar-brand .brand-text { font-size: 0.9rem; }
 }

@@ -10,12 +10,22 @@
     box-sizing: border-box;
 }
 
-body {
-    background: #18191a; /* Dark gray/black background like visiting card */
-    color: #ffffff;
-    font-family: 'Hind Siliguri', 'Noto Sans Bengali', Arial, sans-serif;
-    line-height: 1.6;
+/* Theme: Dark Blue primary, Golden Yellow secondary, Light Gray bg + Poppins */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap');
+:root{
+  --primary:#0b2e4e; /* dark blue */
+  --secondary:#ffc107; /* golden yellow */
+  --bg:#f3f4f6; /* light gray */
+  --text:#0f172a;
 }
+body{background:var(--bg); color:var(--text); font-family:'Poppins', 'Hind Siliguri','Noto Sans Bengali',Arial,sans-serif;}
+/* Adjust footer to dark on light bg */
+footer.bg-light{background:#eaecef !important;}
+/* Override brand navbar to primary */
+.ses-navbar{ --bg: var(--primary); --fg:#fff; --accent: var(--secondary); }
+/* Buttons rounded + hover */
+.btn, .btn-brand, .btn-outline-brand{ border-radius:999px; transition:transform .15s ease, box-shadow .2s ease; }
+.btn:hover, .btn-brand:hover, .btn-outline-brand:hover{ transform:translateY(-1px); box-shadow:0 8px 22px #0000001f; }
 
 /* Container */
 .container {

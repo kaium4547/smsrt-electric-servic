@@ -134,4 +134,9 @@ def technicians_map(request):
         }
         for t in q if t.current_latitude is not None and t.current_longitude is not None
     ]
-    return render(request, 'technicians_map.html', {'technicians': techs}) 
+    return render(request, 'technicians_map.html', {'technicians': techs})
+
+
+def live_map(request):
+    # Combined customer + technician live map page
+    return render(request, 'live_map.html') 
