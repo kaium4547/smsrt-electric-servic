@@ -1,8 +1,8 @@
 {% extends 'base.html' %}
 {% block content %}
-{% include 'partials/home_hero.html' ignore missing %}
+{% include 'partials/home_hero.html' %}
 <div class="container py-4">
-  {% include 'partials/home_sections.html' ignore missing %}
+  {% include 'partials/home_sections.html' %}
   <div class="alert alert-info mt-3">নতুন: <a href="{% url 'users:technicians_map' %}">টেকনিশিয়ান লাইভ ম্যাপ</a> দেখে নিন।</div>
 </div>
 {% endblock %}
