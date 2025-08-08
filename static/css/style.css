@@ -19,7 +19,7 @@
   --bg:#F5F5F5; /* light gray */
   --text:#0f172a;
 }
-body{background:var(--bg); color:var(--text); font-family:'Poppins', 'Hind Siliguri','Noto Sans Bengali',Arial,sans-serif;}
+body{background:var(--bg); color:var(--text); font-family:'Poppins', 'Hind Siliguri','Noto Sans Bengali',Arial,sans-serif; font-weight:400;}
 /* Adjust footer to dark on light bg */
 footer.bg-light{background:#eaecef !important;}
 /* Override brand navbar to primary */
