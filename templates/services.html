@@ -14,83 +14,139 @@
   {% endif %}
 
   <div class="row g-3">
-    {% for svc in [
-        {'key':'electric','title':'Electric Works','img':'https://placehold.co/600x360','desc':'সম্পূর্ণ ইলেকট্রিক কাজ—ওয়্যারিং, DB, ব্রেকার, লোড ক্যালকুলেশন।'},
-        {'key':'solar','title':'Solar Installation','img':'https://placehold.co/600x360','desc':'সোলার সিস্টেম ডিজাইন, ইনস্টল ও মেইনটেন্যান্স।'},
-        {'key':'cctv','title':'CCTV Installation','img':'https://placehold.co/600x360','desc':'CCTV ক্যামেরা বসানো, DVR/NVR সেটআপ, মোবাইল ভিউ।'},
-        {'key':'ac','title':'AC Servicing','img':'https://placehold.co/600x360','desc':'ইনস্টলেশন, গ্যাস রিচার্জ, কম্প্রেসর/ড্রেন সার্ভিস।'},
-        {'key':'ips','title':'IPS Installation','img':'https://placehold.co/600x360','desc':'IPS সেটআপ, ব্যাটারি কানেকশন, লোড ক্যালকুলেশন।'},
-        {'key':'wiring','title':'House Wiring','img':'https://placehold.co/600x360','desc':'নতুন/পুরাতন হাউজ ওয়্যারিং, সেফটি ও কনসাল্টিং।'}
-      ] %}
+    <!-- Electric Works -->
     <div class="col-md-4 col-12">
       <div class="card hoverable h-100">
-        <img src="{{ svc.img }}" class="card-img-top" alt="{{ svc.title }}">
+        <img src="https://placehold.co/600x360" class="card-img-top" alt="Electric Works">
         <div class="card-body d-flex flex-column">
-          <h5 class="card-title">{{ svc.title }}</h5>
-          <p class="card-text text-muted">{{ svc.desc }}</p>
+          <h5 class="card-title">Electric Works</h5>
+          <p class="card-text text-muted">ওয়্যারিং, DB, ব্রেকার, লোড ক্যালকুলেশন সহ সম্পূর্ণ ইলেকট্রিক কাজ।</p>
           <div class="mt-auto d-flex gap-2">
             {% if request.user.is_authenticated %}
               <a href="{% url 'orders:order_create' %}" class="btn btn-brand">Book Now</a>
             {% else %}
               <a href="{% url 'users:login' %}?next={% url 'orders:order_create' %}" class="btn btn-brand">Book Now</a>
             {% endif %}
-            <button class="btn btn-outline-brand" data-bs-toggle="modal" data-bs-target="#modal-{{ svc.key }}">Details</button>
+            <button class="btn btn-outline-brand" data-bs-toggle="modal" data-bs-target="#modal-electric">Details</button>
           </div>
         </div>
       </div>
     </div>
-
-    <!-- Modal -->
-    <div class="modal fade" id="modal-{{ svc.key }}" tabindex="-1" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered modal-lg">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title">{{ svc.title }} — বিস্তারিত</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            <p class="mb-3">{{ svc.desc }} আমাদের দক্ষ টিম দ্রুত ও মানসম্মতভাবে কাজ সম্পন্ন করে। নিচে আনুমানিক দামের তালিকা দেয়া হলো:</p>
-            <div class="price-table">
-              <table class="table table-sm">
-                <thead class="table-light">
-                  <tr><th>সেবা</th><th class="text-end">মূল্য (শুরু)</th></tr>
-                </thead>
-                <tbody>
-                  {% if svc.key == 'electric' %}
-                  <tr><td>সাধারণ রিপেয়ার</td><td class="text-end">৳ 300</td></tr>
-                  <tr><td>DB/ব্রেকার সেটআপ</td><td class="text-end">৳ 1500</td></tr>
-                  <tr><td>লোড ক্যালকুলেশন</td><td class="text-end">৳ 800</td></tr>
-                  {% elif svc.key == 'solar' %}
-                  <tr><td>1KW সিস্টেম</td><td class="text-end">৳ 25,000</td></tr>
-                  <tr><td>3KW সিস্টেম</td><td class="text-end">৳ 65,000</td></tr>
-                  {% elif svc.key == 'cctv' %}
-                  <tr><td>2 ক্যামেরা সেট</td><td class="text-end">৳ 8,000</td></tr>
-                  <tr><td>4 ক্যামেরা সেট</td><td class="text-end">৳ 15,000</td></tr>
-                  {% elif svc.key == 'ac' %}
-                  <tr><td>গ্যাস রিচার্জ</td><td class="text-end">৳ 1,200</td></tr>
-                  <tr><td>ইনস্টলেশন</td><td class="text-end">৳ 2,500</td></tr>
-                  {% elif svc.key == 'ips' %}
-                  <tr><td>IPS সেটআপ</td><td class="text-end">৳ 1,200</td></tr>
-                  <tr><td>ব্যাটারি কানেকশন</td><td class="text-end">৳ 600</td></tr>
-                  {% elif svc.key == 'wiring' %}
-                  <tr><td>রুম ওয়্যারিং (স্টার্টিং)</td><td class="text-end">৳ 1,000</td></tr>
-                  <tr><td>সম্পূর্ণ ফ্ল্যাট</td><td class="text-end">৳ 15,000</td></tr>
-                  {% endif %}
-                </tbody>
-              </table>
-            </div>
-          </div>
-          <div class="modal-footer">
+    
+    <!-- Solar Installation -->
+    <div class="col-md-4 col-12">
+      <div class="card hoverable h-100">
+        <img src="https://placehold.co/600x360" class="card-img-top" alt="Solar Installation">
+        <div class="card-body d-flex flex-column">
+          <h5 class="card-title">Solar Installation</h5>
+          <p class="card-text text-muted">সোলার সিস্টেম ডিজাইন, ইনস্টল ও মেইনটেন্যান্স।</p>
+          <div class="mt-auto d-flex gap-2">
             {% if request.user.is_authenticated %}
               <a href="{% url 'orders:order_create' %}" class="btn btn-brand">Book Now</a>
             {% else %}
               <a href="{% url 'users:login' %}?next={% url 'orders:order_create' %}" class="btn btn-brand">Book Now</a>
             {% endif %}
+            <button class="btn btn-outline-brand" data-bs-toggle="modal" data-bs-target="#modal-solar">Details</button>
           </div>
         </div>
       </div>
     </div>
-    {% endfor %}
+
+    <!-- CCTV Installation -->
+    <div class="col-md-4 col-12">
+      <div class="card hoverable h-100">
+        <img src="https://placehold.co/600x360" class="card-img-top" alt="CCTV Installation">
+        <div class="card-body d-flex flex-column">
+          <h5 class="card-title">CCTV Installation</h5>
+          <p class="card-text text-muted">ক্যামেরা বসানো, DVR/NVR সেটআপ, মোবাইল অ্যাপ ভিউ।</p>
+          <div class="mt-auto d-flex gap-2">
+            {% if request.user.is_authenticated %}
+              <a href="{% url 'orders:order_create' %}" class="btn btn-brand">Book Now</a>
+            {% else %}
+              <a href="{% url 'users:login' %}?next={% url 'orders:order_create' %}" class="btn btn-brand">Book Now</a>
+            {% endif %}
+            <button class="btn btn-outline-brand" data-bs-toggle="modal" data-bs-target="#modal-cctv">Details</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- AC Servicing -->
+    <div class="col-md-4 col-12">
+      <div class="card hoverable h-100">
+        <img src="https://placehold.co/600x360" class="card-img-top" alt="AC Servicing">
+        <div class="card-body d-flex flex-column">
+          <h5 class="card-title">AC Servicing</h5>
+          <p class="card-text text-muted">ইনস্টলেশন, গ্যাস রিচার্জ, কম্প্রেসর/ড্রেন সার্ভিস।</p>
+          <div class="mt-auto d-flex gap-2">
+            {% if request.user.is_authenticated %}
+              <a href="{% url 'orders:order_create' %}" class="btn btn-brand">Book Now</a>
+            {% else %}
+              <a href="{% url 'users:login' %}?next={% url 'orders:order_create' %}" class="btn btn-brand">Book Now</a>
+            {% endif %}
+            <button class="btn btn-outline-brand" data-bs-toggle="modal" data-bs-target="#modal-ac">Details</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- IPS Installation -->
+    <div class="col-md-4 col-12">
+      <div class="card hoverable h-100">
+        <img src="https://placehold.co/600x360" class="card-img-top" alt="IPS Installation">
+        <div class="card-body d-flex flex-column">
+          <h5 class="card-title">IPS Installation</h5>
+          <p class="card-text text-muted">IPS সেটআপ, ব্যাটারি কানেকশন, লোড ক্যালকুলেশন।</p>
+          <div class="mt-auto d-flex gap-2">
+            {% if request.user.is_authenticated %}
+              <a href="{% url 'orders:order_create' %}" class="btn btn-brand">Book Now</a>
+            {% else %}
+              <a href="{% url 'users:login' %}?next={% url 'orders:order_create' %}" class="btn btn-brand">Book Now</a>
+            {% endif %}
+            <button class="btn btn-outline-brand" data-bs-toggle="modal" data-bs-target="#modal-ips">Details</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- House Wiring -->
+    <div class="col-md-4 col-12">
+      <div class="card hoverable h-100">
+        <img src="https://placehold.co/600x360" class="card-img-top" alt="House Wiring">
+        <div class="card-body d-flex flex-column">
+          <h5 class="card-title">House Wiring</h5>
+          <p class="card-text text-muted">নতুন/পুরাতন হাউজ ওয়্যারিং, সেফটি ও কনসাল্টিং।</p>
+          <div class="mt-auto d-flex gap-2">
+            {% if request.user.is_authenticated %}
+              <a href="{% url 'orders:order_create' %}" class="btn btn-brand">Book Now</a>
+            {% else %}
+              <a href="{% url 'users:login' %}?next={% url 'orders:order_create' %}" class="btn btn-brand">Book Now</a>
+            {% endif %}
+            <button class="btn btn-outline-brand" data-bs-toggle="modal" data-bs-target="#modal-wiring">Details</button>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
+</div>
+
+<!-- Modals (pricing) -->
+<div class="modal fade" id="modal-electric" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg"><div class="modal-content"><div class="modal-header"><h5 class="modal-title">Electric Works — বিস্তারিত</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="price-table"><table class="table table-sm"><thead class="table-light"><tr><th>সেবা</th><th class="text-end">মূল্য (শুরু)</th></tr></thead><tbody><tr><td>সাধারণ রিপেয়ার</td><td class="text-end">৳ 300</td></tr><tr><td>DB/ব্রেকার সেটআপ</td><td class="text-end">৳ 1500</td></tr><tr><td>লোড ক্যালকুলেশন</td><td class="text-end">৳ 800</td></tr></tbody></table></div></div><div class="modal-footer">{% if request.user.is_authenticated %}<a href="{% url 'orders:order_create' %}" class="btn btn-brand">Book Now</a>{% else %}<a href="{% url 'users:login' %}?next={% url 'orders:order_create' %}" class="btn btn-brand">Book Now</a>{% endif %}</div></div></div>
+</div>
+<div class="modal fade" id="modal-solar" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg"><div class="modal-content"><div class="modal-header"><h5 class="modal-title">Solar Installation — বিস্তারিত</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="price-table"><table class="table table-sm"><thead class="table-light"><tr><th>সেবা</th><th class="text-end">মূল্য (শুরু)</th></tr></thead><tbody><tr><td>1KW সিস্টেম</td><td class="text-end">৳ 25,000</td></tr><tr><td>3KW সিস্টেম</td><td class="text-end">৳ 65,000</td></tr></tbody></table></div></div><div class="modal-footer">{% if request.user.is_authenticated %}<a href="{% url 'orders:order_create' %}" class="btn btn-brand">Book Now</a>{% else %}<a href="{% url 'users:login' %}?next={% url 'orders:order_create' %}" class="btn btn-brand">Book Now</a>{% endif %}</div></div></div>
+</div>
+<div class="modal fade" id="modal-cctv" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg"><div class="modal-content"><div class="modal-header"><h5 class="modal-title">CCTV Installation — বিস্তারিত</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="price-table"><table class="table table-sm"><thead class="table-light"><tr><th>সেবা</th><th class="text-end">মূল্য (শুরু)</th></tr></thead><tbody><tr><td>2 ক্যামেরা সেট</td><td class="text-end">৳ 8,000</td></tr><tr><td>4 ক্যামেরা সেট</td><td class="text-end">৳ 15,000</td></tr></tbody></table></div></div><div class="modal-footer">{% if request.user.is_authenticated %}<a href="{% url 'orders:order_create' %}" class="btn btn-brand">Book Now</a>{% else %}<a href="{% url 'users:login' %}?next={% url 'orders:order_create' %}" class="btn btn-brand">Book Now</a>{% endif %}</div></div></div>
+</div>
+<div class="modal fade" id="modal-ac" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg"><div class="modal-content"><div class="modal-header"><h5 class="modal-title">AC Servicing — বিস্তারিত</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="price-table"><table class="table table-sm"><thead class="table-light"><tr><th>সেবা</th><th class="text-end">মূল্য (শুরু)</th></tr></thead><tbody><tr><td>গ্যাস রিচার্জ</td><td class="text-end">৳ 1,200</td></tr><tr><td>ইনস্টলেশন</td><td class="text-end">৳ 2,500</td></tr></tbody></table></div></div><div class="modal-footer">{% if request.user.is_authenticated %}<a href="{% url 'orders:order_create' %}" class="btn btn-brand">Book Now</a>{% else %}<a href="{% url 'users:login' %}?next={% url 'orders:order_create' %}" class="btn btn-brand">Book Now</a>{% endif %}</div></div></div>
+</div>
+<div class="modal fade" id="modal-ips" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg"><div class="modal-content"><div class="modal-header"><h5 class="modal-title">IPS Installation — বিস্তারিত</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="price-table"><table class="table table-sm"><thead class="table-light"><tr><th>সেবা</th><th class="text-end">মূল্য (শুরু)</th></tr></thead><tbody><tr><td>IPS সেটআপ</td><td class="text-end">৳ 1,200</td></tr><tr><td>ব্যাটারি কানেকশন</td><td class="text-end">৳ 600</td></tr></tbody></table></div></div><div class="modal-footer">{% if request.user.is_authenticated %}<a href="{% url 'orders:order_create' %}" class="btn btn-brand">Book Now</a>{% else %}<a href="{% url 'users:login' %}?next={% url 'orders:order_create' %}" class="btn btn-brand">Book Now</a>{% endif %}</div></div></div>
+</div>
+<div class="modal fade" id="modal-wiring" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg"><div class="modal-content"><div class="modal-header"><h5 class="modal-title">House Wiring — বিস্তারিত</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="price-table"><table class="table table-sm"><thead class="table-light"><tr><th>সেবা</th><th class="text-end">মূল্য (শুরু)</th></tr></thead><tbody><tr><td>রুম ওয়্যারিং (স্টার্টিং)</td><td class="text-end">৳ 1,000</td></tr><tr><td>সম্পূর্ণ ফ্ল্যাট</td><td class="text-end">৳ 15,000</td></tr></tbody></table></div></div><div class="modal-footer">{% if request.user.is_authenticated %}<a href="{% url 'orders:order_create' %}" class="btn btn-brand">Book Now</a>{% else %}<a href="{% url 'users:login' %}?next={% url 'orders:order_create' %}" class="btn btn-brand">Book Now</a>{% endif %}</div></div></div>
 </div>
 {% endblock %}

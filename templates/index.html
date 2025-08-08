@@ -4,71 +4,25 @@
 <div class="container py-4">
   <h3 class="section-heading mb-3">আমাদের প্রধান সার্ভিস</h3>
   <div class="row g-3">
-    {% for i in '123456' %}
+    {% for item in (
+      ('⚡','Electric Works','ওয়্যারিং, DB, ব্রেকার সেটআপ'),
+      ('☀️','Solar Installation','সোলার সিস্টেম ডিজাইন ও ইনস্টল'),
+      ('📷','CCTV Installation','ক্যামেরা, DVR/NVR, মোবাইল ভিউ'),
+      ('❄️','AC Servicing','ইনস্টলেশন ও সার্ভিসিং'),
+      ('🔋','IPS Installation','সেটআপ ও ব্যাটারি কানেকশন'),
+      ('🧰','House Wiring','নতুন/পুরাতন ওয়্যারিং')
+    ) %}
     <div class="col-12 col-sm-6 col-lg-4">
       <div class="card hoverable h-100">
         <div class="card-body">
-          <div class="h5">সার্ভিস {{ forloop.counter }}</div>
-          <div class="subtext mb-2">দ্রুত, নির্ভরযোগ্য এবং দক্ষ সেবা।</div>
+          <div class="h4">{{ item.0 }} {{ item.1 }}</div>
+          <div class="subtext mb-3">{{ item.2 }}</div>
           <a class="btn btn-sm btn-brand" href="{% url 'services:service_list' %}">Details</a>
         </div>
       </div>
     </div>
     {% endfor %}
   </div>
-
-  <div class="mt-5">
-    <h3 class="section-heading mb-3">কেন আমাদের বেছে নেবেন</h3>
-    <div class="row g-3">
-      {% for t in '1234' %}
-      <div class="col-12 col-md-6 col-lg-3">
-        <div class="card hoverable h-100">
-          <div class="card-body">
-            <div class="h5">পয়েন্ট {{ forloop.counter }}</div>
-            <div class="subtext">উচ্চমানের সেবা, দ্রুত ডেলিভারি, ট্রাস্টেড টেকনিশিয়ান।</div>
-          </div>
-        </div>
-      </div>
-      {% endfor %}
-    </div>
-  </div>
-
-  <div class="mt-5">
-    <h3 class="section-heading mb-3">লাইভ লোকেশন</h3>
-    <div class="mb-3 subtext">টেকনিশিয়ান এবং কাস্টমারের লোকেশন ট্র্যাকিং সমর্থিত।</div>
-    <div class="ratio ratio-21x9">
-      <iframe src="{% url 'users:live_map' %}" style="border:0; border-radius:12px;" title="Live Map"></iframe>
-    </div>
-  </div>
-
-  <div class="mt-5">
-    <h3 class="section-heading mb-3">গ্রাহক মতামত</h3>
-    <div class="row g-3">
-      {% for n in '123' %}
-      <div class="col-12 col-md-4">
-        <div class="card hoverable h-100">
-          <div class="card-body">
-            <div class="d-flex mb-2" style="color:var(--secondary)">★★★★★</div>
-            <p class="mb-1">চমৎকার সার্ভিস! সময়মতো কাজ শেষ করেছেন।</p>
-            <div class="small text-muted">– কাস্টমার {{ forloop.counter }}</div>
-          </div>
-        </div>
-      </div>
-      {% endfor %}
-    </div>
-  </div>
-
-  <div class="my-5 p-4 rounded" style="background:#fff; box-shadow:0 2px 12px #00000012;">
-    <div class="d-flex flex-column flex-md-row align-items-center justify-content-between">
-      <div class="mb-3 mb-md-0">
-        <div class="h4 mb-1">সার্ভিস দরকার?</div>
-        <div class="subtext">এখনই যোগাযোগ করুন।</div>
-      </div>
-      <div class="d-flex gap-2">
-        <a class="btn btn-success" href="https://wa.me/8801700000000" target="_blank">WhatsApp</a>
-        <a class="btn btn-outline-primary" href="tel:+8801700000000">Call Now</a>
-      </div>
-    </div>
-  </div>
+  {% include 'partials/home_sections.html' ignore missing %}
 </div>
 {% endblock %}
