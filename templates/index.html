@@ -4,25 +4,48 @@
 <div class="container py-4">
   <h3 class="section-heading mb-3">আমাদের প্রধান সার্ভিস</h3>
   <div class="row g-3">
-    {% for item in (
-      ('⚡','Electric Works','ওয়্যারিং, DB, ব্রেকার সেটআপ'),
-      ('☀️','Solar Installation','সোলার সিস্টেম ডিজাইন ও ইনস্টল'),
-      ('📷','CCTV Installation','ক্যামেরা, DVR/NVR, মোবাইল ভিউ'),
-      ('❄️','AC Servicing','ইনস্টলেশন ও সার্ভিসিং'),
-      ('🔋','IPS Installation','সেটআপ ও ব্যাটারি কানেকশন'),
-      ('🧰','House Wiring','নতুন/পুরাতন ওয়্যারিং')
-    ) %}
     <div class="col-12 col-sm-6 col-lg-4">
-      <div class="card hoverable h-100">
-        <div class="card-body">
-          <div class="h4">{{ item.0 }} {{ item.1 }}</div>
-          <div class="subtext mb-3">{{ item.2 }}</div>
-          <a class="btn btn-sm btn-brand" href="{% url 'services:service_list' %}">Details</a>
-        </div>
-      </div>
+      <div class="card hoverable h-100"><div class="card-body">
+        <div class="h4">⚡ Electric Works</div>
+        <div class="subtext mb-3">ওয়্যারিং, DB, ব্রেকার সেটআপ</div>
+        <a class="btn btn-sm btn-brand" href="{% url 'services:service_list' %}">Details</a>
+      </div></div>
     </div>
-    {% endfor %}
+    <div class="col-12 col-sm-6 col-lg-4">
+      <div class="card hoverable h-100"><div class="card-body">
+        <div class="h4">☀️ Solar Installation</div>
+        <div class="subtext mb-3">সোলার সিস্টেম ডিজাইন ও ইনস্টল</div>
+        <a class="btn btn-sm btn-brand" href="{% url 'services:service_list' %}">Details</a>
+      </div></div>
+    </div>
+    <div class="col-12 col-sm-6 col-lg-4">
+      <div class="card hoverable h-100"><div class="card-body">
+        <div class="h4">📷 CCTV Installation</div>
+        <div class="subtext mb-3">ক্যামেরা, DVR/NVR, মোবাইল ভিউ</div>
+        <a class="btn btn-sm btn-brand" href="{% url 'services:service_list' %}">Details</a>
+      </div></div>
+    </div>
+    <div class="col-12 col-sm-6 col-lg-4">
+      <div class="card hoverable h-100"><div class="card-body">
+        <div class="h4">❄️ AC Servicing</div>
+        <div class="subtext mb-3">ইনস্টলেশন ও সার্ভিসিং</div>
+        <a class="btn btn-sm btn-brand" href="{% url 'services:service_list' %}">Details</a>
+      </div></div>
+    </div>
+    <div class="col-12 col-sm-6 col-lg-4">
+      <div class="card hoverable h-100"><div class="card-body">
+        <div class="h4">🔋 IPS Installation</div>
+        <div class="subtext mb-3">সেটআপ ও ব্যাটারি কানেকশন</div>
+        <a class="btn btn-sm btn-brand" href="{% url 'services:service_list' %}">Details</a>
+      </div></div>
+    </div>
+    <div class="col-12 col-sm-6 col-lg-4">
+      <div class="card hoverable h-100"><div class="card-body">
+        <div class="h4">🧰 House Wiring</div>
+        <div class="subtext mb-3">নতুন/পুরাতন ওয়্যারিং</div>
+        <a class="btn btn-sm btn-brand" href="{% url 'services:service_list' %}">Details</a>
+      </div></div>
+    </div>
   </div>
-  {% include 'partials/home_sections.html' ignore missing %}
 </div>
 {% endblock %}
