@@ -12,10 +12,11 @@
 
 /* Theme: Dark Blue primary, Golden Yellow secondary, Light Gray bg + Poppins */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap');
+/* Requested palette */
 :root{
-  --primary:#0b2e4e; /* dark blue */
-  --secondary:#ffc107; /* golden yellow */
-  --bg:#f3f4f6; /* light gray */
+  --primary:#0A1F44; /* dark blue */
+  --secondary:#FFD700; /* golden yellow */
+  --bg:#F5F5F5; /* light gray */
   --text:#0f172a;
 }
 body{background:var(--bg); color:var(--text); font-family:'Poppins', 'Hind Siliguri','Noto Sans Bengali',Arial,sans-serif;}
@@ -23,6 +24,8 @@ body{background:var(--bg); color:var(--text); font-family:'Poppins', 'Hind Silig
 footer.bg-light{background:#eaecef !important;}
 /* Override brand navbar to primary */
 .ses-navbar{ --bg: var(--primary); --fg:#fff; --accent: var(--secondary); }
+/* Sticky header */
+.ses-navbar{ position: sticky; top:0; z-index:1030; box-shadow:0 2px 10px #00000014; }
 /* Buttons rounded + hover */
 .btn, .btn-brand, .btn-outline-brand{ border-radius:999px; transition:transform .15s ease, box-shadow .2s ease; }
 .btn:hover, .btn-brand:hover, .btn-outline-brand:hover{ transform:translateY(-1px); box-shadow:0 8px 22px #0000001f; }
@@ -1082,3 +1085,15 @@ footer.bg-light{background:#eaecef !important;}
   .ses-navbar .nav-link { padding: 8px 6px; font-size: 0.95rem; }
   .ses-navbar .navbar-brand .brand-text { font-size: 0.9rem; }
 }
+
+/* Card hover utility */
+.card.hoverable{ transition: transform .18s ease, box-shadow .2s ease; box-shadow:0 2px 12px #00000012; }
+.card.hoverable:hover{ transform: translateY(-4px) scale(1.01); box-shadow:0 10px 28px #00000024; }
+
+/* Price table */
+.price-table{ background:#fff; border-radius:12px; box-shadow:0 2px 12px #00000012; overflow:hidden; }
+.price-table .table{ margin:0; }
+
+/* Section headings */
+.section-heading{ font-weight:800; color:var(--primary); }
+.subtext{ color:#475569; }

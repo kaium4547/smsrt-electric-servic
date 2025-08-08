@@ -2,7 +2,7 @@
 {% block content %}
 <div class="container" style="margin-top: 2rem;">
   <div class="d-flex justify-content-between align-items-center mb-3">
-    <h2>আমাদের সার্ভিস সমূহ</h2>
+    <h2 class="section-heading">আমাদের সার্ভিস সমূহ</h2>
     {% if request.user.is_authenticated %}
       <span class="text-success">Welcome, {{ request.user.first_name|default:request.user.username }}</span>
     {% else %}
@@ -12,26 +12,45 @@
   {% if not request.user.is_authenticated %}
   <div class="alert alert-warning">অর্ডার করতে হলে আগে লগইন/অ্যাকাউন্ট তৈরি করুন।</div>
   {% endif %}
-  <div class="row">
+  <div class="row g-3">
     {% for i in "123456" %}
-    <div class="col-md-4 mb-3">
-      <div class="card h-100 shadow-sm">
+    <div class="col-md-4 col-12">
+      <div class="card hoverable h-100">
         <img src="https://placehold.co/600x360" class="card-img-top" alt="Service Image">
         <div class="card-body d-flex flex-column">
           <h5 class="card-title">সার্ভিস {{ forloop.counter }}</h5>
           <p class="card-text text-muted">দ্রুত, নির্ভরযোগ্য এবং দক্ষ সার্ভিস।</p>
           <div class="mt-auto d-flex gap-2">
             {% if request.user.is_authenticated %}
-              <a href="{% url 'orders:order_create' %}" class="btn btn-primary">Book Now</a>
+              <a href="{% url 'orders:order_create' %}" class="btn btn-brand">Book Now</a>
             {% else %}
-              <a href="{% url 'users:login' %}?next={% url 'orders:order_create' %}" class="btn btn-primary">Book Now</a>
+              <a href="{% url 'users:login' %}?next={% url 'orders:order_create' %}" class="btn btn-brand">Book Now</a>
             {% endif %}
-            <a href="#" class="btn btn-outline-primary">View Details</a>
+            <a href="#" class="btn btn-outline-brand">View Details</a>
           </div>
         </div>
       </div>
     </div>
     {% endfor %}
+  </div>
+
+  <div class="mt-5 price-table">
+    <table class="table table-striped">
+      <thead class="table-light">
+        <tr>
+          <th>সার্ভিস</th>
+          <th class="text-end">মূল্য (শুরু)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>ইলেকট্রিক ওয়্যারিং</td><td class="text-end">৳ 500</td></tr>
+        <tr><td>সোলার ইনস্টলেশন</td><td class="text-end">৳ 2000</td></tr>
+        <tr><td>সিসিটিভি সেটআপ</td><td class="text-end">৳ 1500</td></tr>
+        <tr><td>এসি সার্ভিসিং</td><td class="text-end">৳ 800</td></tr>
+        <tr><td>ফ্রিজ সার্ভিসিং</td><td class="text-end">৳ 700</td></tr>
+        <tr><td>আইপিএস সেটআপ</td><td class="text-end">৳ 1200</td></tr>
+      </tbody>
+    </table>
   </div>
 </div>
 {% endblock %}
