@@ -1,133 +1,78 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="bn">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Smart Electric Service - যোগাযোগ</title>
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-</head>
-<body>
-    <header class="header">
-        <div class="container">
-            <div class="logo">
-                <img src="{% static 'images/logo.png' %}" alt="Smart Electric Service Logo">
-                <h1>Smart Electric Service</h1>
-                <p>আপনার বিশ্বস্ত ইলেকট্রিক সমাধান</p>
+{% extends 'base.html' %}
+{% block content %}
+<div class="container" style="max-width: 920px; margin-top: 2rem;">
+  <div class="card shadow-sm">
+    <div class="row g-0">
+      <div class="col-md-6 p-4">
+        <h3 class="mb-3">যোগাযোগ</h3>
+        <p class="text-muted">আপনার যেকোনো সার্ভিস/সহায়তার জন্য যোগাযোগ করুন</p>
+        <div class="mb-3">
+          <div class="d-flex align-items-center mb-2">
+            <span class="me-2">📍</span>
+            <div>
+              <div class="fw-semibold">ঠিকানা</div>
+              <div id="contact-address">Dhaka, Bangladesh</div>
             </div>
-            <nav class="navbar">
-                <ul>
-                    <li><a href="{% url 'home' %}">হোম</a></li>
-                    <li><a href="{% url 'services:service_list' %}">সার্ভিসেস</a></li>
-                    <li><a href="{% url 'products:product_list' %}">প্রোডাক্টস</a></li>
-                    <li><a href="{% url 'login' %}">লগইন</a></li>
-                    <li><a href="{% url 'signup' %}">সাইনআপ</a></li>
-                    <li><a href="{% url 'contact' %}" class="active">যোগাযোগ</a></li>
-                </ul>
-            </nav>
+          </div>
+          <div class="d-flex align-items-center mb-2">
+            <span class="me-2">📞</span>
+            <div>
+              <div class="fw-semibold">ফোন</div>
+              <a href="tel:+8801700000000">+8801700000000</a>
+            </div>
+          </div>
+          <div class="d-flex align-items-center mb-2">
+            <span class="me-2">✉️</span>
+            <div>
+              <div class="fw-semibold">ইমেইল</div>
+              <a href="mailto:info@smartelectric.example">info@smartelectric.example</a>
+            </div>
+          </div>
         </div>
-    </header>
-
-    <section class="page-banner">
-        <div class="container">
-            <h2>আমাদের সাথে যোগাযোগ করুন</h2>
-            <p>আপনার যেকোনো প্রশ্ন বা সেবার জন্য আমাদের সাথে যোগাযোগ করুন</p>
+        <div class="d-flex gap-2 mt-3">
+          <a class="btn btn-success" target="_blank" id="whatsapp-btn" href="https://wa.me/8801700000000?text={{ request.build_absolute_uri|urlencode }}">WhatsApp</a>
+          <a class="btn btn-outline-primary" target="_blank" id="directions-btn" href="https://www.google.com/maps/dir/?api=1&destination=Dhaka%2C%20Bangladesh">Get Directions</a>
         </div>
-    </section>
+        <hr class="my-4"/>
+        <form id="location-form">
+          <div class="mb-2">আপনার লোকেশন শেয়ার করুন (টেকনিশিয়ান ট্র্যাকিং এর জন্য):</div>
+          <div class="d-flex gap-2">
+            <button class="btn btn-primary" type="button" id="share-location">Share Location</button>
+            <span id="loc-status" class="text-muted"></span>
+          </div>
+        </form>
+      </div>
+      <div class="col-md-6">
+        <div id="map" style="height: 100%; min-height: 420px; border-radius: 0 0 8px 0;"></div>
+      </div>
+    </div>
+  </div>
+</div>
 
-    <section class="contact-info-section">
-        <div class="container">
-            <h2 class="section-title">যোগাযোগের বিস্তারিত</h2>
-            <div class="contact-grid">
-                <div class="contact-item">
-                    <i class="fas fa-phone-alt"></i>
-                    <h3>মোবাইল নম্বর</h3>
-                    <p>01888186759</p>
-                    <p>01890674547</p>
-                </div>
-                <div class="contact-item">
-                    <i class="fas fa-envelope"></i>
-                    <h3>ইমেইল</h3>
-                    <p>smartelectricservice4547@gmail.com</p>
-                </div>
-                <div class="contact-item">
-                    <i class="fas fa-map-marker-alt"></i>
-                    <h3>ঠিকানা</h3>
-                    <p>ব্রাহ্মণপাড়া, কুমিল্লা</p>
-                </div>
-                <div class="contact-item">
-                    <i class="fab fa-whatsapp"></i>
-                    <h3>হোয়াটসঅ্যাপ</h3>
-                    <p>সক্রিয়</p>
-                    <a href="https://wa.me/8801888186759" target="_blank" class="btn primary-btn whatsapp-link">WhatsApp মেসেজ পাঠান</a>
-                </div>
-            </div>
-            <div class="contact-form-section">
-                <h3 class="section-subtitle">আমাদের মেসেজ পাঠান</h3>
-                <form id="contactForm">
-                    <div class="form-group">
-                        <label for="contact-name">আপনার নাম:</label>
-                        <input type="text" id="contact-name" name="name" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="contact-email">আপনার ইমেইল:</label>
-                        <input type="email" id="contact-email" name="email" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="contact-message">আপনার মেসেজ:</label>
-                        <textarea id="contact-message" name="message" rows="5" required></textarea>
-                    </div>
-                    <button type="submit" class="btn">মেসেজ পাঠান</button>
-                </form>
-            </div>
-            <div class="live-chat-info">
-                <h3 class="section-subtitle">লাইভ চ্যাট</h3>
-                <p>আমাদের সাথে সরাসরি চ্যাট করতে নিচে ক্লিক করুন:</p>
-                <button class="btn primary-btn" onclick="openLiveChat()">লাইভ চ্যাট শুরু করুন</button>
-                </div>
-        </div>
-    </section>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin=""/>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+<script>
+  const map = L.map('map').setView([23.8103, 90.4125], 11);
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; OpenStreetMap contributors'
+  }).addTo(map);
+  let marker = L.marker([23.8103, 90.4125]).addTo(map);
 
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-col">
-                    <h3>যোগাযোগ</h3>
-                    <p><i class="fas fa-phone-alt"></i> 01888186759</p>
-                    <p><i class="fas fa-phone-alt"></i> 01890674547</p>
-                    <p><i class="fas fa-envelope"></i> smartelectricservice4547@gmail.com</p>
-                    <p><i class="fas fa-map-marker-alt"></i> ব্রাহ্মণপাড়া, কুমিল্লা</p>
-                    <p><i class="fab fa-whatsapp"></i> WhatsApp: Always Active</p>
-                </div>
-                <div class="footer-col">
-                    <h3>আমাদের সার্ভিস</h3>
-                    <ul>
-                        <li>ইলেকট্রিক কাজ</li>
-                        <li>সোলার প্যানেল ইনস্টলেশন</li>
-                        <li>সিসিটিভি ক্যামেরা</li>
-                        <li>এসি সার্ভিস</li>
-                        <li>ফ্রিজ সার্ভিসিং</li>
-                        <li>আইপিএস সার্ভিস</li>
-                        <li>প্লাসিং কাজ</li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h3>দ্রুত লিঙ্ক</h3>
-                    <ul>
-                        <li><a href="{% url 'home' %}">হোম</a></li>
-                        <li><a href="{% url 'services:service_list' %}">সার্ভিসেস</a></li>
-                        <li><a href="{% url 'products:product_list' %}">প্রোডাক্টস</a></li>
-                        <li><a href="{% url 'contact' %}">যোগাযোগ</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 Smart Electric Service. সর্বস্বত্ব সংরক্ষিত।</p>
-            </div>
-        </div>
-    </footer>
-
-    <script src="{% static 'js/script.js' %}"></script>
-</body>
-</html>
+  document.getElementById('share-location').addEventListener('click', () => {
+    const status = document.getElementById('loc-status');
+    if (!navigator.geolocation) {
+      status.textContent = 'Geolocation not supported';
+      return;
+    }
+    status.textContent = 'Locating...';
+    navigator.geolocation.getCurrentPosition(pos => {
+      const { latitude, longitude } = pos.coords;
+      status.textContent = `Lat: ${latitude.toFixed(6)}, Lng: ${longitude.toFixed(6)}`;
+      marker.setLatLng([latitude, longitude]);
+      map.setView([latitude, longitude], 14);
+    }, err => {
+      status.textContent = 'Location permission denied';
+    });
+  });
+</script>
+{% endblock %}

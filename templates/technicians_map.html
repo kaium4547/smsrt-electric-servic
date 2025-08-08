@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container" style="margin-top: 2rem;">
+  <h2 class="mb-3">Available Technicians</h2>
+  <div id="map" style="height: 380px; border-radius: 12px; overflow: hidden; border: 1px solid #eee;"></div>
+  <div class="row mt-4" id="tech-cards">
+    {% for t in technicians %}
+    <div class="col-md-4 mb-3">
+      <div class="card shadow-sm h-100">
+        <div class="card-body">
+          <h5 class="card-title">{{ t.name }}</h5>
+          <p class="card-text text-muted mb-2"><small>Last update: {{ t.updated_at }}</small></p>
+          <div class="d-flex gap-2">
+            <a class="btn btn-outline-primary btn-sm" target="_blank" href="https://www.google.com/maps?q={{ t.lat }},{{ t.lng }}">View Location</a>
+            <a class="btn btn-outline-success btn-sm" target="_blank" href="https://wa.me/?text={{ t.name|urlencode }}%20location:%20https://www.google.com/maps?q={{ t.lat }},{{ t.lng }}">WhatsApp</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin=""/>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+<script>
+  const technicians = {{ technicians|safe|default:'[]' }};
+  let map = L.map('map');
+  if (technicians.length) {
+    const first = technicians[0];
+    map.setView([first.lat, first.lng], 12);
+  } else {
+    map.setView([23.8103, 90.4125], 11); // Dhaka fallback
+  }
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; OpenStreetMap contributors'
+  }).addTo(map);
+  technicians.forEach(t => {
+    if (t.lat && t.lng) {
+      const m = L.marker([t.lat, t.lng]).addTo(map);
+      m.bindPopup(`<b>${t.name}</b><br/>Updated: ${t.updated_at || ''}`);
+    }
+  });
+</script>
+{% endblock %}

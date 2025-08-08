@@ -22,3 +22,17 @@ class CustomUser(AbstractUser):
 
     def __str__(self):
         return self.username
+
+class TechnicianTracking(models.Model):
+    technician = models.OneToOneField(CustomUser, on_delete=models.CASCADE, related_name='tracking')
+    enabled = models.BooleanField(default=False, help_text="Admin-controlled: allow technician location sharing")
+    visible_to_all_customers = models.BooleanField(
+        default=False,
+        help_text="If enabled, any logged-in customer can view this technician's live location"
+    )
+    current_latitude = models.DecimalField(max_digits=9, decimal_places=6, null=True, blank=True)
+    current_longitude = models.DecimalField(max_digits=9, decimal_places=6, null=True, blank=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self) -> str:
+        return f"Tracking({self.technician.username}) - {'ON' if self.enabled else 'OFF'}"

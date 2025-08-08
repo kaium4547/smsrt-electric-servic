@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container" style="max-width: 720px; margin-top: 2rem;">
+  <div class="card shadow-sm">
+    <div class="card-body">
+      <h4 class="mb-3">নতুন অর্ডার</h4>
+      <form method="post">
+        {% csrf_token %}
+        <div class="row g-3">
+          <div class="col-md-6">
+            <label class="form-label">ফার্স্ট নেম</label>
+            <input type="text" name="first_name" class="form-control" required>
+          </div>
+          <div class="col-md-6">
+            <label class="form-label">লাস্ট নেম</label>
+            <input type="text" name="last_name" class="form-control" required>
+          </div>
+          <div class="col-md-6">
+            <label class="form-label">ইমেইল</label>
+            <input type="email" name="email" class="form-control" required>
+          </div>
+          <div class="col-md-6">
+            <label class="form-label">ফোন</label>
+            <input type="text" name="phone" class="form-control" required>
+          </div>
+          <div class="col-12">
+            <label class="form-label">ঠিকানা</label>
+            <input type="text" name="address" class="form-control" required>
+          </div>
+        </div>
+        <hr/>
+        <div class="mb-2">আপনার লোকেশন যোগ করুন (ঐচ্ছিক)</div>
+        <div class="d-flex gap-2 align-items-center mb-3">
+          <button class="btn btn-outline-primary btn-sm" type="button" id="capture-location">Capture My Location</button>
+          <span id="loc-text" class="text-muted"></span>
+        </div>
+        <input type="hidden" name="snapshot_latitude" id="snapshot_latitude"/>
+        <input type="hidden" name="snapshot_longitude" id="snapshot_longitude"/>
+        <button type="submit" class="btn btn-primary">অর্ডার সাবমিট</button>
+      </form>
+    </div>
+  </div>
+</div>
+<script>
+  document.getElementById('capture-location').addEventListener('click', () => {
+    const txt = document.getElementById('loc-text');
+    if (!navigator.geolocation) {
+      txt.textContent = 'Geolocation not supported';
+      return;
+    }
+    txt.textContent = 'Locating...';
+    navigator.geolocation.getCurrentPosition(pos => {
+      const { latitude, longitude } = pos.coords;
+      document.getElementById('snapshot_latitude').value = latitude.toFixed(6);
+      document.getElementById('snapshot_longitude').value = longitude.toFixed(6);
+      txt.textContent = `Lat: ${latitude.toFixed(6)}, Lng: ${longitude.toFixed(6)}`;
+    }, err => {
+      txt.textContent = 'Permission denied';
+    })
+  });
+</script>
+{% endblock %}
