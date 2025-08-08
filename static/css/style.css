@@ -1054,6 +1054,8 @@ footer.bg-light{background:#eaecef !important;}
   .hero-illustration { max-width: 100%; }
 }
 
+@media (max-width: 576px){ .hero-banner .hero-img{max-height: 320px;} .hero-banner .hero-caption{bottom:10%;} }
+
 /* --- Brand Navbar --- */
 .ses-navbar {
   --bg: #18191a;
