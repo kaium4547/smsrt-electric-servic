@@ -2,7 +2,7 @@
 
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
-from .models import CustomUser, TechnicianTracking, ContactMessage
+from .models import CustomUser, TechnicianTracking, ContactMessage, SupportChatMessage
 
 @admin.register(CustomUser)
 class CustomUserAdmin(UserAdmin):
@@ -22,6 +22,12 @@ class TechnicianTrackingAdmin(admin.ModelAdmin):
 
 @admin.register(ContactMessage)
 class ContactMessageAdmin(admin.ModelAdmin):
-    list_display = ('name', 'email', 'phone', 'created_at', 'latitude', 'longitude')
+    list_display = ('name', 'email', 'phone', 'category', 'created_at', 'latitude', 'longitude')
     search_fields = ('name','email','phone','subject','message')
-    list_filter = ('created_at',)
+    list_filter = ('created_at','category')
+
+@admin.register(SupportChatMessage)
+class SupportChatMessageAdmin(admin.ModelAdmin):
+    list_display = ('name', 'email', 'category', 'created_at')
+    search_fields = ('name','email','message')
+    list_filter = ('created_at','category')

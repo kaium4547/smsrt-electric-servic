@@ -21,21 +21,28 @@
     <div class="col-lg-7">
       <div class="card shadow-sm h-100">
         <div class="p-3 border-bottom"><strong>চ্যাট বক্স</strong> — আপনার সমস্যাটি লিখে পাঠান</div>
-        <div class="p-3" style="max-height: 360px; overflow:auto; background:#f8fafc; border-bottom:1px solid #e5e7eb;">
-          <div class="small text-muted">নতুন মেসেজ পাঠালে আমরা ইমেইলে রিপ্লাই করবো।</div>
-        </div>
+        <div id="chat-log" class="p-3" style="max-height: 360px; overflow:auto; background:#f8fafc; border-bottom:1px solid #e5e7eb;"></div>
         <form class="p-3" method="post" action="{% url 'contact' %}">
           {% csrf_token %}
           <div class="row g-2">
             <div class="col-md-6"><input class="form-control" name="name" placeholder="আপনার নাম" required></div>
             <div class="col-md-6"><input class="form-control" type="email" name="email" placeholder="আপনার ইমেইল" required></div>
             <div class="col-md-6"><input class="form-control" name="phone" placeholder="ফোন (ঐচ্ছিক)"></div>
-            <div class="col-md-6"><input class="form-control" name="subject" placeholder="বিষয় (ঐচ্ছিক)"></div>
+            <div class="col-md-6"><select class="form-select" name="category">
+              <option value="electrical">ইলেকট্রিক্যাল কাজ</option>
+              <option value="solar">সোলার সলিউশন</option>
+              <option value="cctv">সিসিটিভি/সিকিউরিটি</option>
+              <option value="ac">এসি সার্ভিস</option>
+              <option value="ips">আইপিএস/পাওয়ার ব্যাকআপ</option>
+              <option value="fridge">রেফ্রিজারেটর/অ্যাপ্লায়েন্স</option>
+              <option value="plumbing">প্লাম্বিং/পাইপিং</option>
+              <option value="other" selected>অন্যান্য</option>
+            </select></div>
             <div class="col-12"><textarea class="form-control" name="message" rows="4" placeholder="সমস্যার বিস্তারিত লিখুন" required></textarea></div>
             <input type="hidden" id="latitude" name="latitude">
             <input type="hidden" id="longitude" name="longitude">
           </div>
-          <div class="d-flex gap-2 mt-2">
+          <div class="d-flex gap-2 mt-2 flex-wrap">
             <button type="button" id="capture-loc" class="btn btn-outline-primary btn-sm">লোকেশন যোগ করুন</button>
             <button type="submit" class="btn btn-brand">মেসেজ পাঠান</button>
             <a class="btn btn-success" target="_blank" href="https://wa.me/8801888168759">WhatsApp</a>
@@ -46,7 +53,45 @@
     </div>
   </div>
 </div>
+
+<!-- Floating WS chat (Messenger-like) -->
+<div id="floating-chat" style="position:fixed; right:16px; bottom:16px; width:320px; max-width:92vw; z-index:1050;">
+  <div class="card shadow">
+    <div class="card-header py-2 d-flex justify-content-between align-items-center">
+      <strong>Live Chat</strong>
+      <button class="btn btn-sm btn-outline-secondary" onclick="document.getElementById('chat-body').classList.toggle('d-none')">—</button>
+    </div>
+    <div id="chat-body" class="card-body" style="max-height: 300px; overflow:auto;">
+      <div id="ws-log" class="small text-muted">মেসেজ লিখে পাঠান...</div>
+    </div>
+    <div class="card-footer">
+      <div class="mb-2"><select id="ws-category" class="form-select form-select-sm">
+        <option value="electrical">ইলেকট্রিক্যাল কাজ</option>
+        <option value="solar">সোলার</option>
+        <option value="cctv">সিসিটিভি</option>
+        <option value="ac">এসি</option>
+        <option value="ips">আইপিএস</option>
+        <option value="plumbing">প্লাম্বিং</option>
+        <option value="other" selected>অন্যান্য</option>
+      </select></div>
+      <div class="input-group input-group-sm">
+        <input id="ws-name" class="form-control" placeholder="নাম (ঐচ্ছিক)">
+        <input id="ws-email" class="form-control" placeholder="ইমেইল (ঐচ্ছিক)">
+      </div>
+      <div class="input-group input-group-sm mt-2">
+        <input id="ws-text" class="form-control" placeholder="আপনার মেসেজ...">
+        <button id="ws-send" class="btn btn-primary">Send</button>
+      </div>
+      <div class="form-check mt-2">
+        <input class="form-check-input" type="checkbox" value="1" id="ws-attach-loc">
+        <label class="form-check-label small" for="ws-attach-loc">লোকেশন সংযুক্ত করুন</label>
+      </div>
+    </div>
+  </div>
+</div>
+
 <script>
+  // Location capture for form
   document.getElementById('capture-loc').addEventListener('click', () => {
     const lt = document.getElementById('latitude');
     const ln = document.getElementById('longitude');
@@ -56,8 +101,38 @@
     navigator.geolocation.getCurrentPosition(pos => {
       lt.value = pos.coords.latitude.toFixed(6);
       ln.value = pos.coords.longitude.toFixed(6);
-      txt.textContent = `লোকেশন যুক্ত করা হয়েছে: ${lt.value}, ${ln.value}`;
+      txt.textContent = `লোকেশন যুক্ত: ${lt.value}, ${ln.value}`;
     }, err => { txt.textContent = 'লোকেশন অনুমতি পাওয়া যায়নি'; });
   });
+
+  // WebSocket chat
+  const ws = new WebSocket((location.protocol==='https:'?'wss':'ws')+'://'+location.host+'/ws/support-chat/');
+  const wsLog = document.getElementById('ws-log');
+  function append(msg){
+    const p = document.createElement('div');
+    p.innerHTML = msg;
+    wsLog.appendChild(p);
+    wsLog.scrollTop = wsLog.scrollHeight;
+  }
+  ws.onmessage = (e)=>{
+    try{ const d = JSON.parse(e.data); append(`<b>${d.name}</b>: ${d.message}`); }catch(err){}
+  };
+  document.getElementById('ws-send').onclick = ()=>{
+    const name = document.getElementById('ws-name').value;
+    const email = document.getElementById('ws-email').value;
+    const category = document.getElementById('ws-category').value;
+    const text = document.getElementById('ws-text').value;
+    if(!text) return;
+    const payload = {type:'message', name, email, category, message:text};
+    if(document.getElementById('ws-attach-loc').checked && navigator.geolocation){
+      navigator.geolocation.getCurrentPosition(pos=>{
+        payload.lat = +pos.coords.latitude.toFixed(6);
+        payload.lng = +pos.coords.longitude.toFixed(6);
+        ws.send(JSON.stringify(payload));
+      }, ()=> ws.send(JSON.stringify(payload)));
+    } else { ws.send(JSON.stringify(payload)); }
+    append(`<span style='color:#0a1f44'><b>Me</b>: ${text}</span>`);
+    document.getElementById('ws-text').value='';
+  };
 </script>
 {% endblock %}
