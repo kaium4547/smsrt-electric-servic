@@ -38,6 +38,7 @@
               <option value="plumbing">প্লাম্বিং/পাইপিং</option>
               <option value="other" selected>অন্যান্য</option>
             </select></div>
+            <div class="col-md-6"><input class="form-control" name="address" placeholder="ঠিকানা (ঐচ্ছিক)"></div>
             <div class="col-12"><textarea class="form-control" name="message" rows="4" placeholder="সমস্যার বিস্তারিত লিখুন" required></textarea></div>
             <input type="hidden" id="latitude" name="latitude">
             <input type="hidden" id="longitude" name="longitude">
@@ -122,8 +123,10 @@
     const email = document.getElementById('ws-email').value;
     const category = document.getElementById('ws-category').value;
     const text = document.getElementById('ws-text').value;
+    const address = document.querySelector('input[name="address"]').value;
     if(!text) return;
     const payload = {type:'message', name, email, category, message:text};
+    if(address) payload.address = address;
     if(document.getElementById('ws-attach-loc').checked && navigator.geolocation){
       navigator.geolocation.getCurrentPosition(pos=>{
         payload.lat = +pos.coords.latitude.toFixed(6);

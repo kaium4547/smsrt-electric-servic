@@ -70,8 +70,10 @@ def contact_view(request):
         name = request.POST.get('name')
         email = request.POST.get('email')
         phone = request.POST.get('phone')
+        category = request.POST.get('category') or 'other'
         subject = request.POST.get('subject')
         message = request.POST.get('message')
+        address = request.POST.get('address')
         lat = request.POST.get('latitude')
         lng = request.POST.get('longitude')
         try:
@@ -79,8 +81,10 @@ def contact_view(request):
                 name=name,
                 email=email,
                 phone=phone or None,
+                category=category,
                 subject=subject or None,
                 message=message,
+                address=address or None,
                 latitude=float(lat) if lat else None,
                 longitude=float(lng) if lng else None,
             )
