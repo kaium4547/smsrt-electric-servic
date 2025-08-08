@@ -36,3 +36,19 @@ class TechnicianTracking(models.Model):
 
     def __str__(self) -> str:
         return f"Tracking({self.technician.username}) - {'ON' if self.enabled else 'OFF'}"
+
+class ContactMessage(models.Model):
+    name = models.CharField(max_length=120)
+    email = models.EmailField()
+    phone = models.CharField(max_length=20, blank=True, null=True)
+    subject = models.CharField(max_length=150, blank=True, null=True)
+    message = models.TextField()
+    latitude = models.DecimalField(max_digits=9, decimal_places=6, null=True, blank=True)
+    longitude = models.DecimalField(max_digits=9, decimal_places=6, null=True, blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ('-created_at',)
+
+    def __str__(self) -> str:
+        return f"ContactMessage({self.name}, {self.email})"

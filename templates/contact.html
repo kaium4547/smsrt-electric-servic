@@ -1,59 +1,63 @@
 {% extends 'base.html' %}
 {% block content %}
-<div class="container" style="max-width: 920px; margin-top: 2rem;">
-  <div class="card shadow-sm">
-    <div class="row g-0">
-      <div class="col-md-6 p-4">
-        <h3 class="mb-3">যোগাযোগ</h3>
-        <div class="mb-3">
-          <div class="d-flex align-items-center mb-2">
-            <span class="me-2">📞</span>
-            <div>
-              <div class="fw-semibold">মোবাইল নম্বর (Business)</div>
-              <a href="tel:+8801888168759">01888186759</a>
-            </div>
+<div class="container" style="max-width: 1100px; margin-top: 2rem;">
+  <div class="row g-3">
+    <div class="col-lg-5">
+      <div class="card shadow-sm h-100">
+        <div class="p-4">
+          <h3 class="mb-3">যোগাযোগ</h3>
+          <div class="mb-3">
+            <div class="d-flex align-items-center mb-2"><span class="me-2">📞</span><div><div class="fw-semibold">মোবাইল (Business)</div><a href="tel:+8801888168759">01888186759</a></div></div>
+            <div class="d-flex align-items-center mb-2"><span class="me-2">📞</span><div><div class="fw-semibold">মোবাইল (Personal)</div><a href="tel:+8801890674547">01890674547</a></div></div>
+            <div class="d-flex align-items-center mb-2"><span class="me-2">📧</span><div><div class="fw-semibold">ইমেইল</div><a href="mailto:smartelectricservice4547@gmail.com">smartelectricservice4547@gmail.com</a></div></div>
+            <div class="d-flex align-items-center mb-2"><span class="me-2">📍</span><div><div class="fw-semibold">ঠিকানা</div><div>ব্রাহ্মণপাড়া, কুমিল্লা</div></div></div>
           </div>
-          <div class="d-flex align-items-center mb-2">
-            <span class="me-2">📞</span>
-            <div>
-              <div class="fw-semibold">মোবাইল নম্বর (Personal)</div>
-              <a href="tel:+8801890674547">01890674547</a>
-            </div>
+          <div class="ratio ratio-4x3 rounded" style="overflow:hidden;">
+            <iframe src="https://www.openstreetmap.org/export/embed.html?bbox=91.00%2C23.40%2C91.15%2C23.52&layer=mapnik" style="border:0;"></iframe>
           </div>
-          <div class="d-flex align-items-center mb-2">
-            <span class="me-2">📧</span>
-            <div>
-              <div class="fw-semibold">ইমেইল</div>
-              <a href="mailto:smartelectricservice4547@gmail.com">smartelectricservice4547@gmail.com</a>
-            </div>
-          </div>
-          <div class="d-flex align-items-center mb-2">
-            <span class="me-2">📍</span>
-            <div>
-              <div class="fw-semibold">ঠিকানা</div>
-              <div>ব্রাহ্মণপাড়া, কুমিল্লা</div>
-            </div>
-          </div>
-        </div>
-        <div class="d-flex gap-2 mt-3">
-          <a class="btn btn-success" target="_blank" href="https://wa.me/8801888168759">WhatsApp (Business)</a>
-          <a class="btn btn-outline-primary" target="_blank" href="https://www.google.com/maps/dir/?api=1&destination=%E0%A6%AC%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%B9%E0%A7%8D%E0%A6%AE%E0%A6%A3%E0%A6%AA%E0%A6%BE%E0%A7%9C%E0%A6%BE%2C%20%E0%A6%95%E0%A7%81%E0%A6%AE%E0%A6%BF%E0%A6%B2%E0%A7%8D%E0%A6%B2%E0%A6%BE">Get Directions</a>
         </div>
       </div>
-      <div class="col-md-6">
-        <div id="map" style="height: 100%; min-height: 420px; border-radius: 0 0 8px 0;"></div>
+    </div>
+    <div class="col-lg-7">
+      <div class="card shadow-sm h-100">
+        <div class="p-3 border-bottom"><strong>চ্যাট বক্স</strong> — আপনার সমস্যাটি লিখে পাঠান</div>
+        <div class="p-3" style="max-height: 360px; overflow:auto; background:#f8fafc; border-bottom:1px solid #e5e7eb;">
+          <div class="small text-muted">নতুন মেসেজ পাঠালে আমরা ইমেইলে রিপ্লাই করবো।</div>
+        </div>
+        <form class="p-3" method="post" action="{% url 'contact' %}">
+          {% csrf_token %}
+          <div class="row g-2">
+            <div class="col-md-6"><input class="form-control" name="name" placeholder="আপনার নাম" required></div>
+            <div class="col-md-6"><input class="form-control" type="email" name="email" placeholder="আপনার ইমেইল" required></div>
+            <div class="col-md-6"><input class="form-control" name="phone" placeholder="ফোন (ঐচ্ছিক)"></div>
+            <div class="col-md-6"><input class="form-control" name="subject" placeholder="বিষয় (ঐচ্ছিক)"></div>
+            <div class="col-12"><textarea class="form-control" name="message" rows="4" placeholder="সমস্যার বিস্তারিত লিখুন" required></textarea></div>
+            <input type="hidden" id="latitude" name="latitude">
+            <input type="hidden" id="longitude" name="longitude">
+          </div>
+          <div class="d-flex gap-2 mt-2">
+            <button type="button" id="capture-loc" class="btn btn-outline-primary btn-sm">লোকেশন যোগ করুন</button>
+            <button type="submit" class="btn btn-brand">মেসেজ পাঠান</button>
+            <a class="btn btn-success" target="_blank" href="https://wa.me/8801888168759">WhatsApp</a>
+          </div>
+          <div id="loc-text" class="small text-muted mt-1"></div>
+        </form>
       </div>
     </div>
   </div>
 </div>
-
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin=""/>
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
 <script>
-  const map = L.map('map').setView([23.4619, 91.0973], 12);
-  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '&copy; OpenStreetMap contributors'
-  }).addTo(map);
-  L.marker([23.4619, 91.0973]).addTo(map).bindPopup('ব্রাহ্মণপাড়া, কুমিল্লা');
+  document.getElementById('capture-loc').addEventListener('click', () => {
+    const lt = document.getElementById('latitude');
+    const ln = document.getElementById('longitude');
+    const txt = document.getElementById('loc-text');
+    if (!navigator.geolocation) { txt.textContent = 'Geolocation not supported'; return; }
+    txt.textContent = 'লোকেশন নিচ্ছে...';
+    navigator.geolocation.getCurrentPosition(pos => {
+      lt.value = pos.coords.latitude.toFixed(6);
+      ln.value = pos.coords.longitude.toFixed(6);
+      txt.textContent = `লোকেশন যুক্ত করা হয়েছে: ${lt.value}, ${ln.value}`;
+    }, err => { txt.textContent = 'লোকেশন অনুমতি পাওয়া যায়নি'; });
+  });
 </script>
 {% endblock %}

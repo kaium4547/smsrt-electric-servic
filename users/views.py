@@ -4,7 +4,7 @@ from django.contrib import messages
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse, HttpResponseBadRequest
-from .models import CustomUser, TechnicianTracking
+from .models import CustomUser, TechnicianTracking, ContactMessage
 
 
 def user_login(request):
@@ -63,6 +63,32 @@ def user_signup(request):
             messages.error(request, f'সাইনআপে সমস্যা হয়েছে: {str(e)}')
     
     return render(request, 'signup.html')
+
+
+def contact_view(request):
+    if request.method == 'POST':
+        name = request.POST.get('name')
+        email = request.POST.get('email')
+        phone = request.POST.get('phone')
+        subject = request.POST.get('subject')
+        message = request.POST.get('message')
+        lat = request.POST.get('latitude')
+        lng = request.POST.get('longitude')
+        try:
+            ContactMessage.objects.create(
+                name=name,
+                email=email,
+                phone=phone or None,
+                subject=subject or None,
+                message=message,
+                latitude=float(lat) if lat else None,
+                longitude=float(lng) if lng else None,
+            )
+            messages.success(request, 'আপনার বার্তা পেয়েছি! ধন্যবাদ।')
+            return redirect('contact')
+        except Exception as e:
+            messages.error(request, f'বার্তা পাঠাতে সমস্যা: {e}')
+    return render(request, 'contact.html')
 
 
 @login_required
