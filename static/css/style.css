@@ -1097,3 +1097,13 @@ footer.bg-light{background:#eaecef !important;}
 /* Section headings */
 .section-heading{ font-weight:800; color:var(--primary); }
 .subtext{ color:#475569; }
+
+/* Hero carousel */
+.hero-banner .hero-img{max-height: 460px; object-fit: cover; filter: contrast(105%);} 
+.hero-banner .hero-caption{left:5%; right:auto; bottom:14%; text-shadow:0 2px 12px #0008;}
+.hero-banner .hero-title{color:#fff; font-weight:800;}
+.hero-banner .hero-subtitle{color:#e5e7eb;}
+
+/* Login card accent */
+.card.hoverable .btn-brand{ background: var(--secondary); color:#111; border-color: var(--secondary); }
+.card.hoverable .btn-brand:hover{ background:#ffdf3a; border-color:#ffdf3a; }

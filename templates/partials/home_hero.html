@@ -1,14 +1,52 @@
-<section class="hero-banner py-5">
-  <div class="container d-flex flex-column flex-md-row align-items-center justify-content-between">
-    <div class="me-md-4 mb-4 mb-md-0" style="max-width: 640px;">
-      <h1 class="hero-title mb-3">নির্ভরযোগ্য ইলেকট্রিক ও প্লাম্বিং সমাধান</h1>
-      <p class="hero-subtitle mb-4">বাসা-বাড়ি, অফিস ও ইন্ডাস্ট্রির জন্য সম্পূর্ণ সার্ভিস। দ্রুত, বিশ্বস্ত এবং দক্ষ টিম।</p>
-      <div class="hero-cta d-flex gap-2 flex-wrap">
-        <a class="btn btn-brand" href="{% url 'orders:order_create' %}">সার্ভিস বুক করুন</a>
-        <a class="btn btn-outline-brand" href="{% url 'services:service_list' %}">সার্ভিস দেখুন</a>
-        <a class="btn btn-outline-info" href="{% url 'users:technicians_map' %}">টেকনিশিয়ান ম্যাপ</a>
+<section class="hero-banner">
+  <div id="homeHero" class="carousel slide" data-bs-ride="carousel" data-bs-interval="5000">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#homeHero" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#homeHero" data-bs-slide-to="1" aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#homeHero" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    </div>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="https://placehold.co/1400x420" class="d-block w-100 hero-img" alt="Slide 1">
+        <div class="carousel-caption hero-caption text-start">
+          <h1 class="hero-title">নির্ভরযোগ্য ইলেকট্রিক সার্ভিস</h1>
+          <p class="hero-subtitle">ওয়্যারিং থেকে ইনস্টলেশন—সবকিছু এক জায়গায়</p>
+          <div class="d-flex gap-2 flex-wrap">
+            <a class="btn btn-brand" href="{% url 'orders:order_create' %}">সার্ভিস বুক করুন</a>
+            <a class="btn btn-outline-brand" href="{% url 'services:service_list' %}">সার্ভিস দেখুন</a>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img src="https://placehold.co/1400x420/0a1f44/ffffff" class="d-block w-100 hero-img" alt="Slide 2">
+        <div class="carousel-caption hero-caption text-start">
+          <h1 class="hero-title">সোলার, সিসিটিভি, এসি ও আরও</h1>
+          <p class="hero-subtitle">প্রফেশনাল টিম দ্বারা দ্রুত সার্ভিস</p>
+          <div class="d-flex gap-2 flex-wrap">
+            <a class="btn btn-brand" href="{% url 'orders:order_create' %}">সার্ভিস বুক করুন</a>
+            <a class="btn btn-outline-brand" href="{% url 'users:technicians_map' %}">লাইভ টেকনিশিয়ান ম্যাপ</a>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img src="https://placehold.co/1400x420/f5f5f5/0a1f44" class="d-block w-100 hero-img" alt="Slide 3">
+        <div class="carousel-caption hero-caption text-start">
+          <h1 class="hero-title">২৪/৭ সাপোর্ট ও জরুরি সার্ভিস</h1>
+          <p class="hero-subtitle">হোয়াটসঅ্যাপ বা কল করে এখনই যোগাযোগ করুন</p>
+          <div class="d-flex gap-2 flex-wrap">
+            <a class="btn btn-success" href="https://wa.me/8801888168759" target="_blank">WhatsApp</a>
+            <a class="btn btn-outline-primary" href="tel:+8801888168759">Call Now</a>
+          </div>
+        </div>
       </div>
     </div>
-    <img src="https://placehold.co/520x260" class="hero-illustration img-fluid rounded shadow" alt="Hero Illustration"/>
+    <button class="carousel-control-prev" type="button" data-bs-target="#homeHero" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#homeHero" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
   </div>
 </section>
