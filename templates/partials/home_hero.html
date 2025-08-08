@@ -1,10 +1,11 @@
 {% load static %}
 <section class="hero-banner">
-  <div id="homeHero" class="carousel slide" data-bs-ride="carousel" data-bs-interval="5000">
+  <div id="homeHero" class="carousel slide" data-bs-ride="carousel" data-bs-interval="4500" data-bs-touch="true" data-bs-pause="false">
     <div class="carousel-indicators">
       <button type="button" data-bs-target="#homeHero" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
       <button type="button" data-bs-target="#homeHero" data-bs-slide-to="1" aria-label="Slide 2"></button>
       <button type="button" data-bs-target="#homeHero" data-bs-slide-to="2" aria-label="Slide 3"></button>
+      <button type="button" data-bs-target="#homeHero" data-bs-slide-to="3" aria-label="Slide 4"></button>
     </div>
     <div class="carousel-inner">
       <!-- Slide 1 -->
@@ -37,7 +38,7 @@
           </div>
         </div>
       </div>
-      <!-- Slide 3 (reuse banner with brand overlay color via css) -->
+      <!-- Slide 3 -->
       <div class="carousel-item">
         <picture>
           <source media="(max-width: 576px)" srcset="{% static 'images/banner1.png' %}">
@@ -52,6 +53,18 @@
           </div>
         </div>
       </div>
+      <!-- Slide 4 (brand color block with logo) -->
+      <div class="carousel-item">
+        <div class="d-block w-100 hero-img" style="background:linear-gradient(120deg,var(--primary),#0f2d63); height: 100%; min-height: 380px;"></div>
+        <div class="carousel-caption hero-caption text-start">
+          <h1 class="hero-title">স্মার্ট ইলেকট্রিক সার্ভিস</h1>
+          <p class="hero-subtitle">বিশ্বস্ত টেকনিশিয়ান • দ্রুত সার্ভিস • সাশ্রয়ী মূল্য</p>
+          <div class="d-flex gap-2 flex-wrap">
+            <a class="btn btn-brand" href="{% url 'orders:order_create' %}">বুকিং করুন</a>
+            <a class="btn btn-outline-brand" href="{% url 'contact' %}">যোগাযোগ</a>
+          </div>
+        </div>
+      </div>
     </div>
     <button class="carousel-control-prev" type="button" data-bs-target="#homeHero" data-bs-slide="prev">
       <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -61,5 +74,15 @@
       <span class="carousel-control-next-icon" aria-hidden="true"></span>
       <span class="visually-hidden">Next</span>
     </button>
+  </div>
+
+  <!-- Feature strip under slider -->
+  <div class="container py-3">
+    <div class="row g-3">
+      <div class="col-6 col-md-3"><div class="card hoverable h-100"><div class="card-body py-3"><div class="small">⚡ দ্রুত সার্ভিস</div></div></div></div>
+      <div class="col-6 col-md-3"><div class="card hoverable h-100"><div class="card-body py-3"><div class="small">✅ ভেরিফাইড টেকনিশিয়ান</div></div></div></div>
+      <div class="col-6 col-md-3"><div class="card hoverable h-100"><div class="card-body py-3"><div class="small">💬 WhatsApp সাপোর্ট</div></div></div></div>
+      <div class="col-6 col-md-3"><div class="card hoverable h-100"><div class="card-body py-3"><div class="small">🛡️ সাশ্রয়ী ও নির্ভরযোগ্য</div></div></div></div>
+    </div>
   </div>
 </section>
