@@ -994,3 +994,49 @@ body {
         padding: 18px 8px;
     }
 }
+
+/* --- Hero Banner (brand) --- */
+.hero-banner {
+  background: radial-gradient(1200px 600px at 10% 20%, #202124, #161718 60%);
+  border-bottom: 2px solid #2a2b2c;
+}
+.hero-title {
+  color: #ffffff;
+  font-family: 'Orbitron', Arial, sans-serif;
+  font-weight: 900;
+  letter-spacing: 1px;
+  line-height: 1.2;
+  font-size: clamp(1.6rem, 2.6vw + 1rem, 3rem);
+}
+.hero-subtitle {
+  color: #e6e6e6;
+  font-size: clamp(0.95rem, 0.6vw + 0.8rem, 1.2rem);
+}
+.btn-brand {
+  background: #ff9000;
+  color: #161718;
+  border: 2px solid #ff9000;
+  font-weight: 800;
+}
+.btn-brand:hover {
+  background: #ff9f1a;
+  border-color: #ff9f1a;
+  color: #111;
+}
+.btn-outline-brand {
+  background: transparent;
+  color: #ff9000;
+  border: 2px solid #ff9000;
+  font-weight: 800;
+}
+.btn-outline-brand:hover {
+  background: #ff900011;
+  color: #ffd8a6;
+  border-color: #ffad33;
+}
+.hero-illustration { max-width: 520px; }
+
+@media (max-width: 768px) {
+  .hero-banner { padding-top: 2rem; padding-bottom: 2rem; }
+  .hero-illustration { max-width: 100%; }
+}
