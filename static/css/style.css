@@ -1100,11 +1100,19 @@ footer.bg-light{background:#eaecef !important;}
 .section-heading{ font-weight:800; color:var(--primary); }
 .subtext{ color:#475569; }
 
-/* Hero carousel */
-.hero-banner .hero-img{max-height: 460px; object-fit: cover; filter: contrast(105%);} 
-.hero-banner .hero-caption{left:5%; right:auto; bottom:14%; text-shadow:0 2px 12px #0008;}
-.hero-banner .hero-title{color:#fff; font-weight:800;}
-.hero-banner .hero-subtitle{color:#e5e7eb;}
+/* Hero carousel (enhanced) */
+.hero-banner { position: relative; }
+.hero-banner .carousel-item{ position: relative; }
+.hero-banner .carousel-item::after{ content:""; position:absolute; inset:0; background:linear-gradient(180deg, rgba(0,0,0,.35), rgba(0,0,0,.35)); }
+.hero-banner .hero-img{ max-height: 560px; object-fit: cover; filter: contrast(107%) saturate(103%); }
+.hero-banner .hero-caption{ left:5%; right:auto; bottom:16%; text-shadow:0 2px 12px #0008; background: rgba(10,31,68,.45); backdrop-filter: blur(4px); padding:18px 20px; border-radius:12px; }
+.hero-banner .hero-title{ color:#fff; font-weight:800; font-size: clamp(1.4rem, 2.4vw + 1rem, 2.6rem); }
+.hero-banner .hero-subtitle{ color:#e5e7eb; font-size: clamp(.95rem, .6vw + .8rem, 1.1rem); }
+
+@media (max-width: 768px){
+  .hero-banner .hero-img{ max-height: 380px; }
+  .hero-banner .hero-caption{ bottom: 12%; padding:14px 16px; }
+}
 
 /* Login card accent */
 .card.hoverable .btn-brand{ background: var(--secondary); color:#111; border-color: var(--secondary); }
