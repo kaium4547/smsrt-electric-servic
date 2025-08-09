@@ -151,3 +151,72 @@ document.addEventListener('DOMContentLoaded', function() {
     initHeroSlider();
   }
 })();
+
+// Service Request Modal + Submit
+(function(){
+  function getCookie(name) {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop().split(';').shift();
+  }
+
+  function initServiceRequestModal(){
+    const modal = document.getElementById('serviceRequestModal');
+    if (!modal) return;
+    const form = document.getElementById('serviceRequestForm');
+    const successBox = document.getElementById('requestSuccess');
+    const serviceIdInput = document.getElementById('requestServiceId');
+    const titleEl = document.getElementById('requestModalTitle');
+
+    function openModal(serviceId, serviceName){
+      serviceIdInput.value = serviceId;
+      titleEl.textContent = `সার্ভিস রিকোয়েস্ট - ${serviceName}`;
+      modal.classList.add('show');
+      modal.style.display = 'block';
+    }
+    function closeModal(){
+      modal.classList.remove('show');
+      modal.style.display = 'none';
+      successBox.style.display = 'none';
+      form.reset();
+    }
+
+    document.querySelectorAll('[data-open-request-modal]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const sid = btn.getAttribute('data-service-id');
+        const sname = btn.getAttribute('data-service-name') || 'Service';
+        openModal(sid, sname);
+      });
+    });
+    modal.querySelectorAll('[data-close-request-modal]').forEach(el => el.addEventListener('click', closeModal));
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const formData = new FormData(form);
+      try {
+        const resp = await fetch(form.action, {
+          method: 'POST',
+          headers: { 'X-CSRFToken': getCookie('csrftoken') || '' },
+          body: formData,
+        });
+        if (!resp.ok) throw new Error('Network error');
+        const data = await resp.json();
+        if (data.success) {
+          successBox.style.display = 'block';
+          setTimeout(() => { closeModal(); }, 1500);
+        } else {
+          alert('দুঃখিত, রিকোয়েস্ট নেয়া যায়নি। পরে চেষ্টা করুন');
+        }
+      } catch(err) {
+        alert('সমস্যা হয়েছে। পরে চেষ্টা করুন');
+        console.error(err);
+      }
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initServiceRequestModal);
+  } else {
+    initServiceRequestModal();
+  }
+})();

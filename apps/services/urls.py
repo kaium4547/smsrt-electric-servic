@@ -7,5 +7,6 @@ app_name = 'services' # namespace for services app
 
 urlpatterns = [
     path('', views.service_list, name='service_list'),
+    path('request/', views.create_service_request, name='create_request'),
     path('<int:id>/<slug:slug>/', views.service_detail, name='service_detail'),
 ]

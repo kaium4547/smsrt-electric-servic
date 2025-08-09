@@ -14,7 +14,7 @@ urlpatterns = [
     path('contact/', TemplateView.as_view(template_name='contact.html'), name='contact'),
     path('login/', user_views.user_login, name='login'),
     path('signup/', user_views.user_signup, name='signup'),
-    path('customer-dashboard/', TemplateView.as_view(template_name='customer-dashboard.html'), name='customer_dashboard'),
+    path('customer-dashboard/', user_views.customer_dashboard, name='customer_dashboard'),
     path('technician-dashboard/', TemplateView.as_view(template_name='technician-dashboard.html'), name='technician_dashboard'),
 ]
 
