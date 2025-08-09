@@ -77,3 +77,77 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // আরও ইন্টারেক্টিভ ফাংশন এখানে যোগ করা হবে (যেমন স্লাইডার, কার্ট ফাংশনালিটি)
 });
+
+// Hero Slider Logic
+(function() {
+  function initHeroSlider() {
+    const slider = document.querySelector('.hero-slider');
+    if (!slider) return;
+
+    const slides = slider.querySelectorAll('.slide');
+    const prevBtn = slider.querySelector('.slider-control.prev');
+    const nextBtn = slider.querySelector('.slider-control.next');
+    const dotsContainer = slider.querySelector('.slider-dots');
+
+    if (slides.length === 0) return;
+
+    let current = 0;
+    let timer = null;
+    const AUTOPLAY_MS = 5000;
+
+    // Build dots
+    dotsContainer.innerHTML = '';
+    slides.forEach((_, idx) => {
+      const dot = document.createElement('button');
+      dot.className = 'slider-dot' + (idx === 0 ? ' active' : '');
+      dot.setAttribute('aria-label', `Go to slide ${idx + 1}`);
+      dot.addEventListener('click', () => goTo(idx));
+      dotsContainer.appendChild(dot);
+    });
+
+    const dots = dotsContainer.querySelectorAll('.slider-dot');
+
+    function setActive(index) {
+      slides.forEach((s, i) => s.classList.toggle('active', i === index));
+      dots.forEach((d, i) => d.classList.toggle('active', i === index));
+    }
+
+    function goTo(index) {
+      current = (index + slides.length) % slides.length;
+      setActive(current);
+      restartAutoplay();
+    }
+
+    function next() { goTo(current + 1); }
+    function prev() { goTo(current - 1); }
+
+    function startAutoplay() {
+      if (timer) clearInterval(timer);
+      if (slides.length > 1) {
+        timer = setInterval(next, AUTOPLAY_MS);
+      }
+    }
+    function restartAutoplay() {
+      if (!timer) return startAutoplay();
+      clearInterval(timer);
+      startAutoplay();
+    }
+
+    prevBtn?.addEventListener('click', prev);
+    nextBtn?.addEventListener('click', next);
+
+    // Pause on hover for desktop
+    slider.addEventListener('mouseenter', () => { if (timer) clearInterval(timer); });
+    slider.addEventListener('mouseleave', startAutoplay);
+
+    // Initialize
+    setActive(current);
+    startAutoplay();
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initHeroSlider);
+  } else {
+    initHeroSlider();
+  }
+})();
