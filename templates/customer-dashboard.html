@@ -49,12 +49,59 @@
                 <div class="dashboard-content">
                     <div id="profile" class="dashboard-panel active">
                         <h3>আমার প্রোফাইল</h3>
-                        <p>নাম: [কাস্টমারের নাম]</p>
-                        <p>ইমেইল: [কাস্টমারের ইমেইল]</p>
-                        <p>ফোন: [কাস্টমারের ফোন]</p>
+                        <p>নাম: {{ request.user.first_name|default:request.user.username }}</p>
+                        <p>ইমেইল: {{ request.user.email }}</p>
+                        <p>ফোন: {{ request.user.phone_number|default:'-' }}</p>
                         <button class="btn primary-btn">প্রোফাইল এডিট করুন</button>
                     </div>
+
+                    <div id="orders" class="dashboard-panel">
+                        <h3>আমার অর্ডারসমূহ</h3>
+                        <p>শীঘ্রই আসছে...</p>
                     </div>
+
+                    <div id="service-requests" class="dashboard-panel">
+                        <h3>সার্ভিস রিকোয়েস্ট</h3>
+                        {% if service_requests %}
+                        <div class="card-box">
+                            {% for r in service_requests %}
+                            <div class="card-box" style="margin-bottom:14px;">
+                                <div style="display:flex; justify-content:space-between; gap:10px; flex-wrap:wrap;">
+                                    <div>
+                                        <strong>#{{ r.id }}</strong> — {{ r.service.name }}
+                                        <div style="font-size:0.9em; color:#ffe600;">স্ট্যাটাস: {{ r.status }}</div>
+                                    </div>
+                                    <div>
+                                        {% if r.technician %}
+                                            টেকনিশিয়ান: {{ r.technician.first_name|default:r.technician.username }}
+                                        {% else %}
+                                            টেকনিশিয়ান: এখনো অ্যাসাইন করা হয়নি
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                <div style="margin-top:6px; color:#ccc;">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    {{ r.address }}
+                                </div>
+                                <div style="margin-top:6px; display:flex; gap:10px; flex-wrap:wrap;">
+                                    {% if r.technician_latitude and r.technician_longitude %}
+                                    <a class="btn btn-outline" href="https://www.google.com/maps?q={{ r.technician_latitude }},{{ r.technician_longitude }}" target="_blank">টেকনিশিয়ানের লোকেশন</a>
+                                    {% endif %}
+                                    <a class="btn" href="#" onclick="openLiveChat(); return false;">লাইভ চ্যাট</a>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                        {% else %}
+                            <p>আপনার কোন সার্ভিস রিকোয়েস্ট নেই। সার্ভিস পেজ থেকে একটি রিকোয়েস্ট সাবমিট করুন।</p>
+                        {% endif %}
+                    </div>
+
+                    <div id="settings" class="dashboard-panel">
+                        <h3>সেটিংস</h3>
+                        <p>শীঘ্রই আসছে...</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>

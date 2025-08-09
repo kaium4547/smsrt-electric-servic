@@ -36,96 +36,81 @@
         </div>
     </section>
 
-    <section class="service-categories">
+    <section class="features-services" style="padding-top: 40px;">
         <div class="container">
-            <h2 class="section-title">আমাদের পূর্ণাঙ্গ সার্ভিস তালিকা</h2>
+            <h2 class="section-title">সার্ভিস তালিকা</h2>
 
-            <div class="category-item">
-                <h3>1️⃣ Electrical Work (ইলেকট্রিক কাজ)</h3>
-                <p>বাড়ি, দোকান বা প্রতিষ্ঠানে সম্পূর্ণ ইলেকট্রিক ওয়্যারিং ও সেটআপের কাজ।</p>
-                <ul>
-                    <li><i class="fas fa-check-circle"></i> হাউজ ওয়্যারিং</li>
-                    <li><i class="fas fa-check-circle"></i> প্লাস্টারিং ওয়্যারিং</li>
-                    <li><i class="fas fa-check-circle"></i> সুইচ, লাইট, ফ্যান ইনস্টল</li>
-                    <li><i class="fas fa-check-circle"></i> মেইন লাইন ও সাব-মেইন লাইন বসানো</li>
-                    <li><i class="fas fa-check-circle"></i> ব্রেকার, DB বোর্ড সেটআপ</li>
-                    <li><i class="fas fa-check-circle"></i> সার্কিট ডিজাইন ও লোড ক্যালকুলেশন</li>
-                </ul>
+            <div class="service-card-grid">
+                {% for service in services %}
+                <div class="service-card">
+                    <div style="display:flex; align-items:center; gap:12px;">
+                        <i class="{{ service.icon_class|default:'fas fa-tools' }}" style="font-size: 1.6rem; color:#ff9000;"></i>
+                        <h3 class="service-title">{{ service.name }}</h3>
+                    </div>
+                    {% if service.short_description %}
+                    <p class="service-desc">{{ service.short_description }}</p>
+                    {% endif %}
+                    {% if service.features.all %}
+                    <ul>
+                        {% for f in service.features.all|slice:":4" %}
+                        <li><i class="fas fa-check"></i> {{ f.feature_text }}</li>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
+                    <div style="display:flex; gap:10px; margin-top: 8px; flex-wrap: wrap;">
+                        <button class="btn" data-open-request-modal data-service-id="{{ service.id }}" data-service-name="{{ service.name }}">সার্ভিস নিন</button>
+                        <button class="btn btn-outline" data-open-request-modal data-service-id="{{ service.id }}" data-service-name="{{ service.name }}">নতুন সার্ভিস বুক করুন</button>
+                    </div>
+                </div>
+                {% empty %}
+                <p>কোন সার্ভিস পাওয়া যায়নি।</p>
+                {% endfor %}
             </div>
-
-            <div class="category-item">
-                <h3>2️⃣ Solar Panel Installation (সোলার প্যানেল ইনস্টলেশন)</h3>
-                <p>বিদ্যুৎ না থাকলেও নিরবচ্ছিন্ন পাওয়ার সাপ্লাই নিশ্চিত করার জন্য আধুনিক সৌর বিদ্যুৎ সিস্টেম।</p>
-                <ul>
-                    <li><i class="fas fa-check-circle"></i> 1KW, 3KW, 5KW সিস্টেম ডিজাইন</li>
-                    <li><i class="fas fa-check-circle"></i> প্যানেল বসানো ও কানেকশন</li>
-                    <li><i class="fas fa-check-circle"></i> ইনভার্টার ও চার্জ কন্ট্রোলার বসানো</li>
-                    <li><i class="fas fa-check-circle"></i> ব্যাটারি কনফিগারেশন</li>
-                    <li><i class="fas fa-check-circle"></i> সোলার হাউজিং প্রজেক্ট</li>
-                </ul>
-            </div>
-
-            <div class="category-item">
-                <h3>3️⃣ CCTV Camera Installation (সিসিটিভি ক্যামেরা)</h3>
-                <p>ব্যক্তিগত, দোকান বা অফিসের নিরাপত্তার জন্য সম্পূর্ণ সিসিটিভি সলিউশন।</p>
-                <ul>
-                    <li><i class="fas fa-check-circle"></i> Analog / HD / IP ক্যামেরা বসানো</li>
-                    <li><i class="fas fa-check-circle"></i> DVR/NVR সেটআপ</li>
-                    <li><i class="fas fa-check-circle"></i> মোবাইল অ্যাপের মাধ্যমে লাইভ দেখা</li>
-                    <li><i class="fas fa-check-circle"></i> ক্যামেরা সার্ভিসিং ও আপগ্রেড</li>
-                    <li><i class="fas fa-check-circle"></i> ইনডোর ও আউটডোর কভারেজ পরিকল্পনা</li>
-                </ul>
-            </div>
-
-            <div class="category-item">
-                <h3>4️⃣ AC Installation & Servicing (এসি সার্ভিস)</h3>
-                <p>AC ইনস্টলেশন ও রক্ষণাবেক্ষণের জন্য দক্ষ টেকনিশিয়ানদের মাধ্যমে কাজ।</p>
-                <ul>
-                    <li><i class="fas fa-check-circle"></i> নতুন এসি ইনস্টল</li>
-                    <li><i class="fas fa-check-circle"></i> গ্যাস রিচার্জ ও সার্ভিসিং</li>
-                    <li><i class="fas fa-check-circle"></i> কম্প্রেসার চেক ও রিপ্লেস</li>
-                    <li><i class="fas fa-check-circle"></i> ওয়াটার ড্রেইন সেটআপ</li>
-                    <li><i class="fas fa-check-circle"></i> রিমোট কনফিগারেশন</li>
-                </ul>
-            </div>
-
-            <div class="category-item">
-                <h3>5️⃣ Fridge Servicing (ফ্রিজ সার্ভিসিং)</h3>
-                <p>রেফ্রিজারেটর বা ডিপ ফ্রিজ এর সমস্যা সমাধান ও পার্টস পরিবর্তন।</p>
-                <ul>
-                    <li><i class="fas fa-check-circle"></i> কুলিং সমস্যা সমাধান</li>
-                    <li><i class="fas fa-check-circle"></i> কম্প্রেসার চেঞ্জ</li>
-                    <li><i class="fas fa-check-circle"></i> গ্যাস ফিলিং</li>
-                    <li><i class="fas fa-check-circle"></i> অটো ডিফ্রস্ট ঠিক করা</li>
-                    <li><i class="fas fa-check-circle"></i> থার্মোস্ট্যাট রিপেয়ার</li>
-                </ul>
-            </div>
-
-            <div class="category-item">
-                <h3>6️⃣ IPS Setup & Repairing (আইপিএস সার্ভিস)</h3>
-                <p>লোডশেডিং এর সময় পাওয়ার ব্যাকআপ নিশ্চিত করার জন্য IPS বসানো ও রক্ষণাবেক্ষণ।</p>
-                <ul>
-                    <li><i class="fas fa-check-circle"></i> IPS ইনস্টলেশন</li>
-                    <li><i class="fas fa-check-circle"></i> ব্যাটারি কানেকশন ও ব্যালান্স</li>
-                    <li><i class="fas fa-check-circle"></i> লোড ক্যালকুলেশন</li>
-                    <li><i class="fas fa-check-circle"></i> পুরাতন IPS রিপেয়ার</li>
-                    <li><i class="fas fa-check-circle"></i> অটো চার্জিং সিস্টেম চেক</li>
-                </ul>
-            </div>
-
-            <div class="category-item">
-                <h3>7️⃣ 🚿 Plumbing & Fittings (প্লাম্বিং ও ফিটিংস কাজ)</h3>
-                <p> নতুন ও পুরাতন বিল্ডিংয়ের সকল ধরনের আধুনিক প্লাম্বিং ও ফিটিং কাজ করি দক্ষতার সাথে।</p>
-                <ul>
-                    <li><i class="fas fa-check-circle"></i> নতুন বিল্ডিং-এর প্লাম্বিং</li>
-                    <li><i class="fas fa-check-circle"></i> পাইপ বসানো (Pipe Laying)</li>
-                    <li><i class="fas fa-check-circle"></i> ট্যাপ, শাওয়ার ও কমোড ফিটিং</li>
-                    <li><i class="fas fa-check-circle"></i> ড্রেনেজ ও সেপটিক লাইন সংযোগ</li>
-                </ul>
-            </div>
-
         </div>
     </section>
+
+    <!-- Booking Modal -->
+    <div class="modal" id="serviceRequestModal" aria-hidden="true" style="display:none;">
+        <div class="modal-backdrop" data-close-request-modal></div>
+        <div class="modal-dialog">
+            <div class="modal-header">
+                <h3 id="requestModalTitle">সার্ভিস রিকোয়েস্ট</h3>
+                <button class="modal-close" aria-label="Close" data-close-request-modal>&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="serviceRequestForm" method="post" action="{% url 'services:create_request' %}">
+                    {% csrf_token %}
+                    <input type="hidden" name="service_id" id="requestServiceId" value="">
+
+                    <div class="form-group">
+                        <label for="requestName"><i class="fas fa-user"></i> নাম</label>
+                        <input type="text" id="requestName" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="requestPhone"><i class="fas fa-phone"></i> ফোন</label>
+                        <input type="text" id="requestPhone" name="phone" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="requestEmail"><i class="fas fa-envelope"></i> ইমেইল (ঐচ্ছিক)</label>
+                        <input type="email" id="requestEmail" name="email">
+                    </div>
+                    <div class="form-group">
+                        <label for="requestAddress"><i class="fas fa-map-marker-alt"></i> ঠিকানা</label>
+                        <textarea id="requestAddress" name="address" rows="3" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="requestDetails"><i class="fas fa-info-circle"></i> সমস্যার বিবরণ (ঐচ্ছিক)</label>
+                        <textarea id="requestDetails" name="details" rows="3" placeholder="যেমন: রান্নাঘরের সুইচ বোর্ডে সমস্যা"></textarea>
+                    </div>
+
+                    <button type="submit" class="btn" style="width:100%;">রিকোয়েস্ট সাবমিট করুন</button>
+                </form>
+                <div id="requestSuccess" class="card-box" style="display:none; margin-top:12px; text-align:center;">
+                    🎉 আপনার রিকোয়েস্ট গ্রহণ করা হয়েছে! শীঘ্রই আমাদের টিম যোগাযোগ করবে।
+                </div>
+            </div>
+        </div>
+    </div>
 
     <footer class="footer">
         <div class="container">

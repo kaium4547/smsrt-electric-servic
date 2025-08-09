@@ -2,7 +2,10 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate
 from django.contrib import messages
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.decorators import login_required
 from .models import CustomUser
+from apps.services.models import ServiceRequest
+
 
 def user_login(request):
     """User login view"""
@@ -19,6 +22,7 @@ def user_login(request):
             messages.error(request, 'ভুল ইউজারনেম বা পাসওয়ার্ড!')
     
     return render(request, 'login.html')
+
 
 def user_signup(request):
     """User signup view"""
@@ -50,7 +54,8 @@ def user_signup(request):
                 email=email,
                 password=password,
                 first_name=name,
-                phone=phone,
+                # NOTE: model has phone_number field
+                phone_number=phone,
                 user_type=user_type
             )
             messages.success(request, 'সফলভাবে সাইনআপ হয়েছে! এখন লগইন করুন।')
@@ -58,4 +63,12 @@ def user_signup(request):
         except Exception as e:
             messages.error(request, f'সাইনআপে সমস্যা হয়েছে: {str(e)}')
     
-    return render(request, 'signup.html') 
+    return render(request, 'signup.html')
+
+
+@login_required
+def customer_dashboard(request):
+    requests_qs = ServiceRequest.objects.filter(user=request.user).order_by('-created')
+    return render(request, 'customer-dashboard.html', {
+        'service_requests': requests_qs
+    }) 

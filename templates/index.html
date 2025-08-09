@@ -30,16 +30,55 @@
         </div>
     </header>
 
+    <!-- Hero Slider: multiple slides with controls and dots -->
     <section class="hero-slider">
         <div class="slide active">
-            <img src="{% static 'images/banner1.png' %}" alt="Electrician at work"> {# এখানে পরিবর্তন করা হয়েছে #}
+            <img src="{% static 'images/banner1.png' %}" alt="Reliable Electric & Plumbing Services">
             <div class="hero-content">
                 <h2>নির্ভরযোগ্য ইলেকট্রিক ও প্লাম্বিং সমাধান</h2>
                 <p>বাসা-বাড়ি, অফিস ও ইন্ডাস্ট্রির জন্য সম্পূর্ণ ইলেকট্রিক ও প্লাম্বিং সার্ভিস।</p>
                 <a href="{% url 'services:service_list' %}" class="btn">আমাদের সার্ভিসেস দেখুন</a>
             </div>
         </div>
-        </section>
+        <div class="slide">
+            <img src="{% static 'images/banner1.png' %}" alt="Solar System Installation">
+            <div class="hero-content">
+                <h2>আধুনিক সোলার সিস্টেম ইনস্টলেশন</h2>
+                <p>এনার্জি সেভিং ও নিরবচ্ছিন্ন বিদ্যুৎ সরবরাহের জন্য স্মার্ট সোলার সলিউশন।</p>
+                <a href="{% url 'services:service_list' %}" class="btn">সোলার সার্ভিস দেখুন</a>
+            </div>
+        </div>
+        <div class="slide">
+            <img src="{% static 'images/banner1.png' %}" alt="CCTV and Security">
+            <div class="hero-content">
+                <h2>সিসিটিভি ও স্মার্ট সিকিউরিটি</h2>
+                <p>আপনার বাড়ি ও ব্যবসার জন্য নিরাপদ মনিটরিং ও অ্যালার্ম সিস্টেম।</p>
+                <a href="{% url 'services:service_list' %}" class="btn">সিকিউরিটি সার্ভিস দেখুন</a>
+            </div>
+        </div>
+        <div class="slide">
+            <img src="{% static 'images/banner1.png' %}" alt="AC & Cooling Services">
+            <div class="hero-content">
+                <h2>এসি ইনস্টলেশন ও কুলিং সার্ভিস</h2>
+                <p>দক্ষ টেকনিশিয়ান দ্বারা দ্রুত ইনস্টলেশন, গ্যাস রিচার্জ ও মেইনটেনেন্স।</p>
+                <a href="{% url 'services:service_list' %}" class="btn">এসি সার্ভিস দেখুন</a>
+            </div>
+        </div>
+        <div class="slide">
+            <img src="{% static 'images/banner1.png' %}" alt="Plumbing Services">
+            <div class="hero-content">
+                <h2>প্লাম্বিং ও ফিটিংস কাজ</h2>
+                <p>পাইপ বসানো, ড্রেনেজ ও বাথরুম ফিটিংস সহ সম্পূর্ণ প্লাম্বিং সাপোর্ট।</p>
+                <a href="{% url 'services:service_list' %}" class="btn">প্লাম্বিং সার্ভিস দেখুন</a>
+            </div>
+        </div>
+
+        <!-- Controls -->
+        <button class="slider-control prev" aria-label="Previous slide"><i class="fas fa-chevron-left"></i></button>
+        <button class="slider-control next" aria-label="Next slide"><i class="fas fa-chevron-right"></i></button>
+        <!-- Dots (populated by JS) -->
+        <div class="slider-dots" aria-label="Slider pagination"></div>
+    </section>
 
     <section class="features-services">
         <div class="container">
@@ -49,36 +88,43 @@
                     <i class="fas fa-bolt"></i>
                     <h3>ইলেকট্রিক কাজ</h3>
                     <p>সম্পূর্ণ হাউজ ওয়্যারিং, মেইনটেনেন্স ও ব্রেকার সেটআপ সহ সকল ইলেকট্রিক কাজ।</p>
+                    <a href="{% url 'services:service_list' %}" class="btn btn-outline">বিস্তারিত দেখুন</a>
                 </div>
                 <div class="service-item">
                     <i class="fas fa-sun"></i>
                     <h3>সোলার প্যানেল ইনস্টলেশন</h3>
                     <p>নিরবচ্ছিন্ন বিদ্যুৎ সরবরাহের জন্য আধুনিক সোলার সিস্টেম ডিজাইন ও ইনস্টল।</p>
+                    <a href="{% url 'services:service_list' %}" class="btn btn-outline">বিস্তারিত দেখুন</a>
                 </div>
                 <div class="service-item">
                     <i class="fas fa-video"></i>
                     <h3>সিসিটিভি ক্যামেরা</h3>
                     <p>আপনার নিরাপত্তা নিশ্চিত করতে আধুনিক সিসিটিভি সলিউশন ও সেটআপ।</p>
+                    <a href="{% url 'services:service_list' %}" class="btn btn-outline">বিস্তারিত দেখুন</a>
                 </div>
                 <div class="service-item">
                     <i class="fas fa-snowflake"></i>
                     <h3>এসি ইনস্টলেশন ও সার্ভিসিং</h3>
                     <p>দক্ষ টেকনিশিয়ান দ্বারা দ্রুত ও মানসম্মত এসি ইনস্টল ও গ্যাস রিচার্জ।</p>
+                    <a href="{% url 'services:service_list' %}" class="btn btn-outline">বিস্তারিত দেখুন</a>
                 </div>
                 <div class="service-item">
                     <i class="fas fa-dice-d6"></i>
                     <h3>ফ্রিজ সার্ভিসিং</h3>
                     <p>রেফ্রিজারেটর বা ডিপ ফ্রিজ এর কুলিং সমস্যা সমাধান ও পার্টস পরিবর্তন।</p>
+                    <a href="{% url 'services:service_list' %}" class="btn btn-outline">বিস্তারিত দেখুন</a>
                 </div>
                 <div class="service-item">
                     <i class="fas fa-battery-full"></i>
                     <h3>আইপিএস সার্ভিস</h3>
                     <p>লোডশেডিং এর সময় পাওয়ার ব্যাকআপ নিশ্চিত করার জন্য IPS বসানো ও রিপেয়ার।</p>
+                    <a href="{% url 'services:service_list' %}" class="btn btn-outline">বিস্তারিত দেখুন</a>
                 </div>
                 <div class="service-item">
                     <i class="fas fa-faucet"></i>
                     <h3>প্লাম্বিং ও ফিটিংস কাজ</h3>
                     <p>আধুনিক প্লাম্বিং, পাইপ বসানো, ট্যাপ ও শাওয়ার ফিটিংসহ সকল কাজ।</p>
+                    <a href="{% url 'services:service_list' %}" class="btn btn-outline">বিস্তারিত দেখুন</a>
                 </div>
             </div>
         </div>
@@ -149,33 +195,6 @@
     </footer>
 
     <script src="{% static 'js/script.js' %}"></script> {# এখানে পরিবর্তন করা হয়েছে #}
-    <script>
-        // Hero Slider JavaScript
-        document.addEventListener('DOMContentLoaded', function() {
-            const slides = document.querySelectorAll('.hero-slider .slide');
-            let currentSlide = 0;
-
-            function showSlide(index) {
-                slides.forEach((slide, i) => {
-                    if (i === index) {
-                        slide.classList.add('active');
-                    } else {
-                        slide.classList.remove('active');
-                    }
-                });
-            }
-
-            function nextSlide() {
-                currentSlide = (currentSlide + 1) % slides.length;
-                showSlide(currentSlide);
-            }
-
-            if (slides.length > 1) {
-                setInterval(nextSlide, 5000);
-            }
-
-            showSlide(currentSlide);
-        });
-    </script>
+    <!-- Inline slider JS removed; handled in static/js/script.js -->
 </body>
 </html>
