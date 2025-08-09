@@ -63,29 +63,65 @@
                     <a href="https://wa.me/8801888186759" target="_blank" class="btn primary-btn whatsapp-link">WhatsApp মেসেজ পাঠান</a>
                 </div>
             </div>
-            <div class="contact-form-section">
-                <h3 class="section-subtitle">আমাদের মেসেজ পাঠান</h3>
+            <div class="contact-form-card">
+                <h2><i class="fas fa-paper-plane"></i> বার্তা পাঠান</h2>
                 <form id="contactForm">
                     <div class="form-group">
-                        <label for="contact-name">আপনার নাম:</label>
+                        <label for="contact-name"><i class="fas fa-user"></i> আপনার নাম</label>
                         <input type="text" id="contact-name" name="name" required>
                     </div>
                     <div class="form-group">
-                        <label for="contact-email">আপনার ইমেইল:</label>
+                        <label for="contact-email"><i class="fas fa-envelope"></i> আপনার ইমেইল</label>
                         <input type="email" id="contact-email" name="email" required>
                     </div>
+                    <div class="form-group location-row">
+                        <div>
+                            <label for="contact-location"><i class="fas fa-location-dot"></i> আপনার লোকেশন</label>
+                            <input type="text" id="contact-location" name="location" placeholder="আপনার ঠিকানা বা লোকেশন লিখুন">
+                            <a id="openMapLink" href="#" target="_blank">Google Maps-এ লোকেশন খুলুন</a>
+                        </div>
+                        <button type="button" class="btn" id="detectLocationBtn"><i class="fas fa-crosshairs"></i> লোকেশন নিন</button>
+                    </div>
                     <div class="form-group">
-                        <label for="contact-message">আপনার মেসেজ:</label>
-                        <textarea id="contact-message" name="message" rows="5" required></textarea>
+                        <label for="contact-message"><i class="fas fa-comment"></i> আপনার মেসেজ</label>
+                        <textarea id="contact-message" name="message" rows="5" required placeholder="আপনার বার্তা লিখুন..."></textarea>
                     </div>
                     <button type="submit" class="btn">মেসেজ পাঠান</button>
                 </form>
             </div>
-            <div class="live-chat-info">
-                <h3 class="section-subtitle">লাইভ চ্যাট</h3>
-                <p>আমাদের সাথে সরাসরি চ্যাট করতে নিচে ক্লিক করুন:</p>
-                <button class="btn primary-btn" onclick="openLiveChat()">লাইভ চ্যাট শুরু করুন</button>
+
+            <!-- Floating Actions -->
+            <div class="floating-actions">
+                <a href="tel:01888186759" class="fab call" aria-label="Emergency Call">
+                    <i class="fas fa-phone"></i> <span class="fab-label">ইমারজেন্সি কল</span>
+                </a>
+                <a href="https://wa.me/8801888186759" target="_blank" class="fab whatsapp" aria-label="WhatsApp">
+                    <i class="fab fa-whatsapp"></i> <span class="fab-label">WhatsApp</span>
+                </a>
+                <button type="button" class="fab chat" id="openChatFab" aria-label="Live Chat">
+                    <i class="fas fa-comments"></i> <span class="fab-label">লাইভ চ্যাট</span>
+                </button>
+            </div>
+
+            <!-- Chat Widget -->
+            <div class="chat-widget hidden" id="chatWidget">
+                <div class="chat-header">
+                    <div><i class="fas fa-headset"></i> Live Chat</div>
+                    <button id="closeChatBtn">✕</button>
                 </div>
+                <div class="chat-body">
+                    <div class="chat-tabs">
+                        <button class="active" data-chat="internal">চ্যাট</button>
+                        <a class="btn whatsapp" style="display:inline-flex; align-items:center; gap:6px; padding:8px 10px; text-decoration:none;" href="https://wa.me/8801888186759" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                        <a class="btn" style="display:inline-flex; align-items:center; gap:6px; padding:8px 10px; text-decoration:none; background:#1877F2; border-color:#4da1ff; color:#fff;" href="https://m.me/" target="_blank"><i class="fab fa-facebook-messenger"></i> Messenger</a>
+                    </div>
+                    <div class="chat-helper">এখানে লিখে সেন্ড করলে আমরা রিপ্লাই করব (ডেমো চ্যাট)।</div>
+                    <div class="chat-input-row">
+                        <input id="chatInput" type="text" placeholder="আপনার বার্তা...">
+                        <button class="send-btn" id="chatSendBtn">Send</button>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 

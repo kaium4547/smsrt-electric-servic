@@ -75,5 +75,60 @@ document.addEventListener('DOMContentLoaded', function() {
         // উদাহরণস্বরূপ: Tawk_API.toggle();
     };
 
+    // Contact: detect location and map link
+    const detectBtn = document.getElementById('detectLocationBtn');
+    const locationInput = document.getElementById('contact-location') || document.getElementById('location');
+    const openMapLink = document.getElementById('openMapLink');
+    if (detectBtn && locationInput) {
+        detectBtn.addEventListener('click', () => {
+            if (!navigator.geolocation) {
+                alert('আপনার ব্রাউজারে লোকেশন সাপোর্ট নেই');
+                return;
+            }
+            detectBtn.disabled = true;
+            detectBtn.innerText = 'লোকেশন নিচ্ছে...';
+            navigator.geolocation.getCurrentPosition(
+                (pos) => {
+                    const { latitude, longitude } = pos.coords;
+                    const url = `https://maps.google.com/?q=${latitude},${longitude}`;
+                    locationInput.value = `${latitude.toFixed(6)}, ${longitude.toFixed(6)}`;
+                    if (openMapLink) {
+                        openMapLink.href = url;
+                        openMapLink.style.display = 'inline-block';
+                    }
+                    detectBtn.disabled = false;
+                    detectBtn.innerText = 'লোকেশন নিন';
+                },
+                (err) => {
+                    alert('লোকেশন পাওয়া যায়নি: ' + err.message);
+                    detectBtn.disabled = false;
+                    detectBtn.innerText = 'লোকেশন নিন';
+                },
+                { enableHighAccuracy: true, timeout: 10000, maximumAge: 0 }
+            );
+        });
+    }
+
+    // Chat widget toggle
+    const chatFab = document.getElementById('openChatFab');
+    const chatWidget = document.getElementById('chatWidget');
+    const closeChatBtn = document.getElementById('closeChatBtn');
+    const chatSendBtn = document.getElementById('chatSendBtn');
+    const chatInput = document.getElementById('chatInput');
+
+    function openChat() { if (chatWidget) chatWidget.classList.remove('hidden'); }
+    function closeChat() { if (chatWidget) chatWidget.classList.add('hidden'); }
+
+    if (chatFab) chatFab.addEventListener('click', openChat);
+    if (closeChatBtn) closeChatBtn.addEventListener('click', closeChat);
+    if (chatSendBtn && chatInput) {
+        chatSendBtn.addEventListener('click', () => {
+            if (!chatInput.value.trim()) return;
+            alert('মেসেজ পাঠানো হয়েছে (ডেমো): ' + chatInput.value.trim());
+            chatInput.value = '';
+            chatInput.focus();
+        });
+    }
+
     // আরও ইন্টারেক্টিভ ফাংশন এখানে যোগ করা হবে (যেমন স্লাইডার, কার্ট ফাংশনালিটি)
 });

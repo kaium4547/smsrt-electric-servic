@@ -75,16 +75,13 @@
                         <label for="phone"><i class="fas fa-phone"></i> ফোন নম্বর</label>
                         <input type="tel" id="phone" name="phone" required>
                     </div>
-                    <div class="form-group">
-                        <label for="subject"><i class="fas fa-tag"></i> বিষয়</label>
-                        <select id="subject" name="subject" required>
-                            <option value="">বিষয় নির্বাচন করুন</option>
-                            <option value="service-request">সেবা অনুরোধ</option>
-                            <option value="quote-request">দাম জানতে চাই</option>
-                            <option value="complaint">অভিযোগ</option>
-                            <option value="feedback">মতামত</option>
-                            <option value="other">অন্যান্য</option>
-                        </select>
+                    <div class="form-group location-row">
+                        <div>
+                            <label for="location"><i class="fas fa-location-dot"></i> আপনার লোকেশন</label>
+                            <input type="text" id="location" name="location" placeholder="আপনার ঠিকানা বা লোকেশন লিখুন">
+                            <a id="openMapLink" href="#" target="_blank">Google Maps-এ লোকেশন খুলুন</a>
+                        </div>
+                        <button type="button" class="btn" id="detectLocationBtn"><i class="fas fa-crosshairs"></i> লোকেশন নিন</button>
                     </div>
                     <div class="form-group">
                         <label for="message"><i class="fas fa-comment"></i> বার্তা</label>
@@ -94,19 +91,35 @@
                 </form>
             </div>
 
-            <!-- Map Section -->
-            <div class="card-box" style="margin-top: 40px;">
-                <h3><i class="fas fa-map"></i> আমাদের অবস্থান</h3>
-                <div style="background: #222; padding: 20px; border-radius: 10px; text-align: center;">
-                    <p style="color: #ff9000; font-weight: bold; margin-bottom: 15px;">
-                        <i class="fas fa-map-marker-alt"></i> Google Maps এ দেখুন
-                    </p>
-                    <div style="background: #333; height: 300px; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: #ff9000;">
-                        <div>
-                            <i class="fas fa-map" style="font-size: 3em; margin-bottom: 15px;"></i>
-                            <p>ম্যাপ লোড হচ্ছে...</p>
-                            <p style="font-size: 0.9em; color: #ccc;">Google Maps API সংযুক্ত করা হবে</p>
-                        </div>
+            <!-- Floating Actions -->
+            <div class="floating-actions">
+                <a href="tel:01888186759" class="fab call" aria-label="Emergency Call">
+                    <i class="fas fa-phone"></i> <span class="fab-label">ইমারজেন্সি কল</span>
+                </a>
+                <a href="https://wa.me/8801888186759" target="_blank" class="fab whatsapp" aria-label="WhatsApp">
+                    <i class="fab fa-whatsapp"></i> <span class="fab-label">WhatsApp</span>
+                </a>
+                <button type="button" class="fab chat" id="openChatFab" aria-label="Live Chat">
+                    <i class="fas fa-comments"></i> <span class="fab-label">লাইভ চ্যাট</span>
+                </button>
+            </div>
+
+            <!-- Chat Widget -->
+            <div class="chat-widget hidden" id="chatWidget">
+                <div class="chat-header">
+                    <div><i class="fas fa-headset"></i> Live Chat</div>
+                    <button id="closeChatBtn">✕</button>
+                </div>
+                <div class="chat-body">
+                    <div class="chat-tabs">
+                        <button class="active" data-chat="internal">চ্যাট</button>
+                        <a class="btn whatsapp" style="display:inline-flex; align-items:center; gap:6px; padding:8px 10px; text-decoration:none;" href="https://wa.me/8801888186759" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                        <a class="btn" style="display:inline-flex; align-items:center; gap:6px; padding:8px 10px; text-decoration:none; background:#1877F2; border-color:#4da1ff; color:#fff;" href="https://m.me/" target="_blank"><i class="fab fa-facebook-messenger"></i> Messenger</a>
+                    </div>
+                    <div class="chat-helper">এখানে লিখে সেন্ড করলে আমরা রিপ্লাই করব (ডেমো চ্যাট)।</div>
+                    <div class="chat-input-row">
+                        <input id="chatInput" type="text" placeholder="আপনার বার্তা...">
+                        <button class="send-btn" id="chatSendBtn">Send</button>
                     </div>
                 </div>
             </div>
