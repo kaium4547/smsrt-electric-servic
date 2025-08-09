@@ -1,133 +1,141 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="bn">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Smart Electric Service - যোগাযোগ</title>
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-</head>
-<body>
-    <header class="header">
-        <div class="container">
-            <div class="logo">
-                <img src="{% static 'images/logo.png' %}" alt="Smart Electric Service Logo">
-                <h1>Smart Electric Service</h1>
-                <p>আপনার বিশ্বস্ত ইলেকট্রিক সমাধান</p>
-            </div>
-            <nav class="navbar">
-                <ul>
-                    <li><a href="{% url 'home' %}">হোম</a></li>
-                    <li><a href="{% url 'services:service_list' %}">সার্ভিসেস</a></li>
-                    <li><a href="{% url 'products:product_list' %}">প্রোডাক্টস</a></li>
-                    <li><a href="{% url 'login' %}">লগইন</a></li>
-                    <li><a href="{% url 'signup' %}">সাইনআপ</a></li>
-                    <li><a href="{% url 'contact' %}" class="active">যোগাযোগ</a></li>
-                </ul>
-            </nav>
+{% extends 'base.html' %}
+{% block content %}
+<div class="container" style="max-width: 1100px; margin-top: 2rem;">
+  <div class="row g-3">
+    <div class="col-lg-5">
+      <div class="card shadow-sm h-100">
+        <div class="p-4">
+          <h3 class="mb-3">যোগাযোগ</h3>
+          <div class="mb-3">
+            <div class="d-flex align-items-center mb-2"><span class="me-2">📞</span><div><div class="fw-semibold">মোবাইল (Business)</div><a href="tel:+8801888168759">01888186759</a></div></div>
+            <div class="d-flex align-items-center mb-2"><span class="me-2">📞</span><div><div class="fw-semibold">মোবাইল (Personal)</div><a href="tel:+8801890674547">01890674547</a></div></div>
+            <div class="d-flex align-items-center mb-2"><span class="me-2">📧</span><div><div class="fw-semibold">ইমেইল</div><a href="mailto:smartelectricservice4547@gmail.com">smartelectricservice4547@gmail.com</a></div></div>
+            <div class="d-flex align-items-center mb-2"><span class="me-2">📍</span><div><div class="fw-semibold">ঠিকানা</div><div>ব্রাহ্মণপাড়া, কুমিল্লা</div></div></div>
+          </div>
+          <div class="ratio ratio-4x3 rounded" style="overflow:hidden;">
+            <iframe src="https://www.openstreetmap.org/export/embed.html?bbox=91.00%2C23.40%2C91.15%2C23.52&layer=mapnik" style="border:0;"></iframe>
+          </div>
         </div>
-    </header>
+      </div>
+    </div>
+    <div class="col-lg-7">
+      <div class="card shadow-sm h-100">
+        <div class="p-3 border-bottom"><strong>চ্যাট বক্স</strong> — আপনার সমস্যাটি লিখে পাঠান</div>
+        <div id="chat-log" class="p-3" style="max-height: 360px; overflow:auto; background:#f8fafc; border-bottom:1px solid #e5e7eb;"></div>
+        <form class="p-3" method="post" action="{% url 'contact' %}">
+          {% csrf_token %}
+          <div class="row g-2">
+            <div class="col-md-6"><input class="form-control" name="name" placeholder="আপনার নাম" required></div>
+            <div class="col-md-6"><input class="form-control" type="email" name="email" placeholder="আপনার ইমেইল" required></div>
+            <div class="col-md-6"><input class="form-control" name="phone" placeholder="ফোন (ঐচ্ছিক)"></div>
+            <div class="col-md-6"><select class="form-select" name="category">
+              <option value="electrical">ইলেকট্রিক্যাল কাজ</option>
+              <option value="solar">সোলার সলিউশন</option>
+              <option value="cctv">সিসিটিভি/সিকিউরিটি</option>
+              <option value="ac">এসি সার্ভিস</option>
+              <option value="ips">আইপিএস/পাওয়ার ব্যাকআপ</option>
+              <option value="fridge">রেফ্রিজারেটর/অ্যাপ্লায়েন্স</option>
+              <option value="plumbing">প্লাম্বিং/পাইপিং</option>
+              <option value="other" selected>অন্যান্য</option>
+            </select></div>
+            <div class="col-md-6"><input class="form-control" name="address" placeholder="ঠিকানা (ঐচ্ছিক)"></div>
+            <div class="col-12"><textarea class="form-control" name="message" rows="4" placeholder="সমস্যার বিস্তারিত লিখুন" required></textarea></div>
+            <input type="hidden" id="latitude" name="latitude">
+            <input type="hidden" id="longitude" name="longitude">
+          </div>
+          <div class="d-flex gap-2 mt-2 flex-wrap">
+            <button type="button" id="capture-loc" class="btn btn-outline-primary btn-sm">লোকেশন যোগ করুন</button>
+            <button type="submit" class="btn btn-brand">মেসেজ পাঠান</button>
+            <a class="btn btn-success" target="_blank" href="https://wa.me/8801888168759">WhatsApp</a>
+          </div>
+          <div id="loc-text" class="small text-muted mt-1"></div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
 
-    <section class="page-banner">
-        <div class="container">
-            <h2>আমাদের সাথে যোগাযোগ করুন</h2>
-            <p>আপনার যেকোনো প্রশ্ন বা সেবার জন্য আমাদের সাথে যোগাযোগ করুন</p>
-        </div>
-    </section>
+<!-- Floating WS chat (Messenger-like) -->
+<div id="floating-chat" style="position:fixed; right:16px; bottom:16px; width:320px; max-width:92vw; z-index:1050;">
+  <div class="card shadow">
+    <div class="card-header py-2 d-flex justify-content-between align-items-center">
+      <strong>Live Chat</strong>
+      <button class="btn btn-sm btn-outline-secondary" onclick="document.getElementById('chat-body').classList.toggle('d-none')">—</button>
+    </div>
+    <div id="chat-body" class="card-body" style="max-height: 300px; overflow:auto;">
+      <div id="ws-log" class="small text-muted">মেসেজ লিখে পাঠান...</div>
+    </div>
+    <div class="card-footer">
+      <div class="mb-2"><select id="ws-category" class="form-select form-select-sm">
+        <option value="electrical">ইলেকট্রিক্যাল কাজ</option>
+        <option value="solar">সোলার</option>
+        <option value="cctv">সিসিটিভি</option>
+        <option value="ac">এসি</option>
+        <option value="ips">আইপিএস</option>
+        <option value="plumbing">প্লাম্বিং</option>
+        <option value="other" selected>অন্যান্য</option>
+      </select></div>
+      <div class="input-group input-group-sm">
+        <input id="ws-name" class="form-control" placeholder="নাম (ঐচ্ছিক)">
+        <input id="ws-email" class="form-control" placeholder="ইমেইল (ঐচ্ছিক)">
+      </div>
+      <div class="input-group input-group-sm mt-2">
+        <input id="ws-text" class="form-control" placeholder="আপনার মেসেজ...">
+        <button id="ws-send" class="btn btn-primary">Send</button>
+      </div>
+      <div class="form-check mt-2">
+        <input class="form-check-input" type="checkbox" value="1" id="ws-attach-loc">
+        <label class="form-check-label small" for="ws-attach-loc">লোকেশন সংযুক্ত করুন</label>
+      </div>
+    </div>
+  </div>
+</div>
 
-    <section class="contact-info-section">
-        <div class="container">
-            <h2 class="section-title">যোগাযোগের বিস্তারিত</h2>
-            <div class="contact-grid">
-                <div class="contact-item">
-                    <i class="fas fa-phone-alt"></i>
-                    <h3>মোবাইল নম্বর</h3>
-                    <p>01888186759</p>
-                    <p>01890674547</p>
-                </div>
-                <div class="contact-item">
-                    <i class="fas fa-envelope"></i>
-                    <h3>ইমেইল</h3>
-                    <p>smartelectricservice4547@gmail.com</p>
-                </div>
-                <div class="contact-item">
-                    <i class="fas fa-map-marker-alt"></i>
-                    <h3>ঠিকানা</h3>
-                    <p>ব্রাহ্মণপাড়া, কুমিল্লা</p>
-                </div>
-                <div class="contact-item">
-                    <i class="fab fa-whatsapp"></i>
-                    <h3>হোয়াটসঅ্যাপ</h3>
-                    <p>সক্রিয়</p>
-                    <a href="https://wa.me/8801888186759" target="_blank" class="btn primary-btn whatsapp-link">WhatsApp মেসেজ পাঠান</a>
-                </div>
-            </div>
-            <div class="contact-form-section">
-                <h3 class="section-subtitle">আমাদের মেসেজ পাঠান</h3>
-                <form id="contactForm">
-                    <div class="form-group">
-                        <label for="contact-name">আপনার নাম:</label>
-                        <input type="text" id="contact-name" name="name" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="contact-email">আপনার ইমেইল:</label>
-                        <input type="email" id="contact-email" name="email" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="contact-message">আপনার মেসেজ:</label>
-                        <textarea id="contact-message" name="message" rows="5" required></textarea>
-                    </div>
-                    <button type="submit" class="btn">মেসেজ পাঠান</button>
-                </form>
-            </div>
-            <div class="live-chat-info">
-                <h3 class="section-subtitle">লাইভ চ্যাট</h3>
-                <p>আমাদের সাথে সরাসরি চ্যাট করতে নিচে ক্লিক করুন:</p>
-                <button class="btn primary-btn" onclick="openLiveChat()">লাইভ চ্যাট শুরু করুন</button>
-                </div>
-        </div>
-    </section>
+<script>
+  // Location capture for form
+  document.getElementById('capture-loc').addEventListener('click', () => {
+    const lt = document.getElementById('latitude');
+    const ln = document.getElementById('longitude');
+    const txt = document.getElementById('loc-text');
+    if (!navigator.geolocation) { txt.textContent = 'Geolocation not supported'; return; }
+    txt.textContent = 'লোকেশন নিচ্ছে...';
+    navigator.geolocation.getCurrentPosition(pos => {
+      lt.value = pos.coords.latitude.toFixed(6);
+      ln.value = pos.coords.longitude.toFixed(6);
+      txt.textContent = `লোকেশন যুক্ত: ${lt.value}, ${ln.value}`;
+    }, err => { txt.textContent = 'লোকেশন অনুমতি পাওয়া যায়নি'; });
+  });
 
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-col">
-                    <h3>যোগাযোগ</h3>
-                    <p><i class="fas fa-phone-alt"></i> 01888186759</p>
-                    <p><i class="fas fa-phone-alt"></i> 01890674547</p>
-                    <p><i class="fas fa-envelope"></i> smartelectricservice4547@gmail.com</p>
-                    <p><i class="fas fa-map-marker-alt"></i> ব্রাহ্মণপাড়া, কুমিল্লা</p>
-                    <p><i class="fab fa-whatsapp"></i> WhatsApp: Always Active</p>
-                </div>
-                <div class="footer-col">
-                    <h3>আমাদের সার্ভিস</h3>
-                    <ul>
-                        <li>ইলেকট্রিক কাজ</li>
-                        <li>সোলার প্যানেল ইনস্টলেশন</li>
-                        <li>সিসিটিভি ক্যামেরা</li>
-                        <li>এসি সার্ভিস</li>
-                        <li>ফ্রিজ সার্ভিসিং</li>
-                        <li>আইপিএস সার্ভিস</li>
-                        <li>প্লাসিং কাজ</li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h3>দ্রুত লিঙ্ক</h3>
-                    <ul>
-                        <li><a href="{% url 'home' %}">হোম</a></li>
-                        <li><a href="{% url 'services:service_list' %}">সার্ভিসেস</a></li>
-                        <li><a href="{% url 'products:product_list' %}">প্রোডাক্টস</a></li>
-                        <li><a href="{% url 'contact' %}">যোগাযোগ</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 Smart Electric Service. সর্বস্বত্ব সংরক্ষিত।</p>
-            </div>
-        </div>
-    </footer>
-
-    <script src="{% static 'js/script.js' %}"></script>
-</body>
-</html>
+  // WebSocket chat
+  const ws = new WebSocket((location.protocol==='https:'?'wss':'ws')+'://'+location.host+'/ws/support-chat/');
+  const wsLog = document.getElementById('ws-log');
+  function append(msg){
+    const p = document.createElement('div');
+    p.innerHTML = msg;
+    wsLog.appendChild(p);
+    wsLog.scrollTop = wsLog.scrollHeight;
+  }
+  ws.onmessage = (e)=>{
+    try{ const d = JSON.parse(e.data); append(`<b>${d.name}</b>: ${d.message}`); }catch(err){}
+  };
+  document.getElementById('ws-send').onclick = ()=>{
+    const name = document.getElementById('ws-name').value;
+    const email = document.getElementById('ws-email').value;
+    const category = document.getElementById('ws-category').value;
+    const text = document.getElementById('ws-text').value;
+    const address = document.querySelector('input[name="address"]').value;
+    if(!text) return;
+    const payload = {type:'message', name, email, category, message:text};
+    if(address) payload.address = address;
+    if(document.getElementById('ws-attach-loc').checked && navigator.geolocation){
+      navigator.geolocation.getCurrentPosition(pos=>{
+        payload.lat = +pos.coords.latitude.toFixed(6);
+        payload.lng = +pos.coords.longitude.toFixed(6);
+        ws.send(JSON.stringify(payload));
+      }, ()=> ws.send(JSON.stringify(payload)));
+    } else { ws.send(JSON.stringify(payload)); }
+    append(`<span style='color:#0a1f44'><b>Me</b>: ${text}</span>`);
+    document.getElementById('ws-text').value='';
+  };
+</script>
+{% endblock %}

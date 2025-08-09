@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container" style="margin-top: 1rem;">
+  <div class="d-flex justify-content-between align-items-center mb-2">
+    <h5 class="mb-0">লাইভ লোকেশন ম্যাপ</h5>
+    <div class="small text-muted">টেকনিশিয়ান আপডেট রিয়েলটাইম</div>
+  </div>
+</div>
+<div id="live-map" style="height: 420px; border-top: 1px solid #222; border-bottom: 1px solid #222;"></div>
+<div class="container small text-muted py-2">টিপ: ম্যাপে ক্লিক করলে আপনার লোকেশন মার্কার সেট হবে (লোকাল)।</div>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin=""/>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+<script>
+  const map = L.map('live-map').setView([23.8103, 90.4125], 11);
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: '&copy; OpenStreetMap' }).addTo(map);
+  const techMarkers = new Map();
+  let myMarker = null;
+  map.on('click', (e) => {
+    const { lat, lng } = e.latlng;
+    if (!myMarker) { myMarker = L.marker([lat, lng], { title: 'You' }).addTo(map); }
+    else { myMarker.setLatLng([lat, lng]); }
+  });
+
+  function upsertTech(username, lat, lng) {
+    if (techMarkers.has(username)) {
+      techMarkers.get(username).setLatLng([lat, lng]);
+    } else {
+      const m = L.marker([lat, lng], { title: username }).addTo(map);
+      m.bindPopup(`<b>${username}</b>`);
+      techMarkers.set(username, m);
+    }
+  }
+
+  const ws = new WebSocket((location.protocol === 'https:' ? 'wss' : 'ws') + '://' + location.host + '/ws/tech-location/');
+  ws.onmessage = (event) => {
+    try {
+      const data = JSON.parse(event.data);
+      if (data && data.username && data.lat && data.lng) {
+        upsertTech(data.username, data.lat, data.lng);
+      }
+    } catch (e) {}
+  };
+</script>
+{% endblock %}

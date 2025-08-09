@@ -25,6 +25,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     
+    # Third-party
+    'channels',
+    
     # Custom apps
     'apps.services',
     'apps.products', 
@@ -62,6 +65,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'smart_electric_service.wsgi.application'
+ASGI_APPLICATION = 'smart_electric_service.asgi.application'
 
 # Database
 DATABASES = {
@@ -109,3 +113,10 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Custom User Model
 AUTH_USER_MODEL = 'users.CustomUser'
+
+# Channels: In-memory layer for dev
+CHANNEL_LAYERS = {
+    'default': {
+        'BACKEND': 'channels.layers.InMemoryChannelLayer',
+    },
+}

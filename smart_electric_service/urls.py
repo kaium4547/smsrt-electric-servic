@@ -11,9 +11,10 @@ urlpatterns = [
     path('services/', include('apps.services.urls')),
     path('products/', include('apps.products.urls')),
     path('orders/', include('orders.urls')),
-    path('contact/', TemplateView.as_view(template_name='contact.html'), name='contact'),
+    path('contact/', user_views.contact_view, name='contact'),
     path('login/', user_views.user_login, name='login'),
     path('signup/', user_views.user_signup, name='signup'),
+    path('users/', include('users.urls')),  # include users app routes
     path('customer-dashboard/', TemplateView.as_view(template_name='customer-dashboard.html'), name='customer_dashboard'),
     path('technician-dashboard/', TemplateView.as_view(template_name='technician-dashboard.html'), name='technician_dashboard'),
 ]

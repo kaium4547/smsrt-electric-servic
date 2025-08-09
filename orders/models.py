@@ -31,6 +31,11 @@ class Order(models.Model):
     )
     status = models.CharField(max_length=20, choices=ORDER_STATUS_CHOICES, default='Pending')
 
+    # Customer-provided location snapshot for tracking
+    snapshot_latitude = models.DecimalField(max_digits=9, decimal_places=6, null=True, blank=True)
+    snapshot_longitude = models.DecimalField(max_digits=9, decimal_places=6, null=True, blank=True)
+    map_place_id = models.CharField(max_length=128, null=True, blank=True)
+
     class Meta:
         ordering = ('-created',) # নতুন অর্ডার প্রথমে আসবে
 
