@@ -136,14 +136,19 @@ body {
 
 .hero-slider .hero-content {
     position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     color: #ffffff;
     z-index: 1;
-    max-width: 800px;
-    padding: 40px;
-    background: rgba(24, 25, 26, 0.8);
-    border: 3px solid #ff9000;
-    border-radius: 20px;
-    backdrop-filter: blur(10px);
+    max-width: 100%;
+    padding: 40px 20px;
+    background: rgba(24, 25, 26, 0.4);
+    border: 0;
+    border-radius: 0;
+    backdrop-filter: none;
 }
 
 .hero-slider .hero-content h2 {
