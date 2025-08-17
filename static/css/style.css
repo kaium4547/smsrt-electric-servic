@@ -1148,3 +1148,25 @@ body {
 .products-theme{background:var(--bg-dark);border-color:#1f2330}
 .product-card.dark{background:var(--card-dark);border-color:var(--accent)}
 .product-card .price{color:#b3ff99}
+
+/* --- Screenshot-tight refinements (design-only) --- */
+/* Product grid: keep tight columns and small gaps */
+.products-theme .product-grid{gap:14px}
+
+/* Compact product card */
+.products-theme .product-card{border-radius:16px;border-width:2px}
+.products-theme .product-card .thumb{height:90px}
+.products-theme .product-card .info{padding:10px 12px}
+.products-theme .product-card .name{font-size:16px;font-weight:800;color:var(--accent2);margin:2px 0 6px;text-align:center}
+.products-theme .product-card .price{font-size:15px;font-weight:800;color:#b6ff66;text-align:center}
+.products-theme .product-card .actions{padding:12px 12px;justify-content:center}
+
+/* Show only one CTA like the screenshot: Cart pill; keep logic intact */
+.products-theme .product-card .actions a.btn-outline,
+.products-theme .product-card .actions a[href*="/buy/"]{display:none}
+.products-theme .product-card .actions .btn-orange{padding:10px 16px;font-size:13px}
+.products-theme .product-card .actions .btn-orange.btn-pill{min-width:160px;text-align:center}
+
+/* Chips: compact and centered row */
+.products-theme .filters{justify-content:center}
+.products-theme .chip{padding:8px 14px;font-weight:700}
