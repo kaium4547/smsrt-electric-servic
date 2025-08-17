@@ -1087,3 +1087,13 @@ body {
 .product-card .actions{padding:10px 12px;display:flex;gap:8px;margin-top:auto}
 .add-to-cart{background:#fff;color:#111;border:1px solid #ddd}
 .add-to-cart:hover{background:#f6f6f6}
+
+/* --- Products Dark Theme + Chips --- */
+.products-theme{background:#0f1115;padding:16px;border-radius:14px;border:1px solid #1f2330}
+.products-theme .page-banner{background:transparent}
+.product-card.dark{background:#13161c;border-color:#2a2f3f}
+.product-card.dark .name{color:#ffb23c}
+.product-card.dark .price{color:#b3ff99}
+.filters{display:flex;gap:10px;flex-wrap:wrap;margin:8px 0 12px}
+.chip{display:inline-flex;align-items:center;gap:8px;border:1px solid #2a2f3f;border-radius:999px;padding:8px 12px;color:#c9d1d9;background:#151923;text-decoration:none;font-weight:600}
+.chip.active{background:linear-gradient(180deg,#ffb23c,#ff8a00);color:#1b1f2a;border-color:#ff9800}

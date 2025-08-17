@@ -10,10 +10,16 @@
 	</div>
 </section>
 
-<section class="container">
+<section class="container products-theme">
+	<div class="filters">
+		<a class="chip {% if not category %}active{% endif %}" href="{% url 'products:product_list' %}">সব প্রোডাক্ট</a>
+		{% for cat in categories %}
+			<a class="chip {% if category and cat.id == category.id %}active{% endif %}" href="{% url 'products:product_list_by_category' cat.slug %}">{{ cat.name }}</a>
+		{% endfor %}
+	</div>
 	<div class="product-grid compact">
 		{% for p in products %}
-			<div class="product-card">
+			<div class="product-card dark">
 				<div class="thumb">
 					{% if p.image %}
 						<img src="{{ p.image.url }}" alt="{{ p.name }}">
