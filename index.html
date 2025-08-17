@@ -34,14 +34,46 @@
 
     <section class="hero-slider">
         <div class="slide active">
-            <img src="img/banner1.jpg" alt="Electrician at work">
+            <img src="img/banner1.jpg" alt="Hero Slide 1">
             <div class="hero-content">
                 <h2>নির্ভরযোগ্য ইলেকট্রিক ও প্লাম্বিং সমাধান</h2>
                 <p>বাসা-বাড়ি, অফিস ও ইন্ডাস্ট্রির জন্য সম্পূর্ণ ইলেকট্রিক ও প্লাম্বিং সার্ভিস।</p>
                 <a href="services.html" class="btn">আমাদের সার্ভিসেস দেখুন</a>
             </div>
         </div>
-        </section>
+        <div class="slide">
+            <img src="img/banner1.jpg" alt="Hero Slide 2">
+            <div class="hero-content">
+                <h2>এক্সপার্ট টেকনিশিয়ান, দ্রুত সার্ভিস</h2>
+                <p>অভিজ্ঞ টিম আপনার ডোরস্টেপে। অন-টাইম, অন-বাজেট, কোয়ালিটি ওয়ার্ক।</p>
+                <a href="contact.html" class="btn">কন্টাক্ট করুন</a>
+            </div>
+        </div>
+        <div class="slide">
+            <img src="img/banner1.jpg" alt="Hero Slide 3">
+            <div class="hero-content">
+                <h2>সোলার, সিসিটিভি, আইপিএস — এক জায়গায়</h2>
+                <p>সোলার সেটআপ, সিসিটিভি ইনস্টলেশন, আইপিএস/ইউপিএস সার্ভিস—সব পাওয়া যায়।</p>
+                <a href="services.html" class="btn">সার্ভিস লিস্ট</a>
+            </div>
+        </div>
+        <div class="slide">
+            <img src="img/banner1.jpg" alt="Hero Slide 4">
+            <div class="hero-content">
+                <h2>AC, ফ্রিজ সার্ভিসিং স্পেশালিস্ট</h2>
+                <p>ইনস্টলেশন, মেইনটেন্যান্স এবং রিপেয়ার — ট্রাস্টেড সার্ভিস।</p>
+                <a href="services.html" class="btn">এখনই বুক করুন</a>
+            </div>
+        </div>
+        <div class="slide">
+            <img src="img/banner1.jpg" alt="Hero Slide 5">
+            <div class="hero-content">
+                <h2>ফোন করুন: 01888186759</h2>
+                <p>এমারজেন্সি সার্ভিস 24/7 উপলভ্য। এখনই কল করুন।</p>
+                <a href="tel:01888186759" class="btn">কল করুন</a>
+            </div>
+        </div>
+    </section>
 
     <section class="features-services">
         <div class="container">
@@ -321,18 +353,14 @@
 
     <script src="js/script.js"></script>
     <script>
-        // Hero Slider JavaScript
         document.addEventListener('DOMContentLoaded', function() {
             const slides = document.querySelectorAll('.hero-slider .slide');
             let currentSlide = 0;
+            let intervalId = null;
 
             function showSlide(index) {
                 slides.forEach((slide, i) => {
-                    if (i === index) {
-                        slide.classList.add('active');
-                    } else {
-                        slide.classList.remove('active');
-                    }
+                    slide.classList.toggle('active', i === index);
                 });
             }
 
@@ -341,12 +369,26 @@
                 showSlide(currentSlide);
             }
 
-            // যদি একাধিক স্লাইড থাকে, তবে অটো প্লে হবে
-            if (slides.length > 1) {
-                setInterval(nextSlide, 5000); // 5 সেকেন্ড পর পর স্লাইড পরিবর্তন হবে
+            function startAutoPlay() {
+                stopAutoPlay();
+                intervalId = setInterval(nextSlide, 4000);
             }
 
-            showSlide(currentSlide); // প্রথম স্লাইড দেখাও
+            function stopAutoPlay() {
+                if (intervalId) clearInterval(intervalId);
+            }
+
+            if (slides.length > 1) {
+                startAutoPlay();
+            } else {
+                showSlide(currentSlide);
+            }
+
+            const hero = document.querySelector('.hero-slider');
+            if (hero) {
+                hero.addEventListener('mouseenter', stopAutoPlay);
+                hero.addEventListener('mouseleave', startAutoPlay);
+            }
         });
     </script>
 </body>
