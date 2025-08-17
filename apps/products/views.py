@@ -61,3 +61,74 @@ def buy_now(request, id, slug):
 		return redirect(reverse('products:product_detail', args=[product.id, product.slug]))
 
 	return render(request, 'products/buy_now.html', {"product": product})
+
+
+def showcase_tailwind(request):
+	categories = ['All', 'ইলেকট্রিক', 'সোলার', 'নিরাপত্তা', 'কুলিং', 'প্লাম্বিং']
+	products = [
+		{
+			"title": "সার্কিট ব্রেকার",
+			"desc": "উচ্চ মানের সার্কিট ব্রেকার, নিরাপত্তা নিশ্চিত করে",
+			"price": 850.00,
+			"old_price": 950.00,
+			"category": "ইলেকট্রিক",
+			"img": "https://picsum.photos/seed/cb/400/300"
+		},
+		{
+			"title": "সুইচ বোর্ড",
+			"desc": "আধুনিক ডিজাইনের সুইচ বোর্ড",
+			"price": 650.00,
+			"old_price": 800.00,
+			"category": "ইলেকট্রিক",
+			"img": "https://picsum.photos/seed/sb/400/300"
+		},
+		{
+			"title": "ইলেকট্রিক ওয়্যার",
+			"desc": "উচ্চ মানের কপার ওয়্যার",
+			"price": 1200.00,
+			"old_price": 1400.00,
+			"category": "ইলেকট্রিক",
+			"img": "https://picsum.photos/seed/wire/400/300"
+		},
+		{
+			"title": "সোলার প্যানেল",
+			"desc": "উচ্চ দক্ষতার সোলার প্যানেল",
+			"price": 18500.00,
+			"old_price": 19800.00,
+			"category": "সোলার",
+			"img": "https://picsum.photos/seed/solar/400/300"
+		},
+		{
+			"title": "সিসিটিভি ক্যামেরা",
+			"desc": "উন্নত নিরাপত্তা সমাধান",
+			"price": 3200.00,
+			"old_price": 3600.00,
+			"category": "নিরাপত্তা",
+			"img": "https://picsum.photos/seed/cctv/400/300"
+		},
+		{
+			"title": "এসি ইনডোর ইউনিট",
+			"desc": "শক্তি সাশ্রয়ী কুলিং",
+			"price": 28500.00,
+			"old_price": 30500.00,
+			"category": "কুলিং",
+			"img": "https://picsum.photos/seed/ac/400/300"
+		},
+		{
+			"title": "পিভিসি পাইপ",
+			"desc": "প্লাম্বিং কাজের জন্য টেকসই",
+			"price": 220.00,
+			"old_price": 260.00,
+			"category": "প্লাম্বিং",
+			"img": "https://picsum.photos/seed/pipe/400/300"
+		},
+		{
+			"title": "ওয়াটার ট্যাপ",
+			"desc": "রস্ট-ফ্রি আধুনিক ট্যাপ",
+			"price": 850.00,
+			"old_price": 980.00,
+			"category": "প্লাম্বিং",
+			"img": "https://picsum.photos/seed/tap/400/300"
+		},
+	]
+	return render(request, 'products/showcase_tailwind.html', {"categories": categories, "products": products})
