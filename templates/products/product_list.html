@@ -34,8 +34,8 @@
 				</div>
 				<div class="actions">
 					<a class="btn btn-outline btn-xs" href="{% url 'products:product_detail' p.id p.slug %}">বিস্তারিত</a>
-					<a class="btn btn-orange btn-xs" href="{% url 'products:buy_now' p.id p.slug %}">কিনুন</a>
-					<button class="btn btn-xs btn-orange" type="button">কার্ট</button>
+					<a class="btn btn-orange btn-xs btn-pill" href="{% url 'products:buy_now' p.id p.slug %}">কিনুন</a>
+					<button class="btn btn-xs btn-orange btn-pill" type="button">কার্টে যোগ করুন</button>
 				</div>
 			</div>
 		{% empty %}
