@@ -1097,3 +1097,18 @@ body {
 .filters{display:flex;gap:10px;flex-wrap:wrap;margin:8px 0 12px}
 .chip{display:inline-flex;align-items:center;gap:8px;border:1px solid #2a2f3f;border-radius:999px;padding:8px 12px;color:#c9d1d9;background:#151923;text-decoration:none;font-weight:600}
 .chip.active{background:linear-gradient(180deg,#ffb23c,#ff8a00);color:#1b1f2a;border-color:#ff9800}
+
+/* --- Orange Accent Buttons --- */
+.btn-orange{background:linear-gradient(180deg,#ffb23c,#ff8a00);color:#1a1f2a;border:1px solid #ff9800}
+.btn-orange:hover{filter:brightness(0.96)}
+
+/* --- Section Heading like screenshot --- */
+.section-heading{font-size:42px;line-height:1.15;text-align:center;color:#ff8a00;margin:8px 0 4px}
+.section-subtitle{text-align:center;color:#cfd6e4;margin:0 0 10px}
+.heading-underline{width:120px;height:4px;border-radius:999px;margin:6px auto 0;background:linear-gradient(90deg,#ffb23c,#7aa2ff)}
+
+/* --- Card border accent --- */
+.product-card.dark{border:1.5px solid #ff8a00;box-shadow:0 8px 22px rgba(255,138,0,.08)}
+.product-card.dark .actions .btn{border-radius:999px}
+.product-card.dark .info{display:flex;flex-direction:column;align-items:center;text-align:center}
+.product-card.dark .thumb{background:#0f1218}
