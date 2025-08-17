@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% block title %}{{ product.name }} - Buy Now{% endblock %}
+{% block content %}
+<section class="page-banner">
+	<div class="container">
+		<h2>Buy Now</h2>
+		<p>{{ product.name }}</p>
+	</div>
+</section>
+<section class="container booking-card">
+	<div class="booking-wrapper">
+		<div class="booking-card-header">
+			<div class="left">
+				<div class="icon"><i class="fas fa-cart-shopping"></i></div>
+				<div>
+					<h3 style="margin:0">{{ product.name }}</h3>
+					<p style="margin:2px 0 0;color:#4b5563;font-size:13px">প্রোডাক্টটি ক্রয় করতে নিচের তথ্য দিন</p>
+				</div>
+			</div>
+			<div class="right">
+				<a class="btn btn-outline btn-xs" href="{% url 'products:product_detail' product.id product.slug %}">ডিটেইলস</a>
+			</div>
+		</div>
+		<form method="post" action="">
+			{% csrf_token %}
+			<div class="form-grid">
+				<div class="form-control">
+					<label for="full_name">পুরো নাম</label>
+					<input type="text" id="full_name" name="full_name" placeholder="আপনার নাম" required>
+				</div>
+				<div class="form-control">
+					<label for="phone">ফোন</label>
+					<input type="tel" id="phone" name="phone" placeholder="01XXXXXXXXX" required>
+				</div>
+				<div class="form-control">
+					<label for="email">ইমেইল (ঐচ্ছিক)</label>
+					<input type="email" id="email" name="email" placeholder="you@example.com">
+				</div>
+				<div class="form-control">
+					<label for="address">ঠিকানা</label>
+					<input type="text" id="address" name="address" placeholder="বিস্তারিত ঠিকানা" required>
+				</div>
+				<div class="form-control">
+					<label for="quantity">পরিমাণ</label>
+					<input type="number" id="quantity" name="quantity" value="1" min="1" step="1">
+				</div>
+			</div>
+			<div style="margin-top:12px;display:flex;gap:8px">
+				<button type="submit" class="btn btn-primary btn-xs">অর্ডার কনফার্ম</button>
+				<a class="btn btn-outline btn-xs" href="{% url 'products:product_detail' product.id product.slug %}">বাতিল</a>
+			</div>
+		</form>
+	</div>
+</section>
+{% endblock %}

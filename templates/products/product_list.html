@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}প্রোডাক্টস - Smart Electric Service{% endblock %}
+
+{% block content %}
+<section class="page-banner">
+	<div class="container">
+		<h2>আমাদের পণ্যসমূহ</h2>
+		<p>সেরা মানের ইলেকট্রিক প্রোডাক্টস — কম্প্যাক্ট ভিউ</p>
+	</div>
+</section>
+
+<section class="container">
+	<div class="product-grid compact">
+		{% for p in products %}
+			<div class="product-card">
+				<div class="thumb">
+					{% if p.image %}
+						<img src="{{ p.image.url }}" alt="{{ p.name }}">
+					{% else %}
+						<img src="{% static 'images/product-placeholder.jpg' %}" alt="{{ p.name }}">
+					{% endif %}
+				</div>
+				<div class="info">
+					<h3 class="name">{{ p.name }}</h3>
+					<p class="price">৳ {{ p.price }}</p>
+				</div>
+				<div class="actions">
+					<a class="btn btn-outline btn-xs" href="{% url 'products:product_detail' p.id p.slug %}">বিস্তারিত</a>
+					<a class="btn btn-primary btn-xs" href="{% url 'products:buy_now' p.id p.slug %}">Buy Now</a>
+					<button class="btn btn-xs add-to-cart" type="button">Cart</button>
+				</div>
+			</div>
+		{% empty %}
+			<p>কোনো প্রোডাক্ট পাওয়া যায়নি।</p>
+		{% endfor %}
+	</div>
+</section>
+{% endblock %}
