@@ -14,8 +14,8 @@
 			<h3 class="title">{{ service.name }}</h3>
 			<p class="sub">{{ service.short_description }}</p>
 			<div class="cta">
-				<a class="btn btn-outline btn-sm" href="{% url 'services:service_list' %}">অন্যান্য সার্ভিস</a>
-				<a class="btn btn-primary btn-sm" href="{% url 'services:service_book' service.id service.slug %}">Book Now</a>
+				<a class="btn btn-outline btn-xs" href="{% url 'services:service_list' %}">অন্যান্য সার্ভিস</a>
+				<a class="btn btn-primary btn-xs" href="{% url 'services:service_book' service.id service.slug %}">Book Now</a>
 			</div>
 		</div>
 	</div>

@@ -1060,3 +1060,17 @@ body {
 .service-card .title{font-size:17px}
 .service-card .card-header .icon{background:linear-gradient(180deg,#f3f6ff,#eef2ff)}
 .service-card .card-actions{padding-top:10px}
+
+/* --- Compact services overrides --- */
+.service-grid{gap:16px}
+.service-card .card-header{padding:14px 14px 6px}
+.service-card .card-header .icon{width:38px;height:38px;font-size:16px}
+.service-card .card-body{padding:0 14px 12px}
+.service-card .title{font-size:16px}
+.service-card .desc{font-size:13px}
+.service-card .features{padding:0 14px 8px}
+.service-card .features li{font-size:13px;margin:5px 0}
+.service-card .card-actions{padding:10px 14px}
+
+/* Extra small buttons */
+.btn-xs{padding:6px 10px;font-size:12px;border-radius:6px}
