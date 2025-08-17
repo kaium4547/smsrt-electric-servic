@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block title %}{{ service.name }} - বিস্তারিত{% endblock %}
+{% block content %}
+<section class="page-banner">
+	<div class="container">
+		<h2>{{ service.name }}</h2>
+		<p>{{ service.short_description }}</p>
+	</div>
+</section>
+<section class="container">
+	<div class="booking-wrapper">
+		<h3 style="margin-top:0">সার্ভিস সম্পর্কে</h3>
+		<p>{{ service.long_description }}</p>
+		<h4>ফিচারসমূহ</h4>
+		<ul>
+			{% for feat in service.features.all %}
+				<li>{{ feat.feature_text }}</li>
+			{% empty %}
+				<li>কোনো ফিচার দেওয়া নেই।</li>
+			{% endfor %}
+		</ul>
+		<div style="margin-top:10px">
+			<a class="btn btn-primary" href="{% url 'services:service_book' service.id service.slug %}">Book Now</a>
+		</div>
+	</div>
+</section>
+{% endblock %}

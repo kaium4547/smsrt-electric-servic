@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}{{ service.name }} - বুকিং{% endblock %}
+
+{% block content %}
+<section class="page-banner">
+	<div class="container">
+		<h2>{{ service.name }} - Book Now</h2>
+		<p>{{ service.short_description|default:"অনুগ্রহ করে নিচের ফর্মটি পূরণ করুন" }}</p>
+	</div>
+</section>
+
+<section class="container">
+	<div class="booking-wrapper">
+		<form method="post" action="">
+			{% csrf_token %}
+			<div class="form-grid">
+				<div class="form-control">
+					<label for="full_name">পুরো নাম</label>
+					<input type="text" id="full_name" name="full_name" placeholder="আপনার নাম" required>
+				</div>
+				<div class="form-control">
+					<label for="phone">ফোন</label>
+					<input type="tel" id="phone" name="phone" placeholder="01XXXXXXXXX" required>
+				</div>
+				<div class="form-control">
+					<label for="email">ইমেইল (ঐচ্ছিক)</label>
+					<input type="email" id="email" name="email" placeholder="you@example.com">
+				</div>
+				<div class="form-control">
+					<label for="address">ঠিকানা</label>
+					<input type="text" id="address" name="address" placeholder="বিস্তারিত ঠিকানা" required>
+				</div>
+				<div class="form-control">
+					<label for="preferred_date">পছন্দের তারিখ</label>
+					<input type="date" id="preferred_date" name="preferred_date">
+				</div>
+				<div class="form-control">
+					<label for="preferred_time">পছন্দের সময়</label>
+					<select id="preferred_time" name="preferred_time">
+						<option value="">নির্বাচন করুন</option>
+						<option value="morning">সকাল</option>
+						<option value="afternoon">দুপুর</option>
+						<option value="evening">সন্ধ্যা</option>
+					</select>
+				</div>
+				<div class="form-control full">
+					<label for="message">বিস্তারিত বার্তা</label>
+					<textarea id="message" name="message" placeholder="আপনার সমস্যার বিস্তারিত লিখুন"></textarea>
+				</div>
+			</div>
+			<div style="margin-top:14px;display:flex;gap:10px">
+				<button type="submit" class="btn btn-primary">বুকিং সাবমিট</button>
+				<a class="btn btn-outline" href="{% url 'services:service_detail' service.id service.slug %}">বাতিল</a>
+			</div>
+		</form>
+	</div>
+</section>
+{% endblock %}

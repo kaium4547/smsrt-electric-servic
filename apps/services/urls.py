@@ -6,6 +6,7 @@ from . import views
 app_name = 'services' # namespace for services app
 
 urlpatterns = [
-    path('', views.service_list, name='service_list'),
-    path('<int:id>/<slug:slug>/', views.service_detail, name='service_detail'),
+	path('', views.service_list, name='service_list'),
+	path('<int:id>/<slug:slug>/', views.service_detail, name='service_detail'),
+	path('<int:id>/<slug:slug>/book/', views.service_book, name='service_book'),
 ]
