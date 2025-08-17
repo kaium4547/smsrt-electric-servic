@@ -1128,3 +1128,23 @@ body {
 .chip{transition:filter .15s ease, box-shadow .15s ease}
 .chip:hover{filter:brightness(1.06)}
 .chip.active{box-shadow:0 6px 16px rgba(255,138,0,.25)}
+
+/* --- Theme Vars (design-only) --- */
+:root{--accent:#ff8a00;--accent2:#ffb23c;--bg-dark:#0f1115;--card-dark:#13161c;--border-dark:#2a2f3f;--text-muted:#cfd6e4}
+
+/* Primary/Outline use orange accent across site (design only) */
+.btn-primary{background:linear-gradient(180deg,var(--accent2),var(--accent));color:#1b1f2a;border:1px solid #ff9800}
+.btn-primary:hover{filter:brightness(.96)}
+.btn-outline{background:transparent;color:var(--accent2);border:1px solid var(--accent)}
+.btn-outline:hover{background:rgba(255,138,0,.08)}
+
+/* Services: dark compact cards with orange border (no template change) */
+.service-card{background:var(--card-dark);border-color:var(--accent);border-width:1.5px}
+.service-card .title{color:var(--accent2)}
+.service-card .card-header .icon{background:linear-gradient(180deg,#1a1f2a,#12161f);color:var(--accent)}
+.service-card:hover{transform:translateY(-3px);box-shadow:0 14px 28px rgba(255,138,0,.12)}
+
+/* Products: keep compact size, ensure dark theme consistent */
+.products-theme{background:var(--bg-dark);border-color:#1f2330}
+.product-card.dark{background:var(--card-dark);border-color:var(--accent)}
+.product-card .price{color:#b3ff99}
