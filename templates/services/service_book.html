@@ -12,6 +12,18 @@
 
 <section class="container booking-card">
 	<div class="booking-wrapper">
+		<div class="booking-card-header">
+			<div class="left">
+				<div class="icon"><i class="{{ service.icon_class|default:'fas fa-bolt' }}"></i></div>
+				<div>
+					<h3 style="margin:0">{{ service.name }}</h3>
+					<p style="margin:2px 0 0;color:#4b5563;font-size:13px">দ্রুত সার্ভিস বুক করতে নিচের ফর্মটি পূরণ করুন</p>
+				</div>
+			</div>
+			<div class="right">
+				<a class="btn btn-outline btn-sm" href="{% url 'services:service_detail' service.id service.slug %}">ডিটেইলস</a>
+			</div>
+		</div>
 		<form method="post" action="">
 			{% csrf_token %}
 			<div class="form-grid">

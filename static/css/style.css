@@ -1051,6 +1051,11 @@ body {
 .booking-card .form-control input,.booking-card .form-control select,.booking-card .form-control textarea{padding:8px 10px;font-size:13px;border-radius:7px}
 .booking-card .btn{padding:9px 12px;font-size:13px;border-radius:7px}
 
+/* --- Booking Card Header --- */
+.booking-card-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+.booking-card-header .left{display:flex;align-items:center;gap:10px}
+.booking-card-header .icon{width:40px;height:40px;border-radius:10px;background:#eef2ff;color:#2c4cff;display:inline-flex;align-items:center;justify-content:center;box-shadow:0 4px 12px rgba(44,76,255,.12)}
+
 /* --- Service Card polish --- */
 .service-card .title{font-size:17px}
 .service-card .card-header .icon{background:linear-gradient(180deg,#f3f6ff,#eef2ff)}
