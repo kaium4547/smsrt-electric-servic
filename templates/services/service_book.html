@@ -10,7 +10,7 @@
 	</div>
 </section>
 
-<section class="container">
+<section class="container booking-card">
 	<div class="booking-wrapper">
 		<form method="post" action="">
 			{% csrf_token %}
@@ -49,9 +49,9 @@
 					<textarea id="message" name="message" placeholder="আপনার সমস্যার বিস্তারিত লিখুন"></textarea>
 				</div>
 			</div>
-			<div style="margin-top:14px;display:flex;gap:10px">
-				<button type="submit" class="btn btn-primary">বুকিং সাবমিট</button>
-				<a class="btn btn-outline" href="{% url 'services:service_detail' service.id service.slug %}">বাতিল</a>
+			<div style="margin-top:12px;display:flex;gap:8px">
+				<button type="submit" class="btn btn-primary btn-sm">বুকিং সাবমিট</button>
+				<a class="btn btn-outline btn-sm" href="{% url 'services:service_detail' service.id service.slug %}">বাতিল</a>
 			</div>
 		</form>
 	</div>
