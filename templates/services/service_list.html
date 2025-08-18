@@ -1,14 +1,173 @@
 {% extends "base.html" %}
+{% load static %}
+{% block extra_css %}
+  <script src="https://cdn.tailwindcss.com"></script>
+{% endblock %}
 {% block content %}
-<h2>সার্ভিসসমূহ</h2>
-<ul>
-  {% for s in services %}
-    <li>
-      <a href="{% url 'services:service_detail' id=s.id slug=s.slug %}">{{ s.name }}</a>
-    </li>
-  {% empty %}
-    <li>কোনো সার্ভিস পাওয়া যায়নি</li>
-  {% endfor %}
-</ul>
+<div class="mx-auto max-w-7xl px-4 py-6 grid grid-cols-1 md:grid-cols-12 gap-6">
+  <!-- Filters -->
+  <aside class="md:col-span-3">
+    <div class="sticky top-24 bg-white border rounded-lg p-4">
+      <h3 class="text-lg font-semibold mb-2">ফিল্টার</h3>
+      <div>
+        <h4 class="text-sm font-medium mb-2">ক্যাটাগরি</h4>
+        <ul class="space-y-1">
+          {% for c in categories %}
+            <li>
+              <a href="?category={{ c.slug }}" class="block px-3 py-2 rounded hover:bg-gray-100 {% if active_category and active_category.id == c.id %}bg-gray-100 font-semibold{% endif %}">{{ c.name }}</a>
+              {% if active_category and active_category.id == c.id %}
+                <ul class="ml-3 mt-1 space-y-1">
+                  {% for sc in subcategories %}
+                    <li>
+                      <a href="?category={{ c.slug }}&subcategory={{ sc.slug }}" class="block text-sm px-3 py-1 rounded hover:bg-gray-100 {% if active_subcategory and active_subcategory.id == sc.id %}bg-gray-100 font-semibold{% endif %}">{{ sc.name }}</a>
+                    </li>
+                  {% endfor %}
+                </ul>
+              {% endif %}
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Grid -->
+  <main class="md:col-span-9">
+    {% if services %}
+      <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6">
+        {% for s in services %}
+          <div class="group border rounded-lg bg-white overflow-hidden hover:shadow-lg transition-shadow">
+            <div class="p-4 flex items-start gap-3">
+              <div class="h-12 w-12 rounded bg-indigo-100 text-indigo-600 grid place-content-center">
+                <i class="{{ s.icon_class|default:'fas fa-bolt' }}"></i>
+              </div>
+              <div class="flex-1">
+                <h3 class="text-lg font-semibold">{{ s.name }}</h3>
+                <p class="text-sm text-gray-500 line-clamp-2">{{ s.short_description }}</p>
+              </div>
+            </div>
+            <div class="px-4 pb-4 flex items-center justify-between">
+              <div>
+                <p class="text-xs text-gray-500">Starting from</p>
+                <p class="text-lg font-bold">{% if s.price_from %}৳{{ s.price_from }}{% else %}Contact{% endif %}</p>
+              </div>
+              <button
+                class="px-4 py-2 rounded bg-indigo-600 text-white hover:bg-indigo-700"
+                onclick="openBookingModal('{{ s.id }}','{{ s.name|escapejs }}')"
+              >Book Now</button>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    {% else %}
+      <div class="border rounded-lg bg-white p-8 text-center text-gray-500">কোনো সার্ভিস পাওয়া যায়নি</div>
+    {% endif %}
+  </main>
+</div>
+
+<!-- Booking Modal -->
+<div id="bookingModal" class="hidden fixed inset-0 z-50 bg-black/50">
+  <div class="mx-auto mt-10 max-w-2xl bg-white rounded-lg overflow-hidden">
+    <div class="px-6 py-4 border-b flex items-center justify-between">
+      <div>
+        <h3 class="text-lg font-semibold">Confirm Booking</h3>
+        <p id="bookingServiceName" class="text-sm text-gray-500"></p>
+      </div>
+      <button class="text-gray-500 hover:text-gray-700" onclick="closeBookingModal()">✕</button>
+    </div>
+    <form class="p-6" onsubmit="submitBooking(event)">
+      {% csrf_token %}
+      <input type="hidden" id="bookingServiceId" />
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div>
+          <label class="text-sm">Full Name</label>
+          <input id="bk_fullname" class="mt-1 w-full border rounded px-3 py-2" required />
+        </div>
+        <div>
+          <label class="text-sm">Phone Number</label>
+          <input id="bk_phone" class="mt-1 w-full border rounded px-3 py-2" required />
+        </div>
+        <div class="md:col-span-2">
+          <label class="text-sm">Address</label>
+          <input id="bk_address" class="mt-1 w-full border rounded px-3 py-2" />
+        </div>
+        <div>
+          <label class="text-sm">Division</label>
+          <select id="bk_division" class="mt-1 w-full border rounded px-3 py-2"></select>
+        </div>
+        <div>
+          <label class="text-sm">District</label>
+          <select id="bk_district" class="mt-1 w-full border rounded px-3 py-2"></select>
+        </div>
+        <div class="md:col-span-2">
+          <label class="text-sm">Upazila</label>
+          <select id="bk_upazila" class="mt-1 w-full border rounded px-3 py-2"></select>
+        </div>
+        <div class="md:col-span-2">
+          <label class="text-sm">Preferred Date & Time</label>
+          <input id="bk_datetime" type="datetime-local" class="mt-1 w-full border rounded px-3 py-2" />
+        </div>
+        <div class="md:col-span-2">
+          <label class="text-sm">Additional Notes</label>
+          <textarea id="bk_notes" class="mt-1 w-full border rounded px-3 py-2"></textarea>
+        </div>
+      </div>
+      <div class="mt-6 flex justify-end gap-3">
+        <button type="button" class="px-4 py-2 rounded border" onclick="closeBookingModal()">Cancel</button>
+        <button type="submit" class="px-4 py-2 rounded bg-indigo-600 text-white hover:bg-indigo-700">Confirm Booking</button>
+      </div>
+    </form>
+  </div>
+  <script>
+    function openBookingModal(id, name){
+      document.getElementById('bookingServiceId').value = id;
+      document.getElementById('bookingServiceName').innerText = name;
+      document.getElementById('bookingModal').classList.remove('hidden');
+      // populate divisions
+      fetch('/location/api/divisions/').then(r=>r.json()).then(data=>{
+        const d = document.getElementById('bk_division');
+        d.innerHTML = '<option value="">Select</option>';
+        (data.results||[]).forEach(x=>{ const o=document.createElement('option'); o.value=x.id; o.textContent=x.name; d.appendChild(o); });
+      })
+    }
+    function closeBookingModal(){ document.getElementById('bookingModal').classList.add('hidden'); }
+    document.addEventListener('change', (e)=>{
+      if(e.target && e.target.id==='bk_division'){
+        const id=e.target.value; const t=document.getElementById('bk_district');
+        t.innerHTML = '<option value="">Select</option>';
+        document.getElementById('bk_upazila').innerHTML='<option value="">Select</option>';
+        if(!id) return;
+        fetch(`/location/api/districts/?division_id=${id}`).then(r=>r.json()).then(data=>{
+          (data.results||[]).forEach(x=>{ const o=document.createElement('option'); o.value=x.id; o.textContent=x.name; t.appendChild(o); });
+        })
+      }
+      if(e.target && e.target.id==='bk_district'){
+        const id=e.target.value; const t=document.getElementById('bk_upazila');
+        t.innerHTML = '<option value="">Select</option>';
+        if(!id) return;
+        fetch(`/location/api/upazilas/?district_id=${id}`).then(r=>r.json()).then(data=>{
+          (data.results||[]).forEach(x=>{ const o=document.createElement('option'); o.value=x.id; o.textContent=x.name; t.appendChild(o); });
+        })
+      }
+    });
+    function submitBooking(ev){
+      ev.preventDefault();
+      const payload = {
+        service_id: document.getElementById('bookingServiceId').value,
+        full_name: document.getElementById('bk_fullname').value,
+        phone: document.getElementById('bk_phone').value,
+        address: document.getElementById('bk_address').value,
+        division: document.getElementById('bk_division').value || null,
+        district: document.getElementById('bk_district').value || null,
+        upazila: document.getElementById('bk_upazila').value || null,
+        preferred_datetime: document.getElementById('bk_datetime').value,
+        notes: document.getElementById('bk_notes').value,
+      };
+      fetch('/orders/api/service-booking/',{method:'POST',headers:{'Content-Type':'application/json','X-CSRFToken': getCookie('csrftoken') || ''},body:JSON.stringify(payload)})
+       .then(r=>r.json()).then(data=>{ alert(data.message||'বুকিং সম্পন্ন হয়েছে'); closeBookingModal(); });
+    }
+    function getCookie(name){ const v=document.cookie.split('; ').find(row=>row.startsWith(name+'=')); return v?decodeURIComponent(v.split('=')[1]):''; }
+  </script>
+</div>
 {% endblock %}
 
