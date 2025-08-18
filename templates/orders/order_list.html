@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>আমার অর্ডারসমূহ</h2>
+<ul>
+  {% for order in orders %}
+    <li>
+      <a href="{% url 'orders:order_detail' order.id %}">অর্ডার #{{ order.id }}</a>
+      - তারিখ: {{ order.created|date:"Y-m-d H:i" }}
+      - স্ট্যাটাস: {{ order.status }}
+      - মোট: ৳{{ order.get_total_cost }}
+    </li>
+  {% empty %}
+    <li>কোনো অর্ডার পাওয়া যায়নি</li>
+  {% endfor %}
+  </ul>
+{% endblock %}
+

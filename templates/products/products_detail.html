@@ -1,3 +1,13 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>{{ product.name }}</h2>
+<p>৳{{ product.price }}</p>
+<p>{{ product.description }}</p>
+{% if product.image %}
+  <img src="{{ product.image.url }}" alt="{{ product.name }}" style="max-width:320px;">
+{% endif %}
+{% endblock %}
+
 {# smart_electric_service/templates/products/product_detail.html #}
 {% extends 'base.html' %}
 {% load static %}

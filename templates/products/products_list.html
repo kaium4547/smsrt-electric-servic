@@ -1,3 +1,30 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>পণ্যসমূহ</h2>
+
+<h3>ক্যাটাগরি</h3>
+<ul>
+  <li><a href="{% url 'products:product_list' %}">সব</a></li>
+  {% for cat in categories %}
+    <li>
+      <a href="{% url 'products:product_list_by_category' category_slug=cat.slug %}">{{ cat.name }}</a>
+      {% if active_category and active_category.id == cat.id %}(কারেন্ট){% endif %}
+    </li>
+  {% endfor %}
+</ul>
+
+<div>
+  {% for p in products %}
+    <div style="margin:8px 0;">
+      <a href="{% url 'products:product_detail' id=p.id slug=p.slug %}">{{ p.name }}</a>
+      - ৳{{ p.price }}
+    </div>
+  {% empty %}
+    <p>কোনো পণ্য পাওয়া যায়নি</p>
+  {% endfor %}
+</div>
+{% endblock %}
+
 {# smart_electric_service/templates/products/product_list.html #}
 {% extends 'base.html' %} {# আপনার base.html ফাইলকে এক্সটেন্ড করুন #}
 {% load static %}

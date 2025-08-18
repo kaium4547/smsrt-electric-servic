@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>সার্ভিসসমূহ</h2>
+<ul>
+  {% for s in services %}
+    <li>
+      <a href="{% url 'services:service_detail' id=s.id slug=s.slug %}">{{ s.name }}</a>
+    </li>
+  {% empty %}
+    <li>কোনো সার্ভিস পাওয়া যায়নি</li>
+  {% endfor %}
+</ul>
+{% endblock %}
+
