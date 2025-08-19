@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Reviews</h2>
+<p><a href="{% url 'reviews:review_create' %}">Add Review</a></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>User</th>
+      <th>Target</th>
+      <th>Rating</th>
+      <th>Status</th>
+      <th>Comment</th>
+      <th>Created</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for r in reviews %}
+    <tr>
+      <td>{{ r.id }}</td>
+      <td>{{ r.user.username }}</td>
+      <td>{{ r.content_type.app_label }}.{{ r.content_type.model }} #{{ r.object_id }}</td>
+      <td>{{ r.rating }}</td>
+      <td>{{ r.status }}</td>
+      <td>{{ r.comment|default:"-" }}</td>
+      <td>{{ r.created|date:"Y-m-d H:i" }}</td>
+    </tr>
+  {% empty %}
+    <tr><td colspan="7">কোনো রিভিউ নেই</td></tr>
+  {% endfor %}
+  </tbody>
+ </table>
+{% endblock %}
+

@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Add Review</h2>
+<form method="post">
+  {% csrf_token %}
+  <div>
+    <label>Target Model (e.g., products.Product or services.Service)</label>
+    <input type="text" name="model" required>
+  </div>
+  <div>
+    <label>Object ID</label>
+    <input type="number" name="object_id" required>
+  </div>
+  <div>
+    <label>Rating (1-5)</label>
+    <input type="number" name="rating" min="1" max="5" required>
+  </div>
+  <div>
+    <label>Comment</label>
+    <textarea name="comment"></textarea>
+  </div>
+  <button type="submit">Submit</button>
+  <a href="{% url 'reviews:review_list' %}">Back</a>
+ </form>
+{% endblock %}
+

@@ -32,6 +32,7 @@ INSTALLED_APPS = [
     'apps.location',
     'orders',
     'users',
+    'reviews',
 ]
 
 MIDDLEWARE = [
