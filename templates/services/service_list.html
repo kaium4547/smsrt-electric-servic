@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}সার্ভিসেস - Smart Electric Service{% endblock %}
+
+{% block content %}
+<section class="page-banner">
+	<div class="container">
+		<h2>আমাদের সকল সার্ভিস</h2>
+		<p>দ্রুত এবং দক্ষ টিম দিয়ে সার্ভিস — এখনই বুক করুন</p>
+	</div>
+</section>
+
+<section class="container">
+	<div class="service-grid">
+		{% for svc in services %}
+			<div class="service-card">
+				<div class="card-header">
+					<div class="icon"><i class="{{ svc.icon_class|default:'fas fa-bolt' }}"></i></div>
+					<h3 class="title">{{ svc.name }}</h3>
+				</div>
+				<div class="card-body">
+					<p class="desc">{{ svc.short_description|default:svc.long_description|truncatechars:140 }}</p>
+					<ul class="features">
+						{% for feat in svc.features.all|slice:':4' %}
+							<li><i class="fas fa-check-circle" style="color:#22c55e"></i> {{ feat.feature_text }}</li>
+						{% endfor %}
+					</ul>
+				</div>
+				<div class="card-actions">
+					<a class="btn btn-outline btn-xs" href="{% url 'services:service_detail' svc.id svc.slug %}">বিস্তারিত</a>
+					<a class="btn btn-primary btn-xs" href="{% url 'services:service_book' svc.id svc.slug %}">Book Now</a>
+				</div>
+			</div>
+		{% empty %}
+			<p>কোনো সার্ভিস পাওয়া যায়নি।</p>
+		{% endfor %}
+	</div>
+</section>
+{% endblock %}

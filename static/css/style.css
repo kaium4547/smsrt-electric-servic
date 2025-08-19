@@ -994,3 +994,179 @@ body {
         padding: 18px 8px;
     }
 }
+
+/* --- Service Cards Grid --- */
+.service-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:20px;margin:20px 0}
+.service-card{background:#fff;border:1px solid #e6e6e6;border-radius:10px;box-shadow:0 6px 18px rgba(0,0,0,.06);overflow:hidden;display:flex;flex-direction:column;transition:transform .2s ease,box-shadow .2s ease}
+.service-card:hover{transform:translateY(-4px);box-shadow:0 10px 24px rgba(0,0,0,.12)}
+.service-card .card-header{padding:18px 18px 8px;display:flex;align-items:center;gap:12px}
+.service-card .card-header .icon{width:42px;height:42px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;background:#f3f6ff;color:#2c4cff;font-size:18px}
+.service-card .card-body{padding:0 18px 16px}
+.service-card .title{font-size:18px;margin:4px 0}
+.service-card .desc{color:#555;font-size:14px;line-height:1.55}
+.service-card .features{padding:0 18px 10px;margin:0}
+.service-card .features li{list-style:none;color:#333;font-size:14px;margin:6px 0}
+.service-card .card-actions{margin-top:auto;padding:14px 18px;display:flex;gap:10px}
+.btn{display:inline-block;padding:10px 14px;border-radius:8px;border:1px solid transparent;font-weight:600;text-decoration:none;cursor:pointer}
+.btn-primary{background:#2c4cff;color:#fff}
+.btn-primary:hover{background:#1f36d6}
+.btn-outline{background:#fff;color:#2c4cff;border-color:#2c4cff}
+.btn-outline:hover{background:#eef2ff}
+
+/* --- Booking Form --- */
+.booking-wrapper{background:#fff;border:1px solid #e6e6e6;border-radius:10px;box-shadow:0 6px 18px rgba(0,0,0,.06);padding:18px;margin:20px 0}
+.form-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.form-grid .full{grid-column:1/-1}
+.form-control{display:flex;flex-direction:column}
+.form-control label{font-weight:600;margin-bottom:6px}
+.form-control input,.form-control select,.form-control textarea{padding:10px 12px;border:1px solid #d9d9d9;border-radius:8px;font-size:14px}
+.form-control textarea{min-height:110px;resize:vertical}
+@media (max-width:768px){.form-grid{grid-template-columns:1fr}.service-grid{grid-template-columns:1fr 1fr}.service-card .desc{font-size:13px}}
+@media (max-width:520px){.service-grid{grid-template-columns:1fr}}
+
+/* --- Compact Buttons --- */
+.btn-sm{padding:8px 12px;font-size:13px;border-radius:7px}
+
+/* --- Service Detail Hero --- */
+.service-hero{background:linear-gradient(135deg,#f6f7ff,#f0f9ff);border:1px solid #e8ecff;border-radius:12px;padding:18px;margin:20px 0;display:flex;align-items:flex-start;gap:14px}
+.service-hero .icon-large{width:56px;height:56px;border-radius:14px;display:inline-flex;align-items:center;justify-content:center;background:#eef2ff;color:#2c4cff;font-size:22px;box-shadow:0 6px 18px rgba(44,76,255,.15)}
+.service-hero .title{margin:0;font-size:22px}
+.service-hero .sub{margin:4px 0 8px;color:#4b5563}
+.service-hero .cta{margin-left:auto;display:flex;gap:8px}
+
+/* --- Feature List --- */
+.feature-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:10px;margin:14px 0;padding:0}
+.feature-list li{list-style:none;background:#fff;border:1px solid #e6e6e6;border-radius:10px;padding:10px 12px;display:flex;align-items:center;gap:8px}
+.feature-list i{color:#22c55e}
+
+/* --- Two Column Layout --- */
+.two-col{display:grid;grid-template-columns:1.2fr .8fr;gap:16px}
+@media (max-width:900px){.two-col{grid-template-columns:1fr}}
+
+/* --- Booking Card (Compact) --- */
+.booking-card{max-width:760px;margin:0 auto}
+.booking-card .booking-wrapper{padding:14px;border-radius:12px}
+.booking-card .form-grid{gap:12px}
+.booking-card .form-control label{font-size:13px}
+.booking-card .form-control input,.booking-card .form-control select,.booking-card .form-control textarea{padding:8px 10px;font-size:13px;border-radius:7px}
+.booking-card .btn{padding:9px 12px;font-size:13px;border-radius:7px}
+
+/* --- Booking Card Header --- */
+.booking-card-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+.booking-card-header .left{display:flex;align-items:center;gap:10px}
+.booking-card-header .icon{width:40px;height:40px;border-radius:10px;background:#eef2ff;color:#2c4cff;display:inline-flex;align-items:center;justify-content:center;box-shadow:0 4px 12px rgba(44,76,255,.12)}
+
+/* --- Service Card polish --- */
+.service-card .title{font-size:17px}
+.service-card .card-header .icon{background:linear-gradient(180deg,#f3f6ff,#eef2ff)}
+.service-card .card-actions{padding-top:10px}
+
+/* --- Compact services overrides --- */
+.service-grid{gap:16px}
+.service-card .card-header{padding:14px 14px 6px}
+.service-card .card-header .icon{width:38px;height:38px;font-size:16px}
+.service-card .card-body{padding:0 14px 12px}
+.service-card .title{font-size:16px}
+.service-card .desc{font-size:13px}
+.service-card .features{padding:0 14px 8px}
+.service-card .features li{font-size:13px;margin:5px 0}
+.service-card .card-actions{padding:10px 14px}
+
+/* Extra small buttons */
+.btn-xs{padding:6px 10px;font-size:12px;border-radius:6px}
+
+/* --- Product Grid (Compact) --- */
+.product-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:16px;margin:20px 0}
+.product-grid.compact{grid-template-columns:repeat(auto-fill,minmax(180px,1fr))}
+.product-card{background:#fff;border:1px solid #e6e6e6;border-radius:10px;box-shadow:0 6px 18px rgba(0,0,0,.06);overflow:hidden;display:flex;flex-direction:column}
+.product-card .thumb{width:100%;aspect-ratio:4/3;background:#fafafa;display:flex;align-items:center;justify-content:center}
+.product-card .thumb img{width:100%;height:100%;object-fit:cover}
+.product-card .info{padding:10px 12px}
+.product-card .name{font-size:15px;margin:0 0 6px}
+.product-card .price{font-weight:700;color:#111}
+.product-card .actions{padding:10px 12px;display:flex;gap:8px;margin-top:auto}
+.add-to-cart{background:#fff;color:#111;border:1px solid #ddd}
+.add-to-cart:hover{background:#f6f6f6}
+
+/* --- Products Dark Theme + Chips --- */
+.products-theme{background:#0f1115;padding:16px;border-radius:14px;border:1px solid #1f2330}
+.products-theme .page-banner{background:transparent}
+.product-card.dark{background:#13161c;border-color:#2a2f3f}
+.product-card.dark .name{color:#ffb23c}
+.product-card.dark .price{color:#b3ff99}
+.filters{display:flex;gap:10px;flex-wrap:wrap;margin:8px 0 12px}
+.chip{display:inline-flex;align-items:center;gap:8px;border:1px solid #2a2f3f;border-radius:999px;padding:8px 12px;color:#c9d1d9;background:#151923;text-decoration:none;font-weight:600}
+.chip.active{background:linear-gradient(180deg,#ffb23c,#ff8a00);color:#1b1f2a;border-color:#ff9800}
+
+/* --- Orange Accent Buttons --- */
+.btn-orange{background:linear-gradient(180deg,#ffb23c,#ff8a00);color:#1a1f2a;border:1px solid #ff9800}
+.btn-orange:hover{filter:brightness(0.96)}
+
+/* --- Section Heading like screenshot --- */
+.section-heading{font-size:42px;line-height:1.15;text-align:center;color:#ff8a00;margin:8px 0 4px}
+.section-subtitle{text-align:center;color:#cfd6e4;margin:0 0 10px}
+.heading-underline{width:120px;height:4px;border-radius:999px;margin:6px auto 0;background:linear-gradient(90deg,#ffb23c,#7aa2ff)}
+
+/* --- Card border accent --- */
+.product-card.dark{border:1.5px solid #ff8a00;box-shadow:0 8px 22px rgba(255,138,0,.08)}
+.product-card.dark .actions .btn{border-radius:999px}
+.product-card.dark .info{display:flex;flex-direction:column;align-items:center;text-align:center}
+.product-card.dark .thumb{background:#0f1218}
+
+/* --- Pill Buttons --- */
+.btn-pill{border-radius:999px;font-weight:700}
+.btn-orange.btn-pill{box-shadow:0 8px 18px rgba(255,138,0,.22)}
+
+/* --- Product Card refinements (screenshot-like) --- */
+.product-card{border-radius:14px;transition:transform .18s ease, box-shadow .18s ease}
+.product-card.dark:hover{transform:translateY(-3px);box-shadow:0 14px 28px rgba(255,138,0,.14)}
+.product-card .thumb{height:120px;aspect-ratio:auto}
+.product-card .thumb img{object-fit:contain;max-height:100%}
+.product-card .actions{justify-content:center}
+
+/* --- Chips polish --- */
+.chip{transition:filter .15s ease, box-shadow .15s ease}
+.chip:hover{filter:brightness(1.06)}
+.chip.active{box-shadow:0 6px 16px rgba(255,138,0,.25)}
+
+/* --- Theme Vars (design-only) --- */
+:root{--accent:#ff8a00;--accent2:#ffb23c;--bg-dark:#0f1115;--card-dark:#13161c;--border-dark:#2a2f3f;--text-muted:#cfd6e4}
+
+/* Primary/Outline use orange accent across site (design only) */
+.btn-primary{background:linear-gradient(180deg,var(--accent2),var(--accent));color:#1b1f2a;border:1px solid #ff9800}
+.btn-primary:hover{filter:brightness(.96)}
+.btn-outline{background:transparent;color:var(--accent2);border:1px solid var(--accent)}
+.btn-outline:hover{background:rgba(255,138,0,.08)}
+
+/* Services: dark compact cards with orange border (no template change) */
+.service-card{background:var(--card-dark);border-color:var(--accent);border-width:1.5px}
+.service-card .title{color:var(--accent2)}
+.service-card .card-header .icon{background:linear-gradient(180deg,#1a1f2a,#12161f);color:var(--accent)}
+.service-card:hover{transform:translateY(-3px);box-shadow:0 14px 28px rgba(255,138,0,.12)}
+
+/* Products: keep compact size, ensure dark theme consistent */
+.products-theme{background:var(--bg-dark);border-color:#1f2330}
+.product-card.dark{background:var(--card-dark);border-color:var(--accent)}
+.product-card .price{color:#b3ff99}
+
+/* --- Screenshot-tight refinements (design-only) --- */
+/* Product grid: keep tight columns and small gaps */
+.products-theme .product-grid{gap:14px}
+
+/* Compact product card */
+.products-theme .product-card{border-radius:16px;border-width:2px}
+.products-theme .product-card .thumb{height:90px}
+.products-theme .product-card .info{padding:10px 12px}
+.products-theme .product-card .name{font-size:16px;font-weight:800;color:var(--accent2);margin:2px 0 6px;text-align:center}
+.products-theme .product-card .price{font-size:15px;font-weight:800;color:#b6ff66;text-align:center}
+.products-theme .product-card .actions{padding:12px 12px;justify-content:center}
+
+/* Show only one CTA like the screenshot: Cart pill; keep logic intact */
+.products-theme .product-card .actions a.btn-outline,
+.products-theme .product-card .actions a[href*="/buy/"]{display:none}
+.products-theme .product-card .actions .btn-orange{padding:10px 16px;font-size:13px}
+.products-theme .product-card .actions .btn-orange.btn-pill{min-width:160px;text-align:center}
+
+/* Chips: compact and centered row */
+.products-theme .filters{justify-content:center}
+.products-theme .chip{padding:8px 14px;font-weight:700}

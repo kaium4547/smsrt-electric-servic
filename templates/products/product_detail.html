@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}{{ product.name }} - বিস্তারিত{% endblock %}
+
+{% block content %}
+<section class="page-banner">
+	<div class="container">
+		<h2>{{ product.name }}</h2>
+		<p>{{ product.category.name }}</p>
+	</div>
+</section>
+
+<section class="container">
+	<div class="two-col">
+		<div class="booking-wrapper">
+			<div style="display:flex;gap:14px;align-items:flex-start">
+				<div class="thumb" style="min-width:220px;max-width:260px">
+					{% if product.image %}
+						<img src="{{ product.image.url }}" alt="{{ product.name }}" style="width:100%;border-radius:10px;border:1px solid #eee">
+					{% else %}
+						<img src="{% static 'images/product-placeholder.jpg' %}" alt="{{ product.name }}" style="width:100%;border-radius:10px;border:1px solid #eee">
+					{% endif %}
+				</div>
+				<div>
+					<h3 style="margin:0">{{ product.name }}</h3>
+					<p style="margin:6px 0 10px;color:#4b5563">মূল্য: <strong>৳ {{ product.price }}</strong></p>
+					<a class="btn btn-primary btn-xs" href="{% url 'products:buy_now' product.id product.slug %}">Buy Now</a>
+				</div>
+			</div>
+		</div>
+		<div>
+			<div class="booking-wrapper">
+				<h4 style="margin:0 0 8px">প্রোডাক্ট তথ্য</h4>
+				<p>স্টক: {{ product.stock }}</p>
+				<p>অবস্থা: {{ product.available|yesno:"উপলব্ধ,উপলব্ধ নয়" }}</p>
+				<p>বিবরণ:</p>
+				<p>{{ product.description }}</p>
+			</div>
+		</div>
+	</div>
+</section>
+{% endblock %}

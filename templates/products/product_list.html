@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}প্রোডাক্টস - Smart Electric Service{% endblock %}
+
+{% block content %}
+<section class="page-banner">
+	<div class="container">
+		<h2 class="section-heading">আমাদের প্রোডাক্টস</h2>
+		<p class="section-subtitle">উচ্চ মানের ইলেকট্রিক ও গ্রাহক সরঞ্জাম</p>
+		<div class="heading-underline"></div>
+	</div>
+</section>
+
+<section class="container products-theme">
+	<div class="filters">
+		<a class="chip {% if not category %}active{% endif %}" href="{% url 'products:product_list' %}">সব প্রোডাক্ট</a>
+		{% for cat in categories %}
+			<a class="chip {% if category and cat.id == category.id %}active{% endif %}" href="{% url 'products:product_list_by_category' cat.slug %}">{{ cat.name }}</a>
+		{% endfor %}
+	</div>
+	<div class="product-grid compact">
+		{% for p in products %}
+			<div class="product-card dark">
+				<div class="thumb">
+					{% if p.image %}
+						<img src="{{ p.image.url }}" alt="{{ p.name }}">
+					{% else %}
+						<img src="{% static 'images/product-placeholder.jpg' %}" alt="{{ p.name }}">
+					{% endif %}
+				</div>
+				<div class="info">
+					<h3 class="name">{{ p.name }}</h3>
+					<p class="price">৳ {{ p.price }}</p>
+				</div>
+				<div class="actions">
+					<a class="btn btn-outline btn-xs" href="{% url 'products:product_detail' p.id p.slug %}">বিস্তারিত</a>
+					<a class="btn btn-orange btn-xs btn-pill" href="{% url 'products:buy_now' p.id p.slug %}">কিনুন</a>
+					<button class="btn btn-xs btn-orange btn-pill" type="button">কার্টে যোগ করুন</button>
+				</div>
+			</div>
+		{% empty %}
+			<p>কোনো প্রোডাক্ট পাওয়া যায়নি।</p>
+		{% endfor %}
+	</div>
+</section>
+{% endblock %}
