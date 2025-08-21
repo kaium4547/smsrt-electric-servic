@@ -50,7 +50,7 @@ def user_signup(request):
                 email=email,
                 password=password,
                 first_name=name,
-                phone=phone,
+                phone_number=phone,
                 user_type=user_type
             )
             messages.success(request, 'সফলভাবে সাইনআপ হয়েছে! এখন লগইন করুন।')

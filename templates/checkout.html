@@ -1,0 +1,451 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Electric Service - চেকআউট</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        .checkout-container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 2rem;
+            padding: 0 1rem;
+        }
+        .checkout-form { background: #fff; padding: 2rem; border-radius: 10px; box-shadow: 0 0 20px rgba(0,0,0,0.1); }
+        .order-summary { background: #fff; padding: 2rem; border-radius: 10px; box-shadow: 0 0 20px rgba(0,0,0,0.1); height: fit-content; }
+        .form-section { margin-bottom: 2rem; padding: 1.5rem; border: 1px solid #e0e0e0; border-radius: 8px; }
+        .form-section h3 { color: #2c3e50; margin-bottom: 1rem; border-bottom: 2px solid #3498db; padding-bottom: 0.5rem; }
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
+        .form-group { margin-bottom: 1rem; }
+        .form-group label { display: block; margin-bottom: 0.5rem; font-weight: 600; color: #2c3e50; }
+        .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 0.75rem; border: 1px solid #ddd; border-radius: 5px; font-size: 1rem; font-family: 'Hind Siliguri', sans-serif; }
+        .form-group textarea { height: 100px; resize: vertical; }
+        .payment-methods { display: grid; gap: 1rem; }
+        .payment-method { display: flex; align-items: center; gap: 1rem; padding: 1rem; border: 2px solid #e0e0e0; border-radius: 8px; cursor: pointer; transition: all 0.3s ease; }
+        .payment-method:hover { border-color: #3498db; }
+        .payment-method.selected { border-color: #3498db; background: #f8f9fa; }
+        .payment-method input[type="radio"] { width: auto; }
+        .payment-method-icon { font-size: 1.5rem; color: #3498db; }
+        .order-item { display: flex; justify-content: space-between; align-items: center; padding: 1rem 0; border-bottom: 1px solid #eee; }
+        .order-item:last-child { border-bottom: none; }
+        .order-total { margin-top: 1rem; padding-top: 1rem; border-top: 2px solid #eee; font-size: 1.2rem; font-weight: bold; text-align: right; }
+        .place-order-btn { background: linear-gradient(135deg, #27ae60, #229954); color: white; padding: 1rem 2rem; border: none; border-radius: 5px; font-size: 1.1rem; font-weight: 600; cursor: pointer; transition: all 0.3s ease; width: 100%; margin-top: 1rem; }
+        .place-order-btn:hover { background: linear-gradient(135deg, #229954, #1e8449); transform: translateY(-2px); }
+        .back-to-cart { background: #95a5a6; color: white; padding: 0.5rem 1rem; border: none; border-radius: 5px; cursor: pointer; margin-bottom: 1rem; }
+        .back-to-cart:hover { background: #7f8c8d; }
+        @media (max-width: 768px) { .checkout-container { grid-template-columns: 1fr; } .form-row { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <img src="{% static 'images/logo.png' %}" alt="Smart Electric Service Logo">
+                <div>
+                    <h1>Smart Electric Service</h1>
+                    <p>আপনার বিশ্বস্ত বৈদ্যুতিক সেবা প্রদানকারী</p>
+                </div>
+            </div>
+            <nav class="navbar">
+                <ul>
+                    <li><a href="/">হোম</a></li>
+                    <li><a href="/services/">সার্ভিসেস</a></li>
+                    <li><a href="/products/">প্রোডাক্টস</a></li>
+                    <li><a href="/login/">লগইন</a></li>
+                    <li><a href="/signup/">সাইনআপ</a></li>
+                    <li><a href="/contact/">যোগাযোগ</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="page-banner">
+        <div class="container">
+            <h2>চেকআউট</h2>
+            <p>আপনার অর্ডার সম্পূর্ণ করুন</p>
+        </div>
+    </section>
+
+    <div class="checkout-container">
+        <div class="checkout-form">
+            <button class="back-to-cart" onclick="window.location.href='/products/'">
+                <i class="fas fa-arrow-left"></i> কার্টে ফিরে যান
+            </button>
+            
+            <form id="checkoutForm" method="post">
+                {% csrf_token %}
+                <!-- Customer Information -->
+                <div class="form-section">
+                    <h3><i class="fas fa-user"></i> গ্রাহক তথ্য</h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="firstName">নাম *</label>
+                            <input type="text" id="firstName" name="firstName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="lastName">পিতার নাম *</label>
+                            <input type="text" id="lastName" name="lastName" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="email">ইমেইল *</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">ফোন নম্বর *</label>
+                            <input type="tel" id="phone" name="phone" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="address">ঠিকানা *</label>
+                        <textarea id="address" name="address" required></textarea>
+                    </div>
+                </div>
+
+                <!-- Delivery Information -->
+                <div class="form-section">
+                    <h3><i class="fas fa-truck"></i> ডেলিভারি তথ্য</h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="division">বিভাগ</label>
+                            <select id="division" name="division">
+                                <option value="">বিভাগ নির্বাচন করুন</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="district">জেলা</label>
+                            <select id="district" name="district">
+                                <option value="">জেলা নির্বাচন করুন</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="upazila">উপজেলা</label>
+                            <select id="upazila" name="upazila">
+                                <option value="">উপজেলা নির্বাচন করুন</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="union">ইউনিয়ন</label>
+                            <select id="union" name="union">
+                                <option value="">ইউনিয়ন নির্বাচন করুন</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Payment Method -->
+                <div class="form-section">
+                    <h3><i class="fas fa-credit-card"></i> পেমেন্ট পদ্ধতি</h3>
+                    <div class="payment-methods">
+                        <div class="payment-method" onclick="selectPayment(event, 'bkash')">
+                            <input type="radio" name="paymentMethod" value="bkash" id="bkash">
+                            <div class="payment-method-icon"><i class="fas fa-mobile-alt"></i></div>
+                            <div>
+                                <h4>বিকাশ</h4>
+                                <p>01888186759</p>
+                            </div>
+                        </div>
+                        <div class="payment-method" onclick="selectPayment(event, 'nagad')">
+                            <input type="radio" name="paymentMethod" value="nagad" id="nagad">
+                            <div class="payment-method-icon"><i class="fas fa-wallet"></i></div>
+                            <div>
+                                <h4>নগদ</h4>
+                                <p>01888186759</p>
+                            </div>
+                        </div>
+                        <div class="payment-method" onclick="selectPayment(event, 'rocket')">
+                            <input type="radio" name="paymentMethod" value="rocket" id="rocket">
+                            <div class="payment-method-icon"><i class="fas fa-rocket"></i></div>
+                            <div>
+                                <h4>রকেট</h4>
+                                <p>01888186759</p>
+                            </div>
+                        </div>
+                        <div class="payment-method" onclick="selectPayment(event, 'cash')">
+                            <input type="radio" name="paymentMethod" value="cash" id="cash">
+                            <div class="payment-method-icon"><i class="fas fa-money-bill-wave"></i></div>
+                            <div>
+                                <h4>নগদ পেমেন্ট</h4>
+                                <p>ডেলিভারির সময় পেমেন্ট</p>
+                            </div>
+                        </div>
+                        <div class="payment-method" onclick="selectPayment(event, 'bank')">
+                            <input type="radio" name="paymentMethod" value="bank" id="bank">
+                            <div class="payment-method-icon"><i class="fas fa-university"></i></div>
+                            <div>
+                                <h4>ব্যাংক ট্রান্সফার</h4>
+                                <p>আমাদের ব্যাংক অ্যাকাউন্টে</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group" id="transactionIdGroup" style="display: none;">
+                        <label for="transactionId">লেনদেন আইডি *</label>
+                        <input type="text" id="transactionId" name="transactionId" placeholder="আপনার লেনদেন আইডি দিন">
+                    </div>
+                </div>
+
+                <!-- Additional Information -->
+                <div class="form-section">
+                    <h3><i class="fas fa-info-circle"></i> অতিরিক্ত তথ্য</h3>
+                    <div class="form-group">
+                        <label for="notes">বিশেষ নির্দেশনা (ঐচ্ছিক)</label>
+                        <textarea id="notes" name="notes" placeholder="কোন বিশেষ নির্দেশনা থাকলে লিখুন..."></textarea>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <div class="order-summary">
+            <h3><i class="fas fa-shopping-cart"></i> অর্ডার সারসংক্ষেপ</h3>
+            <div id="orderItems"></div>
+            <div class="order-total">
+                <p>মোট: ৳<span id="orderTotal">0</span></p>
+                <p style="font-size: 0.9rem; color: #666;">ডেলিভারি চার্জ অন্তর্ভুক্ত</p>
+            </div>
+            <button class="place-order-btn" onclick="placeOrder()">
+                <i class="fas fa-check"></i> অর্ডার সম্পন্ন করুন
+            </button>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <h3>যোগাযোগ</h3>
+                    <p><i class="fas fa-phone-alt"></i> 01888186759</p>
+                    <p><i class="fas fa-phone-alt"></i> 01890674547</p>
+                    <p><i class="fas fa-envelope"></i> smartelectricservice4547@gmail.com</p>
+                    <p><i class="fas fa-map-marker-alt"></i> ব্রাহ্মণপাড়া, কুমিল্লা</p>
+                    <p><i class="fab fa-whatsapp"></i> WhatsApp: Always Active</p>
+                </div>
+                <div class="footer-col">
+                    <h3>আমাদের সার্ভিস</h3>
+                    <ul>
+                        <li>ইলেকট্রিক কাজ</li>
+                        <li>সোলার প্যানেল ইনস্টলেশন</li>
+                        <li>সিসিটিভি ক্যামেরা</li>
+                        <li>এসি সার্ভিস</li>
+                        <li>ফ্রিজ সার্ভিসিং</li>
+                        <li>আইপিএস সার্ভিস</li>
+                        <li>প্লাম্বিং ও ফিটিংস কাজ</li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>দ্রুত লিঙ্ক</h3>
+                    <ul>
+                        <li><a href="/">হোম</a></li>
+                        <li><a href="/services/">সার্ভিসেস</a></li>
+                        <li><a href="/products/">প্রোডাক্টস</a></li>
+                        <li><a href="/contact/">যোগাযোগ</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Smart Electric Service. সর্বস্বত্ব সংরক্ষিত।</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="{% static 'js/script.js' %}"></script>
+    <script>
+        let cart = [];
+        
+        // Load cart data from URL parameter
+        document.addEventListener('DOMContentLoaded', function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const cartData = urlParams.get('cart');
+            
+            if (cartData) {
+                try {
+                    cart = JSON.parse(decodeURIComponent(cartData));
+                    updateOrderSummary();
+                } catch (e) {
+                    console.error('Error parsing cart data:', e);
+                    alert('কার্ট ডেটা লোড করতে সমস্যা হয়েছে');
+                    window.location.href = '/products/';
+                }
+            } else {
+                alert('কোন প্রোডাক্ট নির্বাচন করা হয়নি');
+                window.location.href = '/products/';
+            }
+
+            // Populate divisions and set up dependent dropdowns
+            fetch('/location/api/divisions/')
+              .then(r => r.json())
+              .then(data => {
+                const divisionSel = document.getElementById('division');
+                data.results.forEach(d => {
+                  const opt = document.createElement('option');
+                  opt.value = d.id; opt.textContent = d.name; divisionSel.appendChild(opt);
+                });
+              });
+
+            document.getElementById('division').addEventListener('change', function() {
+              const id = this.value; const districtSel = document.getElementById('district');
+              districtSel.innerHTML = '<option value="">জেলা নির্বাচন করুন</option>';
+              document.getElementById('upazila').innerHTML = '<option value="">উপজেলা নির্বাচন করুন</option>';
+              document.getElementById('union').innerHTML = '<option value="">ইউনিয়ন নির্বাচন করুন</option>';
+              if (!id) return;
+              fetch(`/location/api/districts/?division_id=${id}`)
+                .then(r => r.json()).then(data => {
+                  data.results.forEach(d => {
+                    const opt = document.createElement('option');
+                    opt.value = d.id; opt.textContent = d.name; districtSel.appendChild(opt);
+                  });
+                });
+            });
+
+            document.getElementById('district').addEventListener('change', function() {
+              const id = this.value; const upazilaSel = document.getElementById('upazila');
+              upazilaSel.innerHTML = '<option value="">উপজেলা নির্বাচন করুন</option>';
+              document.getElementById('union').innerHTML = '<option value="">ইউনিয়ন নির্বাচন করুন</option>';
+              if (!id) return;
+              fetch(`/location/api/upazilas/?district_id=${id}`)
+                .then(r => r.json()).then(data => {
+                  data.results.forEach(u => {
+                    const opt = document.createElement('option');
+                    opt.value = u.id; opt.textContent = u.name; upazilaSel.appendChild(opt);
+                  });
+                });
+            });
+
+            document.getElementById('upazila').addEventListener('change', function() {
+              const id = this.value; const unionSel = document.getElementById('union');
+              unionSel.innerHTML = '<option value="">ইউনিয়ন নির্বাচন করুন</option>';
+              if (!id) return;
+              fetch(`/location/api/unions/?upazila_id=${id}`)
+                .then(r => r.json()).then(data => {
+                  data.results.forEach(u => {
+                    const opt = document.createElement('option');
+                    opt.value = u.id; opt.textContent = u.name; unionSel.appendChild(opt);
+                  });
+                });
+            });
+        });
+        
+        function updateOrderSummary() {
+            const orderItems = document.getElementById('orderItems');
+            const orderTotal = document.getElementById('orderTotal');
+            
+            orderItems.innerHTML = '';
+            let total = 0;
+            
+            cart.forEach(item => {
+                const itemTotal = item.price * item.quantity;
+                total += itemTotal;
+                
+                orderItems.innerHTML += `
+                    <div class="order-item">
+                        <div>
+                            <h4>${item.name}</h4>
+                            <p>পরিমাণ: ${item.quantity} x ৳${item.price}</p>
+                        </div>
+                        <div class="cart-item-price">৳${itemTotal}</div>
+                    </div>
+                `;
+            });
+            
+            orderTotal.textContent = total;
+        }
+        
+        function selectPayment(event, method) {
+            document.querySelectorAll('.payment-method').forEach(pm => {
+                pm.classList.remove('selected');
+            });
+            event.currentTarget.classList.add('selected');
+            document.getElementById(method).checked = true;
+            const transactionIdGroup = document.getElementById('transactionIdGroup');
+            if (method === 'cash' || method === 'bank') {
+                transactionIdGroup.style.display = 'none';
+                document.getElementById('transactionId').required = false;
+            } else {
+                transactionIdGroup.style.display = 'block';
+                document.getElementById('transactionId').required = true;
+            }
+        }
+        
+        function placeOrder() {
+            const form = document.getElementById('checkoutForm');
+            
+            if (!form.checkValidity()) {
+                alert('অনুগ্রহ করে সব প্রয়োজনীয় তথ্য পূরণ করুন');
+                return;
+            }
+            
+            const paymentMethod = document.querySelector('input[name="paymentMethod"]:checked');
+            if (!paymentMethod) {
+                alert('অনুগ্রহ করে একটি পেমেন্ট পদ্ধতি নির্বাচন করুন');
+                return;
+            }
+            
+            const formData = new FormData(form);
+            const data = {
+                firstName: formData.get('firstName'),
+                lastName: formData.get('lastName'),
+                email: formData.get('email'),
+                phone: formData.get('phone'),
+                address: formData.get('address'),
+                notes: formData.get('notes'),
+                payment_method: paymentMethod.value,
+                transaction_id: formData.get('transactionId'),
+                cart: cart,
+                division: formData.get('division') || null,
+                district: formData.get('district') || null,
+                upazila: formData.get('upazila') || null,
+                union: formData.get('union') || null
+            };
+            
+            fetch('/orders/api/product-order/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': getCookie('csrftoken')
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert(data.message);
+                    window.location.href = '/';
+                } else {
+                    alert('ত্রুটি: ' + data.message);
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('সার্ভার ত্রুটি হয়েছে। অনুগ্রহ করে আবার চেষ্টা করুন।');
+            });
+        }
+        
+        function getCookie(name) {
+            let cookieValue = null;
+            if (document.cookie && document.cookie !== '') {
+                const cookies = document.cookie.split(';');
+                for (let i = 0; i < cookies.length; i++) {
+                    const cookie = cookies[i].trim();
+                    if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
+        }
+    </script>
+</body>
+</html>
+

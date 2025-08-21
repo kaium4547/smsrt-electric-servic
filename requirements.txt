@@ -1,0 +1,5 @@
+Django
+Pillow
+crispy-bootstrap5
+djangorestframework
+mysqlclient

@@ -1,0 +1,61 @@
+[
+  {"model": "services.servicecategory", "pk": 1, "fields": {"name": "ইলেকট্রিক", "slug": "electric"}},
+  {"model": "services.servicecategory", "pk": 2, "fields": {"name": "সিকিউরিটি", "slug": "security"}},
+  {"model": "services.servicesubcategory", "pk": 1, "fields": {"category": 1, "name": "ইনস্টলেশন", "slug": "installation"}},
+  {"model": "services.servicesubcategory", "pk": 2, "fields": {"category": 2, "name": "CCTV", "slug": "cctv"}},
+  {
+    "model": "services.service",
+    "pk": 1,
+    "fields": {
+      "name": "ইলেকট্রিক ইনস্টলেশন",
+      "slug": "electric-installation",
+      "category": 1,
+      "subcategory": 1,
+      "short_description": "বাড়ি/অফিসের সম্পূর্ণ ইলেকট্রিক ইনস্টলেশন",
+      "long_description": "স্ট্যান্ডার্ড সেফটি মেইনটেন করে বাড়ি ও অফিসের সম্পূর্ণ ইলেকট্রিক ওয়্যারিং, সার্কিট ব্রেকার, ডিস্ট্রিবিউশন বোর্ড ইনস্টলেশন সেবা।",
+      "icon_class": "fas fa-bolt",
+      "price_from": "1200.00",
+      "available": true,
+      "created": "2025-01-01T00:00:00Z",
+      "updated": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "services.service",
+    "pk": 2,
+    "fields": {
+      "name": "সিসিটিভি ক্যামেরা",
+      "slug": "cctv-camera",
+      "category": 2,
+      "subcategory": 2,
+      "short_description": "সিসিটিভি ক্যামেরা সাপ্লাই ও ইন্সটলেশন",
+      "long_description": "বিভিন্ন ব্র্যান্ডের সিসিটিভি ক্যামেরা ও ডিভিআর/এনভিআর সাপ্লাই, কনফিগারেশন এবং ইনস্টলেশন।",
+      "icon_class": "fas fa-video",
+      "price_from": "2500.00",
+      "available": true,
+      "created": "2025-01-01T00:00:00Z",
+      "updated": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "services.servicefeature",
+    "pk": 1,
+    "fields": { "service": 1, "feature_text": "উচ্চমানের কপার তার ব্যবহার" }
+  },
+  {
+    "model": "services.servicefeature",
+    "pk": 2,
+    "fields": { "service": 1, "feature_text": "ব্রেকার ও আর্থিং সল্যুশন" }
+  },
+  {
+    "model": "services.servicefeature",
+    "pk": 3,
+    "fields": { "service": 2, "feature_text": "ইনডোর/আউটডোর ক্যামেরা" }
+  },
+  {
+    "model": "services.servicefeature",
+    "pk": 4,
+    "fields": { "service": 2, "feature_text": "মোবাইল অ্যাপ মনিটরিং সেটআপ" }
+  }
+]
+

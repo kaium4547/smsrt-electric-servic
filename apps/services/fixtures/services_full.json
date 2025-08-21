@@ -1,0 +1,59 @@
+[
+  {"model": "services.servicecategory", "pk": 10, "fields": {"name": "ইলেকট্রিক্যাল কাজ", "slug": "electrical-works"}},
+  {"model": "services.servicecategory", "pk": 20, "fields": {"name": "সোলার প্যানেল সলিউশন", "slug": "solar-power"}},
+  {"model": "services.servicecategory", "pk": 30, "fields": {"name": "সিসিটিভি ও সিকিউরিটি সিস্টেম", "slug": "cctv-security"}},
+  {"model": "services.servicecategory", "pk": 40, "fields": {"name": "এসি সার্ভিসিং", "slug": "ac-services"}},
+  {"model": "services.servicecategory", "pk": 50, "fields": {"name": "আইপিএস ও পাওয়ার ব্যাকআপ", "slug": "ips-backup"}},
+  {"model": "services.servicecategory", "pk": 60, "fields": {"name": "রেফ্রিজারেটর ও যন্ত্রাংশ সার্ভিস", "slug": "refrigerator-appliance"}},
+  {"model": "services.servicecategory", "pk": 70, "fields": {"name": "প্লাম্বিং ও পাইপিং", "slug": "plumbing-piping"}},
+  {"model": "services.servicecategory", "pk": 80, "fields": {"name": "অন্যান্য সেবা", "slug": "others"}},
+
+  {"model": "services.servicesubcategory", "pk": 1001, "fields": {"category": 10, "name": "হাউজ ওয়্যারিং", "slug": "house-wiring"}},
+  {"model": "services.servicesubcategory", "pk": 1002, "fields": {"category": 10, "name": "অফিস ওয়্যারিং", "slug": "office-wiring"}},
+  {"model": "services.servicesubcategory", "pk": 1003, "fields": {"category": 10, "name": "সুইচ ও সকেট ইনস্টলেশন", "slug": "switch-socket-installation"}},
+  {"model": "services.servicesubcategory", "pk": 1004, "fields": {"category": 10, "name": "সিলিং ফ্যান ও লাইট ইনস্টলেশন", "slug": "fan-light-installation"}},
+  {"model": "services.servicesubcategory", "pk": 1005, "fields": {"category": 10, "name": "বৈদ্যুতিক মেরামত ও রক্ষণাবেক্ষণ", "slug": "electrical-repair-maintenance"}},
+
+  {"model": "services.servicesubcategory", "pk": 2001, "fields": {"category": 20, "name": "সোলার প্যানেল ইনস্টলেশন", "slug": "solar-panel-installation"}},
+  {"model": "services.servicesubcategory", "pk": 2002, "fields": {"category": 20, "name": "সোলার ব্যাটারি সেটআপ", "slug": "solar-battery-setup"}},
+  {"model": "services.servicesubcategory", "pk": 2003, "fields": {"category": 20, "name": "সোলার ইনভার্টার ইনস্টলেশন", "slug": "solar-inverter-installation"}},
+  {"model": "services.servicesubcategory", "pk": 2004, "fields": {"category": 20, "name": "সোলার সিস্টেম রক্ষণাবেক্ষণ", "slug": "solar-system-maintenance"}},
+  {"model": "services.servicesubcategory", "pk": 2005, "fields": {"category": 20, "name": "অফ-গ্রিড ও অন-গ্রিড সোলার সিস্টেম", "slug": "off-on-grid-solar"}},
+
+  {"model": "services.servicesubcategory", "pk": 3001, "fields": {"category": 30, "name": "সিসিটিভি ক্যামেরা ইনস্টলেশন", "slug": "cctv-camera-installation"}},
+  {"model": "services.servicesubcategory", "pk": 3002, "fields": {"category": 30, "name": "ডিভিআর/এনভিআর সেটআপ", "slug": "dvr-nvr-setup"}},
+  {"model": "services.servicesubcategory", "pk": 3003, "fields": {"category": 30, "name": "আইপি ক্যামেরা ইনস্টলেশন", "slug": "ip-camera-installation"}},
+  {"model": "services.servicesubcategory", "pk": 3004, "fields": {"category": 30, "name": "সিকিউরিটি সিস্টেম রক্ষণাবেক্ষণ", "slug": "security-system-maintenance"}},
+  {"model": "services.servicesubcategory", "pk": 3005, "fields": {"category": 30, "name": "রিমোট মনিটরিং সেটআপ", "slug": "remote-monitoring-setup"}},
+
+  {"model": "services.servicesubcategory", "pk": 4001, "fields": {"category": 40, "name": "এসি ইনস্টলেশন", "slug": "ac-installation"}},
+  {"model": "services.servicesubcategory", "pk": 4002, "fields": {"category": 40, "name": "এসি পরিষ্কার ও সার্ভিসিং", "slug": "ac-clean-service"}},
+  {"model": "services.servicesubcategory", "pk": 4003, "fields": {"category": 40, "name": "এসি গ্যাস রিফিল", "slug": "ac-gas-refill"}},
+  {"model": "services.servicesubcategory", "pk": 4004, "fields": {"category": 40, "name": "এসি মেরামত ও রক্ষণাবেক্ষণ", "slug": "ac-repair-maintenance"}},
+
+  {"model": "services.servicesubcategory", "pk": 5001, "fields": {"category": 50, "name": "আইপিএস ইনস্টলেশন", "slug": "ips-installation"}},
+  {"model": "services.servicesubcategory", "pk": 5002, "fields": {"category": 50, "name": "ব্যাটারি পরিবর্তন", "slug": "battery-replacement"}},
+  {"model": "services.servicesubcategory", "pk": 5003, "fields": {"category": 50, "name": "ইনভার্টার সেটআপ", "slug": "inverter-setup"}},
+  {"model": "services.servicesubcategory", "pk": 5004, "fields": {"category": 50, "name": "পাওয়ার ব্যাকআপ রক্ষণাবেক্ষণ", "slug": "power-backup-maintenance"}},
+
+  {"model": "services.servicesubcategory", "pk": 6001, "fields": {"category": 60, "name": "রেফ্রিজারেটর মেরামত", "slug": "refrigerator-repair"}},
+  {"model": "services.servicesubcategory", "pk": 6002, "fields": {"category": 60, "name": "ফ্রিজ গ্যাস রিফিল", "slug": "fridge-gas-refill"}},
+  {"model": "services.servicesubcategory", "pk": 6003, "fields": {"category": 60, "name": "কম্প্রেসর পরিবর্তন", "slug": "compressor-replacement"}},
+  {"model": "services.servicesubcategory", "pk": 6004, "fields": {"category": 60, "name": "সাধারণ সার্ভিসিং", "slug": "general-servicing"}},
+
+  {"model": "services.servicesubcategory", "pk": 7001, "fields": {"category": 70, "name": "ইউপিভিসি পাইপ ইনস্টলেশন", "slug": "upvc-pipe-installation"}},
+  {"model": "services.servicesubcategory", "pk": 7002, "fields": {"category": 70, "name": "থ্রেড পাইপ ফিটিং", "slug": "thread-pipe-fitting"}},
+  {"model": "services.servicesubcategory", "pk": 7003, "fields": {"category": 70, "name": "পানি লাইন মেরামত", "slug": "water-line-repair"}},
+  {"model": "services.servicesubcategory", "pk": 7004, "fields": {"category": 70, "name": "বাথরুম ফিটিংস", "slug": "bathroom-fittings"}},
+
+  {"model": "services.servicesubcategory", "pk": 8001, "fields": {"category": 80, "name": "বৈদ্যুতিক পরামর্শ", "slug": "electrical-consultation"}},
+  {"model": "services.servicesubcategory", "pk": 8002, "fields": {"category": 80, "name": "কাস্টম ইলেকট্রিক্যাল প্রজেক্ট", "slug": "custom-electrical-project"}},
+  {"model": "services.servicesubcategory", "pk": 8003, "fields": {"category": 80, "name": "জরুরি মেরামত সেবা", "slug": "emergency-repair"}},
+
+  
+  {"model": "services.service", "pk": 10001, "fields": {"name": "হাউজ ওয়্যারিং", "slug": "svc-house-wiring", "category": 10, "subcategory": 1001, "short_description": "বাড়ির সম্পূর্ণ ওয়্যারিং কাজ", "long_description": "স্ট্যান্ডার্ড সেফটি সহ পূর্ণ ওয়্যারিং।", "icon_class": "fas fa-bolt", "price_from": "1000.00", "available": true, "created": "2025-01-01T00:00:00Z", "updated": "2025-01-01T00:00:00Z"}},
+  {"model": "services.service", "pk": 10002, "fields": {"name": "সোলার প্যানেল ইনস্টলেশন", "slug": "svc-solar-panel-install", "category": 20, "subcategory": 2001, "short_description": "সোলার প্যানেল সাপ্লাই ও ইনস্টলেশন", "long_description": "অন-গ্রিড/অফ-গ্রিড সলিউশন।", "icon_class": "fas fa-solar-panel", "price_from": "5000.00", "available": true, "created": "2025-01-01T00:00:00Z", "updated": "2025-01-01T00:00:00Z"}},
+  {"model": "services.service", "pk": 10003, "fields": {"name": "CCTV ইন্সটলেশন", "slug": "svc-cctv-install", "category": 30, "subcategory": 3001, "short_description": "ইনডোর/আউটডোর ক্যামেরা ইন্সটলেশন", "long_description": "ক্যামেরা, DVR/NVR সেটআপসহ।", "icon_class": "fas fa-video", "price_from": "2500.00", "available": true, "created": "2025-01-01T00:00:00Z", "updated": "2025-01-01T00:00:00Z"}},
+  {"model": "services.service", "pk": 10004, "fields": {"name": "এসি ইনস্টলেশন", "slug": "svc-ac-install", "category": 40, "subcategory": 4001, "short_description": "Split/Window AC ইনস্টলেশন", "long_description": "স্ট্যান্ডার্ড ইনস্টলেশন ও টেস্টিং।", "icon_class": "fas fa-wind", "price_from": "3000.00", "available": true, "created": "2025-01-01T00:00:00Z", "updated": "2025-01-01T00:00:00Z"}}
+]
+

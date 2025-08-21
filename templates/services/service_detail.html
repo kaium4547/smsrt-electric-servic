@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>{{ service.name }}</h2>
+<p>{{ service.long_description }}</p>
+<h3>ফিচারসমূহ</h3>
+<ul>
+  {% for f in features %}
+    <li>{{ f.feature_text }}</li>
+  {% empty %}
+    <li>কোনো ফিচার নেই</li>
+  {% endfor %}
+</ul>
+{% endblock %}
+
